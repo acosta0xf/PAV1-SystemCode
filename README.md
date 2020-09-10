@@ -8,8 +8,8 @@ Modulo a usar: Número 4 - Facturación de Proyectos y Productos
 Integrante: Acosta, Facundo Leonel [Legajo: 72100]
 
 # INFORMES DEL PROYECTO
-Contiene Ventana de Login
-Contiene Ventana de Principal
+- Contiene Ventana de Login
+- Contiene Ventana de Principal
 Contiene Ventana de Alta de Usuario
 Contiene Ventana de Modificación de Usuario
 Contiene Ventana de Borrado de Usuario
