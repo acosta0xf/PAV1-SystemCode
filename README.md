@@ -21,6 +21,6 @@ Se debe cargar la base de datos con el script almacenado en el repositorio, por 
 - Se quitaron los perfiles existentes para agregar los acordes al dominio
 
 # DATOS DE INICIO DE SESIÓN
-- Usuario: general -> Clave: general -> Permisos: Encargado General
-- Usuario: administracion -> Clave: administracion -> Permisos: Encargado de Administración
-- Usuario: ventas -> Clave: ventas -> Permisos: Encargado de Ventas
+- Usuario: general --> Clave: general --> Permisos: Encargado General
+- Usuario: administracion --> Clave: administracion --> Permisos: Encargado de Administración
+- Usuario: ventas --> Clave: ventas --> Permisos: Encargado de Ventas
