@@ -7,12 +7,19 @@ Repositorio para el Trabajo Práctico Integrador de la materia PAV1
 # INFORMES DEL PROYECTO
 - Contiene Ventana de Login
 - Contiene Ventana de Principal
+- Contiene Ventana General de Usuarios
 - Contiene Ventana de Alta de Usuario
 - Contiene Ventana de Modificación de Usuario
 - Contiene Ventana de Borrado de Usuario
 - Contiene Ventana de Consulta de Usuario
-- Contiene Validaciones de DNI repetidos (borrados o no borrados)
+- Contiene Ventana General de Perfiles
+- Contiene Ventana de Alta de Perfil
+- Contiene Ventana de Modificación de Perfil
+- Contiene Ventana de Borrado de Perfil
+- Contiene Validaciones de DNI repetidos
+- Contiene Validaciones de Perfiles repetidos
 - Contiene Validaciones de Perfiles (Cada perfil, tiene permitida determinada actividad)
+- Contiene Validaciones de Control de Perfiles (No se permite borrar un perfil si aún siguen usuarios asociados)
 
 # BASE DE DATOS
 Se debe cargar la base de datos con el script almacenado en el repositorio, por los siguientes motivos:
