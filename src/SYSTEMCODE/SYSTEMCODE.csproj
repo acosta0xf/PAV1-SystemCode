@@ -51,6 +51,30 @@
     <Compile Include="Capa de Datos\UsuarioDatos.cs" />
     <Compile Include="Capa de Negocio\Perfil.cs" />
     <Compile Include="Capa de Negocio\Usuario.cs" />
+    <Compile Include="Capa de Vista\ABMC Perfiles\frmAltaPerfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Capa de Vista\ABMC Perfiles\frmAltaPerfil.Designer.cs">
+      <DependentUpon>frmAltaPerfil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Capa de Vista\ABMC Perfiles\frmEliminarPerfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Capa de Vista\ABMC Perfiles\frmEliminarPerfil.Designer.cs">
+      <DependentUpon>frmEliminarPerfil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Capa de Vista\ABMC Perfiles\frmModificarPerfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Capa de Vista\ABMC Perfiles\frmModificarPerfil.Designer.cs">
+      <DependentUpon>frmModificarPerfil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Capa de Vista\ABMC Perfiles\frmPerfiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Capa de Vista\ABMC Perfiles\frmPerfiles.Designer.cs">
+      <DependentUpon>frmPerfiles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Capa de Vista\ABMC Usuarios\frmEliminarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +99,12 @@
     <Compile Include="Capa de Vista\ABMC Usuarios\frmAltaUsuario.Designer.cs">
       <DependentUpon>frmAltaUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Capa de Vista\ABMC Usuarios\frmUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Capa de Vista\ABMC Usuarios\frmUsuarios.Designer.cs">
+      <DependentUpon>frmUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Capa de Vista\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +119,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Capa de Vista\ABMC Perfiles\frmAltaPerfil.resx">
+      <DependentUpon>frmAltaPerfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Capa de Vista\ABMC Perfiles\frmEliminarPerfil.resx">
+      <DependentUpon>frmEliminarPerfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Capa de Vista\ABMC Perfiles\frmModificarPerfil.resx">
+      <DependentUpon>frmModificarPerfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Capa de Vista\ABMC Perfiles\frmPerfiles.resx">
+      <DependentUpon>frmPerfiles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Capa de Vista\ABMC Usuarios\frmEliminarUsuario.resx">
       <DependentUpon>frmEliminarUsuario.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Capa de Vista\ABMC Usuarios\frmAltaUsuario.resx">
       <DependentUpon>frmAltaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Capa de Vista\ABMC Usuarios\frmUsuarios.resx">
+      <DependentUpon>frmUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Capa de Vista\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

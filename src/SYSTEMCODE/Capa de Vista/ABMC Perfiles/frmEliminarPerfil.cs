@@ -1,17 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using SYSTEMCODE.Capa_de_Datos;
 using SYSTEMCODE.Capa_de_Negocio;
 
-namespace SYSTEMCODE.Capa_de_Vista
+namespace SYSTEMCODE.Capa_de_Vista.ABMC_Perfiles
 {
-    public partial class frmEliminarUsuario : Form
+    public partial class frmEliminarPerfil : Form
     {
-        Usuario usuario;
-        int dni;
+        Perfil perfil;
+        int id_perfil;
 
-        public frmEliminarUsuario(int dni)
+        public frmEliminarPerfil(int id_perfil)
         {
-            this.dni = dni;
+            this.id_perfil = id_perfil;
             InitializeComponent();
         }
         
@@ -21,11 +23,11 @@ namespace SYSTEMCODE.Capa_de_Vista
             return;
         }
 
-        private void frmEliminarUsuario_Load(object sender, EventArgs e)
+        private void frmEliminarPerfil_Load(object sender, EventArgs e)
         {
-            usuario = Usuario.ObtenerUsuario(dni.ToString());
+            perfil = Perfil.ObtenerPerfilPorID(id_perfil);
 
-            labelInforme("¿DESEAS DAR DE BAJA AL USUARIO?", false);
+            labelInforme("¿DESEAS DAR DE BAJA AL PERFIL?", false);
         }
 
         private void labelInforme(string mensaje, bool estado)
@@ -46,11 +48,22 @@ namespace SYSTEMCODE.Capa_de_Vista
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            string error = Usuario.EliminarUsuario(usuario);
+            IList<Usuario> listaUsuarios = UsuarioDatos.ConsultarTablaUsuarios();
+            for (int i = 0; i < listaUsuarios.Count; i++)
+            {
+                if (listaUsuarios[i].Perfil.Id_perfil.Equals(id_perfil))
+                {
+                    labelInforme("EXISTEN USUARIOS ASIGNADOS A ESTE PERFIL", false);
+                    btnEliminar.Enabled = false;
+                    return;
+                }
+            }
+
+            string error = Perfil.EliminarPerfil(perfil);
 
             if (error == "")
             {
-                labelInforme("USUARIO ELIMINADO CON ÉXITO", true);
+                labelInforme("PERFIL ELIMINADO CON ÉXITO", true);
 
                 btnEliminar.Enabled = false;
                 btnCancelar.Enabled = true;

@@ -32,10 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSystemCode));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuUsuarios = new System.Windows.Forms.ToolStripMenuItem();
-            this.altaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.consultarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPerfiles = new System.Windows.Forms.ToolStripMenuItem();
             this.menuClientes = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBarrios = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,48 +68,17 @@
             // 
             // menuUsuarios
             // 
-            this.menuUsuarios.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.altaToolStripMenuItem,
-            this.modificarToolStripMenuItem,
-            this.eliminarToolStripMenuItem,
-            this.consultarToolStripMenuItem});
             this.menuUsuarios.Name = "menuUsuarios";
             this.menuUsuarios.Size = new System.Drawing.Size(64, 20);
             this.menuUsuarios.Text = "Usuarios";
-            // 
-            // altaToolStripMenuItem
-            // 
-            this.altaToolStripMenuItem.Name = "altaToolStripMenuItem";
-            this.altaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.altaToolStripMenuItem.Text = "Crear";
-            this.altaToolStripMenuItem.Click += new System.EventHandler(this.altaToolStripMenuItem_Click);
-            // 
-            // modificarToolStripMenuItem
-            // 
-            this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.modificarToolStripMenuItem.Text = "Modificar";
-            this.modificarToolStripMenuItem.Click += new System.EventHandler(this.modificarToolStripMenuItem_Click);
-            // 
-            // eliminarToolStripMenuItem
-            // 
-            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.eliminarToolStripMenuItem.Text = "Eliminar";
-            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
-            // 
-            // consultarToolStripMenuItem
-            // 
-            this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.consultarToolStripMenuItem.Text = "Consultar";
-            this.consultarToolStripMenuItem.Click += new System.EventHandler(this.consultarToolStripMenuItem_Click);
+            this.menuUsuarios.Click += new System.EventHandler(this.menuUsuarios_Click);
             // 
             // menuPerfiles
             // 
             this.menuPerfiles.Name = "menuPerfiles";
             this.menuPerfiles.Size = new System.Drawing.Size(57, 20);
             this.menuPerfiles.Text = "Perfiles";
+            this.menuPerfiles.Click += new System.EventHandler(this.menuPerfiles_Click);
             // 
             // menuClientes
             // 
@@ -234,10 +199,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuVentas;
         private System.Windows.Forms.ToolStripMenuItem menuInformes;
         private System.Windows.Forms.ToolStripMenuItem menuSalir;
-        private System.Windows.Forms.ToolStripMenuItem altaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem modificarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem;
     }
 }
 

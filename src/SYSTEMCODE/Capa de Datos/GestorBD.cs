@@ -42,7 +42,7 @@ namespace BugTracker.Capa_de_Datos
             DataTable tabla = new DataTable();
 
             Conectar();
-            SqlCommand comando = new SqlCommand("SELECT * FROM " + nombreTabla, conexion);
+            SqlCommand comando = new SqlCommand("SELECT * FROM " + nombreTabla + " WHERE borrado = 0", conexion);
             tabla.Load(comando.ExecuteReader());
             Desconectar();
 
@@ -66,8 +66,7 @@ namespace BugTracker.Capa_de_Datos
                     transaccion.Rollback();
                 }
 
-                throw ex;
-                //return "ERROR DE ESCRITURA EN LA BASE DE DATOS";
+                return "ERROR DE ESCRITURA EN LA BASE DE DATOS";
             }
             finally
             {

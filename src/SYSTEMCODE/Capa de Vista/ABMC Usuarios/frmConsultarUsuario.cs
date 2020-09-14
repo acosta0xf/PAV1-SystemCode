@@ -8,9 +8,11 @@ namespace SYSTEMCODE.Capa_de_Vista
     public partial class frmConsultarUsuario : Form
     {
         Usuario usuario;
+        int dni;
 
-        public frmConsultarUsuario()
+        public frmConsultarUsuario(int dni)
         {
+            this.dni = dni;
             InitializeComponent();
         }
 
@@ -22,77 +24,24 @@ namespace SYSTEMCODE.Capa_de_Vista
             cbo.SelectedIndex = -1;
         }
 
-        private void btnConsultar_Click(object sender, EventArgs e)
-        {
-            if (numDNI.Text != "")
-            {
-                usuario = Usuario.ObtenerUsuario(numDNI.Text);
-                if (usuario != null)
-                {
-                    if (usuario.Dni.ToString() == numDNI.Text && !usuario.Borrado)
-                    {
-                        lblInformes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(200)))), ((int)(((byte)(83)))));
-                        lblInformes.ForeColor = System.Drawing.Color.White;
-                        lblInformes.Text = "USUARIO ENCONTRADO";
-
-                        btnAceptar.Enabled = true;
-                        btnVisualizar.Enabled = true;
-                        cboPerfiles.SelectedIndex = usuario.Perfil.Id_perfil - 1;
-                        txtNombreUsuario.Text = usuario.NombreUsuario.ToString();
-                        txtClave.Text = usuario.Clave.ToString();
-                        txtEmail.Text = usuario.Email.ToString();
-                        cboPerfiles.Enabled = false;
-                        txtNombreUsuario.Enabled = false;
-                        txtClave.Enabled = false;
-                        txtEmail.Enabled = false;
-                    }
-                    else if(usuario.Dni.ToString() == numDNI.Text && usuario.Borrado)
-                    {
-                        lblInformes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
-                        lblInformes.ForeColor = System.Drawing.Color.White;
-                        lblInformes.Text = "USUARIO ELIMINADO DEL SISTEMA";
-
-                        btnAceptar.Enabled = true;
-                        btnVisualizar.Enabled = false;
-                        cboPerfiles.SelectedIndex = -1;
-                        txtNombreUsuario.Text = "";
-                        txtClave.Text = "";
-                        txtEmail.Text = "";
-                        cboPerfiles.Enabled = false;
-                        txtNombreUsuario.Enabled = false;
-                        txtClave.Enabled = false;
-                        txtEmail.Enabled = false;
-                    }
-                }
-                else
-                {
-                    lblInformes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
-                    lblInformes.ForeColor = System.Drawing.Color.White;
-                    lblInformes.Text = "EL USUARIO NO SE ENCUENTRA REGISTRADO";
-
-                    cboPerfiles.SelectedIndex = -1;
-                    txtNombreUsuario.Text = "";
-                    txtClave.Text = "";
-                    txtEmail.Text = "";
-                    btnAceptar.Enabled = true;
-                    btnVisualizar.Enabled = false;
-                    cboPerfiles.Enabled = false;
-                    txtNombreUsuario.Enabled = false;
-                    txtClave.Enabled = false;
-                    txtEmail.Enabled = false;
-                }
-            }
-            else
-            {
-                lblInformes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
-                lblInformes.ForeColor = System.Drawing.Color.White;
-                lblInformes.Text = "DATO OBLIGATORIO: D.N.I";
-            }
-        }
-
         private void frmConsultarUsuario_Load(object sender, EventArgs e)
         {
             cargarComboBox(cboPerfiles, Perfil.ObtenerPerfiles());
+            usuario = Usuario.ObtenerUsuario(dni.ToString());
+
+            numDNI.Text = usuario.Dni.ToString();
+            DataTable tablaPerfiles = Perfil.ObtenerPerfiles();
+            for (int i = 0; i < tablaPerfiles.Rows.Count; i++)
+            {
+                if (tablaPerfiles.Rows[i]["nombre"].ToString() == usuario.Perfil.Nombre.ToString())
+                {
+                    cboPerfiles.SelectedIndex = i;
+                    break;
+                }
+            }
+            txtNombreUsuario.Text = usuario.NombreUsuario.ToString();
+            txtClave.Text = usuario.Clave.ToString();
+            txtEmail.Text = usuario.Email.ToString();
         }
 
         private void btnVisualizar_MouseDown(object sender, MouseEventArgs e)
@@ -109,25 +58,6 @@ namespace SYSTEMCODE.Capa_de_Vista
         {
             Close();
             return;
-        }
-
-        private void numDNI_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                if (Char.IsControl(e.KeyChar))
-                {
-                    e.Handled = false;
-                }
-                else
-                {
-                    e.Handled = true;
-                }
-            }
         }
     }
 }

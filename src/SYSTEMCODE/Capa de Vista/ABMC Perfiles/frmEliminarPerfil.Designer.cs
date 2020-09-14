@@ -1,6 +1,6 @@
-﻿namespace SYSTEMCODE.Capa_de_Vista
+﻿namespace SYSTEMCODE.Capa_de_Vista.ABMC_Perfiles
 {
-    partial class frmEliminarUsuario
+    partial class frmEliminarPerfil
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEliminarUsuario));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEliminarPerfil));
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lblInformes = new System.Windows.Forms.Label();
@@ -83,7 +83,7 @@
             this.lblInformes.TabIndex = 12;
             this.lblInformes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // frmEliminarUsuario
+            // frmEliminarPerfil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -96,10 +96,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "frmEliminarUsuario";
+            this.Name = "frmEliminarPerfil";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SC - Eliminar Usuario";
-            this.Load += new System.EventHandler(this.frmEliminarUsuario_Load);
+            this.Text = "SC - Eliminar Perfil";
+            this.Load += new System.EventHandler(this.frmEliminarPerfil_Load);
             this.ResumeLayout(false);
 
         }

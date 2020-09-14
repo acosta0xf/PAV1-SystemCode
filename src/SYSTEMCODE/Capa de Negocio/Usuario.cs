@@ -1,4 +1,5 @@
-﻿using SYSTEMCODE.Capa_de_Datos;
+﻿using System.Collections.Generic;
+using SYSTEMCODE.Capa_de_Datos;
 
 namespace SYSTEMCODE.Capa_de_Negocio
 {
@@ -80,6 +81,11 @@ namespace SYSTEMCODE.Capa_de_Negocio
         public static string ObtenerPerfil(Usuario usuario)
         {
             return usuario.Perfil.Nombre.ToString();
+        }
+
+        public static IList<Usuario> ObtenerTablaUsuarios()
+        {
+            return UsuarioDatos.ConsultarTablaUsuarios();
         }
 
         public static Usuario ObtenerUsuario(string dni)

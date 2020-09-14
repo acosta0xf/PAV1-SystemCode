@@ -14,6 +14,17 @@ namespace SYSTEMCODE.Capa_de_Negocio
 
         }
 
+        public Perfil(string nombre)
+        {
+            this.Nombre = nombre;
+        }
+
+        public Perfil(string nombre, bool borrado)
+        {
+            this.Nombre = nombre;
+            this.Borrado = borrado;
+        }
+
         public Perfil(int id_perfil, string nombre, bool borrado)
         {
             this.Id_perfil = id_perfil;
@@ -28,6 +39,31 @@ namespace SYSTEMCODE.Capa_de_Negocio
         public static DataTable ObtenerPerfiles()
         {
             return PerfilDatos.ConsultarPerfiles();
+        }
+
+        public static Perfil ObtenerPerfilPorID(int id_perfil)
+        {
+            return PerfilDatos.ConsultarPerfil(id_perfil)[0];
+        }
+
+        public static Perfil ObtenerPerfilPorNombre(string nombrePerfil)
+        {
+            return PerfilDatos.ConsultarPerfilPorNombre(nombrePerfil);
+        }
+
+        public static string AgregarPerfil(Perfil perfil)
+        {
+            return PerfilDatos.InsertarPerfil(perfil);
+        }
+
+        public static string ModificarPerfil(Perfil perfil)
+        {
+            return PerfilDatos.ModificarPerfil(perfil);
+        }
+
+        public static string EliminarPerfil(Perfil perfil)
+        {
+            return PerfilDatos.EliminarPerfil(perfil);
         }
     }
 }

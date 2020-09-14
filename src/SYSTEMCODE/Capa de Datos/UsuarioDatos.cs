@@ -1,5 +1,6 @@
 ﻿using BugTracker.Capa_de_Datos;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using SYSTEMCODE.Capa_de_Negocio;
 
@@ -20,6 +21,19 @@ namespace SYSTEMCODE.Capa_de_Datos
             Perfil perfil = PerfilDatos.ConsultarPerfil(id_perfil)[0];
 
             return new Usuario(id_usuario, dni, usuario, perfil, clave, email, borrado);
+        }
+
+        public static IList<Usuario> ConsultarTablaUsuarios()
+        {
+            List<Usuario> listaUsuarios = new List<Usuario>();
+
+            DataTable tabla = GestorBD.ConsultarTabla("Usuarios");
+            for (int i = 0; i < tabla.Rows.Count; i++)
+            {
+                listaUsuarios.Add(diseniarUsuario(i, tabla));
+            }
+
+            return listaUsuarios;
         }
 
         public static Usuario ConsultarUsuarioPorNombreUsuario(string nombreUsuario)

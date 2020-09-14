@@ -20,15 +20,29 @@ namespace SYSTEMCODE.Capa_de_Vista
         public bool Cerrado { get => cerrado; set => cerrado = value; }
         public static Usuario UsuarioActual { get => usuarioActual; set => usuarioActual = value; }
 
+        private void labelEstadoLogin(string mensaje, bool estado)
+        {
+            if (!estado)
+            {
+                lblEstadoLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
+                lblEstadoLogin.ForeColor = System.Drawing.Color.White;
+                lblEstadoLogin.Text = mensaje;
+            }
+            else
+            {
+                lblEstadoLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(200)))), ((int)(((byte)(83)))));
+                lblEstadoLogin.ForeColor = System.Drawing.Color.White;
+                lblEstadoLogin.Text = mensaje;
+            }
+        }
+
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             btnIngresarPresionado = true;
 
             if (txtUsuario.Text.Length == 0)
             {
-                lblEstadoLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
-                lblEstadoLogin.ForeColor = System.Drawing.Color.White;
-                lblEstadoLogin.Text = "DATO OBLIGATORIO: USUARIO";
+                labelEstadoLogin("DATO OBLIGATORIO: USUARIO", false);
                 txtUsuario.Focus();
 
                 return;
@@ -36,9 +50,7 @@ namespace SYSTEMCODE.Capa_de_Vista
 
             if (txtClave.Text.Length == 0)
             {
-                lblEstadoLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
-                lblEstadoLogin.ForeColor = System.Drawing.Color.White;
-                lblEstadoLogin.Text = "DATO OBLIGATORIO: CLAVE";
+                labelEstadoLogin("DATO OBLIGATORIO: CLAVE", false);
                 txtClave.Focus();
 
                 return;
@@ -56,9 +68,7 @@ namespace SYSTEMCODE.Capa_de_Vista
                 }
                 else
                 {
-                    lblEstadoLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
-                    lblEstadoLogin.ForeColor = System.Drawing.Color.White;
-                    lblEstadoLogin.Text = "ACCESO DENEGADO - DATOS INCORRECTOS";
+                    labelEstadoLogin("ACCESO DENEGADO - DATOS INCORRECTOS", false);
 
                     txtClave.Text = "";
                     txtUsuario.Text = "";
@@ -67,9 +77,7 @@ namespace SYSTEMCODE.Capa_de_Vista
             }
             catch (SqlException)
             {
-                lblEstadoLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
-                lblEstadoLogin.ForeColor = System.Drawing.Color.White;
-                lblEstadoLogin.Text = "ERROR DE CONEXIÓN - BASE DE DATOS";
+                labelEstadoLogin("ERROR DE CONEXIÓN - BASE DE DATOS", false);
 
                 txtUsuario.Enabled = false;
                 txtClave.Enabled = false;
@@ -85,9 +93,7 @@ namespace SYSTEMCODE.Capa_de_Vista
 
         private void temporizadorAcceso_Tick(object sender, EventArgs e)
         {
-            lblEstadoLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(200)))), ((int)(((byte)(83)))));
-            lblEstadoLogin.ForeColor = System.Drawing.Color.White;
-            lblEstadoLogin.Text = "ACCESO CORRECTO [" + temporizador.ToString() + "]";
+            labelEstadoLogin("ACCESO CORRECTO [" + temporizador.ToString() + "]", true);
             temporizador--;
 
             if (temporizador == -1)

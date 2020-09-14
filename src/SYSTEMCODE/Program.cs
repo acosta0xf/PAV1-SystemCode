@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SYSTEMCODE.Capa_de_Vista;
+using SYSTEMCODE.Capa_de_Vista.ABMC_Usuarios;
 
 namespace SYSTEMCODE
 {

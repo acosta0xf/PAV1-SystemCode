@@ -9,9 +9,11 @@ namespace SYSTEMCODE.Capa_de_Vista
     public partial class frmModificarUsuario : Form
     {
         Usuario usuario;
+        private int dni;
 
-        public frmModificarUsuario()
+        public frmModificarUsuario(int dni)
         {
+            this.dni = dni;
             InitializeComponent();
         }
 
@@ -34,80 +36,54 @@ namespace SYSTEMCODE.Capa_de_Vista
             return false;
         }
 
-        private void btnConsultar_Click(object sender, EventArgs e)
+        private void labelInforme(string mensaje, bool estado)
         {
-            if (numDNI.Text != "")
-            {
-                usuario = Usuario.ObtenerUsuario(numDNI.Text);
-                if (usuario != null)
-                {
-                    if (usuario.Dni.ToString() == numDNI.Text && !usuario.Borrado)
-                    {
-                        lblInformes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(200)))), ((int)(((byte)(83)))));
-                        lblInformes.ForeColor = System.Drawing.Color.White;
-                        lblInformes.Text = "USUARIO ENCONTRADO\nMODIFIQUE SUS DATOS";
-
-                        btnModificar.Enabled = true;
-                        btnCancelar.Enabled = true;
-                        btnVisualizar.Enabled = true;
-                        cboPerfiles.SelectedIndex = usuario.Perfil.Id_perfil - 1;
-                        txtNombreUsuario.Text = usuario.NombreUsuario.ToString();
-                        txtClave.Text = usuario.Clave.ToString();
-                        txtEmail.Text = usuario.Email.ToString();
-                        cboPerfiles.Enabled = true;
-                        txtNombreUsuario.Enabled = true;
-                        txtClave.Enabled = true;
-                        txtEmail.Enabled = true;
-                    }
-                    else if (usuario.Dni.ToString() == numDNI.Text && usuario.Borrado)
-                    {
-                        lblInformes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
-                        lblInformes.ForeColor = System.Drawing.Color.White;
-                        lblInformes.Text = "USUARIO ELIMINADO DEL SISTEMA\nDEBE DARLO DE ALTA NUEVAMENTE";
-
-                        btnModificar.Enabled = false;
-                        btnCancelar.Enabled = true;
-                        btnVisualizar.Enabled = false;
-                        cboPerfiles.SelectedIndex = -1;
-                        txtNombreUsuario.Text = "";
-                        txtClave.Text = "";
-                        txtEmail.Text = "";
-                        cboPerfiles.Enabled = false;
-                        txtNombreUsuario.Enabled = false;
-                        txtClave.Enabled = false;
-                        txtEmail.Enabled = false;
-                    }
-                }
-                else
-                {
-                    lblInformes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
-                    lblInformes.ForeColor = System.Drawing.Color.White;
-                    lblInformes.Text = "EL USUARIO NO SE ENCUENTRA REGISTRADO";
-
-                    cboPerfiles.SelectedIndex = -1;
-                    txtNombreUsuario.Text = "";
-                    txtClave.Text = "";
-                    txtEmail.Text = "";
-                    btnModificar.Enabled = false;
-                    btnCancelar.Enabled = true;
-                    btnVisualizar.Enabled = false;
-                    cboPerfiles.Enabled = false;
-                    txtNombreUsuario.Enabled = false;
-                    txtClave.Enabled = false;
-                    txtEmail.Enabled = false;
-                }
-            }
-            else
+            if (!estado)
             {
                 lblInformes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
                 lblInformes.ForeColor = System.Drawing.Color.White;
-                lblInformes.Text = "DATO OBLIGATORIO: D.N.I";
+                lblInformes.Text = mensaje;
             }
+            else
+            {
+                lblInformes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(200)))), ((int)(((byte)(83)))));
+                lblInformes.ForeColor = System.Drawing.Color.White;
+                lblInformes.Text = mensaje;
+            }
+        }
+
+        private void deshabilitarControles()
+        {
+            btnModificar.Enabled = false;
+            btnCancelar.Enabled = true;
+            btnVisualizar.Enabled = false;
+            cboPerfiles.Enabled = false;
+            txtNombreUsuario.Enabled = false;
+            txtClave.Enabled = false;
+            txtEmail.Enabled = false;
         }
 
         private void frmModificarUsuario_Load(object sender, EventArgs e)
         {
             cargarComboBox(cboPerfiles, Perfil.ObtenerPerfiles());
+
+            usuario = Usuario.ObtenerUsuario(dni.ToString());
+
+            numDNI.Text = usuario.Dni.ToString();
+
+            DataTable tablaPerfiles = Perfil.ObtenerPerfiles();
+            for (int i = 0; i < tablaPerfiles.Rows.Count; i++)
+            {
+                if (tablaPerfiles.Rows[i]["nombre"].ToString() == usuario.Perfil.Nombre.ToString())
+                {
+                    cboPerfiles.SelectedIndex = i;
+                    break;
+                }
+            }
+            
+            txtNombreUsuario.Text = usuario.NombreUsuario.ToString();
+            txtClave.Text = usuario.Clave.ToString();
+            txtEmail.Text = usuario.Email.ToString();
         }
 
         private void btnVisualizar_MouseDown(object sender, MouseEventArgs e)
@@ -149,9 +125,7 @@ namespace SYSTEMCODE.Capa_de_Vista
         {
             if (cboPerfiles.SelectedIndex == -1)
             {
-                lblInformes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
-                lblInformes.ForeColor = System.Drawing.Color.White;
-                lblInformes.Text = "DATO OBLIGATORIO: PERFIL DE USUARIO";
+                labelInforme("DATO OBLIGATORIO: PERFIL DE USUARIO", false);
                 cboPerfiles.Focus();
 
                 return;
@@ -159,9 +133,7 @@ namespace SYSTEMCODE.Capa_de_Vista
 
             if (txtNombreUsuario.Text == "")
             {
-                lblInformes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
-                lblInformes.ForeColor = System.Drawing.Color.White;
-                lblInformes.Text = "DATO OBLIGATORIO: NOMBRE DE USUARIO";
+                labelInforme("DATO OBLIGATORIO: NOMBRE DE USUARIO", false);
                 txtNombreUsuario.Focus();
 
                 return;
@@ -169,9 +141,7 @@ namespace SYSTEMCODE.Capa_de_Vista
 
             if (txtClave.Text == "")
             {
-                lblInformes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
-                lblInformes.ForeColor = System.Drawing.Color.White;
-                lblInformes.Text = "DATO OBLIGATORIO: CLAVE";
+                labelInforme("DATO OBLIGATORIO: CLAVE", false);
                 txtClave.Focus();
 
                 return;
@@ -179,9 +149,7 @@ namespace SYSTEMCODE.Capa_de_Vista
 
             if (txtEmail.Text == "")
             {
-                lblInformes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
-                lblInformes.ForeColor = System.Drawing.Color.White;
-                lblInformes.Text = "DATO OBLIGATORIO: CORREO ELECTRÓNICO";
+                labelInforme("DATO OBLIGATORIO: CORREO ELECTRÓNICO", false);
                 txtEmail.Focus();
 
                 return;
@@ -189,9 +157,7 @@ namespace SYSTEMCODE.Capa_de_Vista
 
             if (!emailCorrecto(txtEmail.Text))
             {
-                lblInformes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
-                lblInformes.ForeColor = System.Drawing.Color.White;
-                lblInformes.Text = "FORMATO DE EMAIL INCORRECTO\nFORMATO ADMITIDO: usuario@dominio.com";
+                labelInforme("FORMATO DE EMAIL INCORRECTO\nFORMATO ADMITIDO: usuario@dominio.com", false);
                 txtEmail.Focus();
 
                 return;
@@ -208,33 +174,15 @@ namespace SYSTEMCODE.Capa_de_Vista
 
             if (error == "")
             {
-                lblInformes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(200)))), ((int)(((byte)(83)))));
-                lblInformes.ForeColor = System.Drawing.Color.White;
-                lblInformes.Text = "USUARIO MODIFICADO CON ÉXITO";
+                labelInforme("USUARIO MODIFICADO CON ÉXITO", true);
 
-                btnModificar.Enabled = false;
-                btnCancelar.Enabled = true;
-                btnVisualizar.Enabled = false;
-                cboPerfiles.Enabled = false;
-                txtNombreUsuario.Enabled = false;
-                txtClave.Enabled = false;
-                txtEmail.Enabled = false;
+                deshabilitarControles();
             }
             else
             {
-                lblInformes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
-                lblInformes.ForeColor = System.Drawing.Color.White;
-                lblInformes.Text = error;
+                labelInforme(error, false);
 
-                btnModificar.Enabled = false;
-                btnCancelar.Enabled = true;
-                btnVisualizar.Enabled = false;
-                numDNI.Enabled = false;
-                btnConsultar.Enabled = false;
-                cboPerfiles.Enabled = false;
-                txtNombreUsuario.Enabled = false;
-                txtClave.Enabled = false;
-                txtEmail.Enabled = false;
+                deshabilitarControles();
             }
         }
     }

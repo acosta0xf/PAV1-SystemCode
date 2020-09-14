@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using SYSTEMCODE.Capa_de_Negocio;
 using SYSTEMCODE.Capa_de_Vista;
+using SYSTEMCODE.Capa_de_Vista.ABMC_Perfiles;
+using SYSTEMCODE.Capa_de_Vista.ABMC_Usuarios;
 
 namespace SYSTEMCODE
 {
@@ -74,28 +76,16 @@ namespace SYSTEMCODE
             return;
         }
 
-        private void altaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void menuUsuarios_Click(object sender, EventArgs e)
         {
-            frmAltaUsuario altaUsuario = new frmAltaUsuario();
-            altaUsuario.ShowDialog();
+            frmUsuarios usuarios = new frmUsuarios();
+            usuarios.ShowDialog();
         }
 
-        private void modificarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void menuPerfiles_Click(object sender, EventArgs e)
         {
-            frmModificarUsuario modificarUsuario = new frmModificarUsuario();
-            modificarUsuario.ShowDialog();
-        }
-
-        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmEliminarUsuario eliminarUsuario = new frmEliminarUsuario();
-            eliminarUsuario.ShowDialog();
-        }
-
-        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmConsultarUsuario consultarUsuario = new frmConsultarUsuario();
-            consultarUsuario.ShowDialog();
+            frmPerfiles perfiles = new frmPerfiles();
+            perfiles.ShowDialog();
         }
     }
 }
