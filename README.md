@@ -7,15 +7,8 @@ Repositorio para el Trabajo Práctico Integrador de la materia PAV1
 # INFORMES DEL PROYECTO
 - Contiene Ventana de Login
 - Contiene Ventana de Principal
-- Contiene Ventana General de Usuarios
-- Contiene Ventana de Alta de Usuario
-- Contiene Ventana de Modificación de Usuario
-- Contiene Ventana de Borrado de Usuario
-- Contiene Ventana de Consulta de Usuario
-- Contiene Ventana General de Perfiles
-- Contiene Ventana de Alta de Perfil
-- Contiene Ventana de Modificación de Perfil
-- Contiene Ventana de Borrado de Perfil
+- Contiene Ventana ABMC de Usuarios
+- Contiene Ventana ABMC de Perfiles
 - Contiene Validaciones de DNI repetidos
 - Contiene Validaciones de Perfiles repetidos
 - Contiene Validaciones de Perfiles (Cada perfil, tiene permitida determinada actividad)
