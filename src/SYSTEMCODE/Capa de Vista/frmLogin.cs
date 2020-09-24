@@ -5,14 +5,14 @@ using SYSTEMCODE.Capa_de_Negocio;
 
 namespace SYSTEMCODE.Capa_de_Vista
 {
-    public partial class frmLogin : Form
+    public partial class FrmLogin : Form
     {
         private bool cerrado = false;
         private bool btnIngresarPresionado = false;
         private static Usuario usuarioActual;
         private int temporizador = 3;
 
-        public frmLogin()
+        public FrmLogin()
         {
             InitializeComponent();
         }

@@ -8,7 +8,7 @@ namespace SYSTEMCODE.Capa_de_Datos
 {
     public static class PerfilDatos
     {
-        private static Perfil diseniarPerfil(int posicion, DataTable tabla)
+        private static Perfil DiseniarPerfil(int posicion, DataTable tabla)
         {
             int id_perfil = Convert.ToInt32(tabla.Rows[posicion]["id_perfil"].ToString());
             string nombre = tabla.Rows[posicion]["nombre"].ToString();
@@ -29,7 +29,7 @@ namespace SYSTEMCODE.Capa_de_Datos
             DataTable tabla = GestorBD.Consultar(SQL);
             if (tabla.Rows.Count > 0)
             {
-                listaPerfiles.Add(diseniarPerfil(0, tabla));
+                listaPerfiles.Add(DiseniarPerfil(0, tabla));
             }
 
             return listaPerfiles;
@@ -44,7 +44,7 @@ namespace SYSTEMCODE.Capa_de_Datos
 
             DataTable tabla = GestorBD.Consultar(SQL);
 
-            return (tabla.Rows.Count > 0) ? diseniarPerfil(0, tabla) : null;
+            return (tabla.Rows.Count > 0) ? DiseniarPerfil(0, tabla) : null;
         }
 
         public static DataTable ConsultarPerfiles()

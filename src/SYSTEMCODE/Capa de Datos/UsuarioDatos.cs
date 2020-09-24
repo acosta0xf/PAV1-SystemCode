@@ -8,7 +8,7 @@ namespace SYSTEMCODE.Capa_de_Datos
 {
     public static class UsuarioDatos
     {
-        private static Usuario diseniarUsuario(int posicion, DataTable tabla)
+        private static Usuario DiseniarUsuario(int posicion, DataTable tabla)
         {
             int id_usuario = Convert.ToInt32(tabla.Rows[posicion]["id_usuario"].ToString());
             string usuario = tabla.Rows[posicion]["usuario"].ToString();
@@ -30,7 +30,7 @@ namespace SYSTEMCODE.Capa_de_Datos
             DataTable tabla = GestorBD.ConsultarTabla("Usuarios");
             for (int i = 0; i < tabla.Rows.Count; i++)
             {
-                listaUsuarios.Add(diseniarUsuario(i, tabla));
+                listaUsuarios.Add(DiseniarUsuario(i, tabla));
             }
 
             return listaUsuarios;
@@ -46,7 +46,7 @@ namespace SYSTEMCODE.Capa_de_Datos
 
             DataTable tabla = GestorBD.Consultar(SQL);
             
-            return (tabla.Rows.Count > 0) ? diseniarUsuario(0, tabla) : null;
+            return (tabla.Rows.Count > 0) ? DiseniarUsuario(0, tabla) : null;
         }
 
         public static Usuario ConsultarUsuarioPorDNI(string DNI)
@@ -57,7 +57,7 @@ namespace SYSTEMCODE.Capa_de_Datos
 
             DataTable tabla = GestorBD.Consultar(SQL);
 
-            return (tabla.Rows.Count > 0) ? diseniarUsuario(0, tabla) : null;
+            return (tabla.Rows.Count > 0) ? DiseniarUsuario(0, tabla) : null;
         }
 
         public static string InsertarUsuario(Usuario usuario)
