@@ -9,18 +9,16 @@ namespace SYSTEMCODE
 {
     public partial class frmSystemCode : Form
     {
-        static Usuario usuarioActual = null;
-
         public frmSystemCode()
         {
             InitializeComponent();
         }
 
-        public static Usuario UsuarioActual { get => usuarioActual; set => usuarioActual = value; }
+        public static Usuario UsuarioActual { get; set; } = null;
 
         private void frmSystemCode_Load(object sender, EventArgs e)
         {
-            frmLogin login = new frmLogin();
+            FrmLogin login = new FrmLogin();
             login.ShowDialog();
 
             if (login.Cerrado)
@@ -29,7 +27,7 @@ namespace SYSTEMCODE
                 return;
             }
 
-            UsuarioActual = frmLogin.UsuarioActual;
+            UsuarioActual = FrmLogin.UsuarioActual;
 
             lblBienvenida.Text = "¡Bienvenido, " + UsuarioActual.NombreUsuario + "!";
 
@@ -78,7 +76,7 @@ namespace SYSTEMCODE
 
         private void menuUsuarios_Click(object sender, EventArgs e)
         {
-            frmUsuarios usuarios = new frmUsuarios();
+            FrmUsuarios usuarios = new FrmUsuarios();
             usuarios.ShowDialog();
         }
 

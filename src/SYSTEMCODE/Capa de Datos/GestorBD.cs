@@ -5,8 +5,8 @@ namespace BugTracker.Capa_de_Datos
 {
     public static class GestorBD
     {
-        private static string cadenaConexion = @"Data Source=.\SQLEXPRESS;Initial Catalog=PAV1;Integrated Security=True";
-        private static SqlConnection conexion = new SqlConnection(cadenaConexion);
+        private static readonly string cadenaConexion = @"Data Source=.\SQLEXPRESS;Initial Catalog=PAV1;Integrated Security=True";
+        private static readonly SqlConnection conexion = new SqlConnection(cadenaConexion);
         private static SqlTransaction transaccion = null;
 
         private static void Conectar()
@@ -28,12 +28,12 @@ namespace BugTracker.Capa_de_Datos
         public static DataTable Consultar(string cSQL)
         {
             DataTable tabla = new DataTable();
-            
+
             Conectar();
             SqlCommand comando = new SqlCommand(cSQL, conexion);
             tabla.Load(comando.ExecuteReader());
             Desconectar();
-            
+
             return tabla;
         }
 
@@ -42,7 +42,7 @@ namespace BugTracker.Capa_de_Datos
             DataTable tabla = new DataTable();
 
             Conectar();
-            SqlCommand comando = new SqlCommand("SELECT * FROM " + nombreTabla + " WHERE borrado = 0", conexion);
+            SqlCommand comando = new SqlCommand("SELECT * FROM " + nombreTabla, conexion);
             tabla.Load(comando.ExecuteReader());
             Desconectar();
 
@@ -59,7 +59,7 @@ namespace BugTracker.Capa_de_Datos
                 comando.ExecuteNonQuery();
                 transaccion.Commit();
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
                 if (transaccion != null)
                 {
@@ -73,7 +73,7 @@ namespace BugTracker.Capa_de_Datos
                 Desconectar();
             }
 
-            return "";            
+            return "";
         }
     }
 }

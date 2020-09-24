@@ -51,58 +51,16 @@
     <Compile Include="Capa de Datos\UsuarioDatos.cs" />
     <Compile Include="Capa de Negocio\Perfil.cs" />
     <Compile Include="Capa de Negocio\Usuario.cs" />
-    <Compile Include="Capa de Vista\ABMC Perfiles\frmAltaPerfil.cs">
+    <Compile Include="Capa de Vista\ABMC\frmPerfiles.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Capa de Vista\ABMC Perfiles\frmAltaPerfil.Designer.cs">
-      <DependentUpon>frmAltaPerfil.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Capa de Vista\ABMC Perfiles\frmEliminarPerfil.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Capa de Vista\ABMC Perfiles\frmEliminarPerfil.Designer.cs">
-      <DependentUpon>frmEliminarPerfil.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Capa de Vista\ABMC Perfiles\frmModificarPerfil.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Capa de Vista\ABMC Perfiles\frmModificarPerfil.Designer.cs">
-      <DependentUpon>frmModificarPerfil.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Capa de Vista\ABMC Perfiles\frmPerfiles.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Capa de Vista\ABMC Perfiles\frmPerfiles.Designer.cs">
+    <Compile Include="Capa de Vista\ABMC\frmPerfiles.Designer.cs">
       <DependentUpon>frmPerfiles.cs</DependentUpon>
     </Compile>
-    <Compile Include="Capa de Vista\ABMC Usuarios\frmEliminarUsuario.cs">
+    <Compile Include="Capa de Vista\ABMC\frmUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Capa de Vista\ABMC Usuarios\frmEliminarUsuario.Designer.cs">
-      <DependentUpon>frmEliminarUsuario.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Capa de Vista\ABMC Usuarios\frmConsultarUsuario.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Capa de Vista\ABMC Usuarios\frmConsultarUsuario.Designer.cs">
-      <DependentUpon>frmConsultarUsuario.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Capa de Vista\ABMC Usuarios\frmModificarUsuario.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Capa de Vista\ABMC Usuarios\frmModificarUsuario.Designer.cs">
-      <DependentUpon>frmModificarUsuario.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Capa de Vista\ABMC Usuarios\frmAltaUsuario.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Capa de Vista\ABMC Usuarios\frmAltaUsuario.Designer.cs">
-      <DependentUpon>frmAltaUsuario.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Capa de Vista\ABMC Usuarios\frmUsuarios.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Capa de Vista\ABMC Usuarios\frmUsuarios.Designer.cs">
+    <Compile Include="Capa de Vista\ABMC\frmUsuarios.Designer.cs">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Capa de Vista\frmLogin.cs">
@@ -119,31 +77,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Capa de Vista\ABMC Perfiles\frmAltaPerfil.resx">
-      <DependentUpon>frmAltaPerfil.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Capa de Vista\ABMC Perfiles\frmEliminarPerfil.resx">
-      <DependentUpon>frmEliminarPerfil.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Capa de Vista\ABMC Perfiles\frmModificarPerfil.resx">
-      <DependentUpon>frmModificarPerfil.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Capa de Vista\ABMC Perfiles\frmPerfiles.resx">
+    <EmbeddedResource Include="Capa de Vista\ABMC\frmPerfiles.resx">
       <DependentUpon>frmPerfiles.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Capa de Vista\ABMC Usuarios\frmEliminarUsuario.resx">
-      <DependentUpon>frmEliminarUsuario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Capa de Vista\ABMC Usuarios\frmConsultarUsuario.resx">
-      <DependentUpon>frmConsultarUsuario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Capa de Vista\ABMC Usuarios\frmModificarUsuario.resx">
-      <DependentUpon>frmModificarUsuario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Capa de Vista\ABMC Usuarios\frmAltaUsuario.resx">
-      <DependentUpon>frmAltaUsuario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Capa de Vista\ABMC Usuarios\frmUsuarios.resx">
+    <EmbeddedResource Include="Capa de Vista\ABMC\frmUsuarios.resx">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Capa de Vista\frmLogin.resx">

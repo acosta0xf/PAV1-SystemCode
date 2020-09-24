@@ -64,7 +64,7 @@ namespace SYSTEMCODE.Capa_de_Negocio
         public static Usuario ValidarUsuario(string nombreUsuario, string clave)
         {
             Usuario usuario = UsuarioDatos.ConsultarUsuarioPorNombreUsuario(nombreUsuario);
-            
+
             if (usuario != null)
             {
                 if (usuario.Clave.Equals(clave) && !usuario.Borrado)
