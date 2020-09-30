@@ -2,69 +2,49 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
-using SYSTEMCODE.Capa_de_Datos;
 using SYSTEMCODE.Capa_de_Negocio;
 
 namespace SYSTEMCODE.Capa_de_Vista.ABMC
 {
-    public partial class FrmPerfiles : Form
+    public partial class FrmProyectos : Form
     {
-        Perfil perfil;
+        Proyecto proyecto;
 
         private string botonPresionado = "";
 
-        public FrmPerfiles()
+        public FrmProyectos()
         {
             InitializeComponent();
         }
 
-        private void Letra_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                if (Char.IsControl(e.KeyChar))
-                {
-                    e.Handled = false;
-                }
-                else
-                {
-                    e.Handled = false;
-                }
-            }
-        }
-
-        private void CargarTablaPerfilesNoBorrados(DataGridView dgv, DataTable tablaPerfiles)
+        private void CargarTablaProyectosNoBorrados(DataGridView dgv, IList<Proyecto> listaProyectos)
         {
             btnMostrarBorrados.Text = "Mostrar Borrados";
 
             dgv.Rows.Clear();
 
-            for (int i = 0; i < tablaPerfiles.Rows.Count; i++)
+            for (int i = 0; i < listaProyectos.Count; i++)
             {
-                if (!Convert.ToBoolean(tablaPerfiles.Rows[i]["Borrado"]))
+                if (!listaProyectos[i].Borrado)
                 {
-                    dgv.Rows.Add(tablaPerfiles.Rows[i]["Nombre"]);
+                    dgv.Rows.Add(listaProyectos[i].Descripcion);
                 }
             }
 
             dgv.ClearSelection();
         }
 
-        private void CargarTablaPerfilesBorrados(DataGridView dgv, DataTable tablaPerfiles)
+        private void CargarTablaProyectosBorrados(DataGridView dgv, IList<Proyecto> listaProyectos)
         {
             btnMostrarBorrados.Text = "Ocultar Borrados";
 
             dgv.Rows.Clear();
 
-            for (int i = 0; i < tablaPerfiles.Rows.Count; i++)
+            for (int i = 0; i < listaProyectos.Count; i++)
             {
-                dgv.Rows.Add(tablaPerfiles.Rows[i]["Nombre"]);
+                dgv.Rows.Add(listaProyectos[i].Descripcion);
 
-                if (Convert.ToBoolean(tablaPerfiles.Rows[i]["Borrado"]))
+                if (listaProyectos[i].Borrado)
                 {
                     dgv.Rows[dgv.Rows.Count - 1].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                     dgv.Rows[dgv.Rows.Count - 1].DefaultCellStyle.ForeColor = System.Drawing.Color.White;
@@ -74,10 +54,22 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
             dgv.ClearSelection();
         }
 
+        private void CargarComboBox(ComboBox cbo, DataTable tabla)
+        {
+            cbo.DataSource = tabla;
+            cbo.DisplayMember = tabla.Columns[3].ColumnName;
+            cbo.ValueMember = tabla.Columns[0].ColumnName;
+            cbo.SelectedIndex = -1;
+        }
+
         private void CargarCampos()
         {
-            perfil = Perfil.ObtenerPerfilPorNombre(dgvPerfiles.CurrentRow.Cells[0].Value.ToString());
-            txtNombrePerfil.Text = perfil.Nombre;
+            proyecto = Proyecto.ObtenerProyectoPorDescripcion(dgvProyectos.CurrentRow.Cells[0].Value.ToString());
+
+            txtDescripcion.Text = proyecto.Descripcion.ToString();
+            txtVersion.Text = proyecto.Version.ToString();
+            txtAlcance.Text = proyecto.Alcance.ToString();
+            cboResponsable.SelectedIndex = proyecto.Responsable.Id_usuario - 1;
         }
 
         private void CargarInforme(string mensaje, bool estado, bool defecto)
@@ -107,10 +99,34 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
 
         private bool ValidarCampos()
         {
-            if (txtNombrePerfil.Text == "")
+            if (txtDescripcion.Text == "")
             {
-                CargarInforme("DATO OBLIGATORIO: NOMBRE DE PERFIL", false, false);
-                txtNombrePerfil.Focus();
+                CargarInforme("DATO OBLIGATORIO: DESCRIPCIÓN", false, false);
+                txtDescripcion.Focus();
+
+                return false;
+            }
+
+            if (txtVersion.Text == "")
+            {
+                CargarInforme("DATO OBLIGATORIO: VERSIÓN", false, false);
+                txtVersion.Focus();
+
+                return false;
+            }
+
+            if (txtAlcance.Text == "")
+            {
+                CargarInforme("DATO OBLIGATORIO: ALCANCE", false, false);
+                txtAlcance.Focus();
+
+                return false;
+            }
+
+            if (cboResponsable.SelectedIndex == -1)
+            {
+                CargarInforme("DATO OBLIGATORIO: USUARIO RESPONSABLE", false, false);
+                cboResponsable.Focus();
 
                 return false;
             }
@@ -123,24 +139,30 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
             switch (accion)
             {
                 case "SI":
-                    dgvPerfiles.Enabled = false;
+                    dgvProyectos.Enabled = false;
                     btnAgregar.Enabled = false;
                     btnModificar.Enabled = false;
                     btnEliminar.Enabled = false;
 
-                    txtNombrePerfil.Enabled = true;
+                    txtDescripcion.Enabled = true;
+                    txtVersion.Enabled = true;
+                    txtAlcance.Enabled = true;
+                    cboResponsable.Enabled = true;
                     btnGuardar.Enabled = true;
                     btnCancelar.Enabled = true;
 
                     return;
 
                 case "NO":
-                    dgvPerfiles.Enabled = true;
+                    dgvProyectos.Enabled = true;
                     btnAgregar.Enabled = true;
                     btnModificar.Enabled = true;
                     btnEliminar.Enabled = true;
 
-                    txtNombrePerfil.Enabled = false;
+                    txtDescripcion.Enabled = false;
+                    txtVersion.Enabled = false;
+                    txtAlcance.Enabled = false;
+                    cboResponsable.Enabled = false;
                     btnGuardar.Enabled = false;
                     btnCancelar.Enabled = false;
                     btnGuardar.Text = "Guardar";
@@ -148,12 +170,15 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
                     return;
 
                 case "ELIMINAR":
-                    dgvPerfiles.Enabled = false;
+                    dgvProyectos.Enabled = false;
                     btnAgregar.Enabled = false;
                     btnModificar.Enabled = false;
                     btnEliminar.Enabled = false;
 
-                    txtNombrePerfil.Enabled = false;
+                    txtDescripcion.Enabled = false;
+                    txtVersion.Enabled = false;
+                    txtAlcance.Enabled = false;
+                    cboResponsable.Enabled = false;
                     btnGuardar.Enabled = true;
                     btnCancelar.Enabled = true;
                     btnCancelar.Focus();
@@ -164,19 +189,23 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
 
         private void LimpiarCampos()
         {
-            txtNombrePerfil.Text = "";
+            txtDescripcion.Text = "";
+            txtVersion.Text = "";
+            txtAlcance.Text = "";
+            cboResponsable.SelectedIndex = -1;
         }
 
-        private void FrmPerfiles_Load(object sender, EventArgs e)
+        private void FrmProyectos_Load(object sender, EventArgs e)
         {
-            CargarTablaPerfilesNoBorrados(dgvPerfiles, Perfil.ObtenerPerfiles());
+            CargarTablaProyectosNoBorrados(dgvProyectos, Proyecto.ObtenerTablaProyectos());
+            CargarComboBox(cboResponsable, Usuario.ObtenerTablaUsuariosComboBox());
         }
 
-        private void DgvPerfiles_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvProyectos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvPerfiles.CurrentRow.DefaultCellStyle.BackColor == System.Drawing.Color.Red)
+            if (dgvProyectos.CurrentRow.DefaultCellStyle.BackColor == System.Drawing.Color.Red)
             {
-                dgvPerfiles.ClearSelection();
+                dgvProyectos.ClearSelection();
                 LimpiarCampos();
             }
             else
@@ -197,14 +226,14 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-            if (dgvPerfiles.Rows.Count == 0)
+            if (dgvProyectos.Rows.Count == 0)
             {
-                CargarInforme("NO EXISTEN PERFILES REGISTRADOS", false, false);
+                CargarInforme("NO EXISTEN PROYECTOS REGISTRADOS", false, false);
                 return;
             }
-            else if (!dgvPerfiles.CurrentRow.Selected)
+            else if (!dgvProyectos.CurrentRow.Selected)
             {
-                CargarInforme("DEBE SELECCIONAR UN PERFIL", false, false);
+                CargarInforme("DEBE SELECCIONAR UN PROYECTO", false, false);
                 LimpiarCampos();
                 return;
             }
@@ -216,14 +245,14 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvPerfiles.Rows.Count == 0)
+            if (dgvProyectos.Rows.Count == 0)
             {
-                CargarInforme("NO EXISTEN PERFILES REGISTRADOS", false, false);
+                CargarInforme("NO EXISTEN PROYECTOS REGISTRADOS", false, false);
                 return;
             }
-            else if (!dgvPerfiles.CurrentRow.Selected)
+            else if (!dgvProyectos.CurrentRow.Selected)
             {
-                CargarInforme("DEBE SELECCIONAR UN PERFIL", false, false);
+                CargarInforme("DEBE SELECCIONAR UN PROYECTO", false, false);
                 LimpiarCampos();
                 return;
             }
@@ -231,63 +260,55 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
             botonPresionado = "Eliminar";
             btnGuardar.Text = "Eliminar";
             EstadoCampos("ELIMINAR");
-            CargarInforme("¿DESEAS DAR DE BAJA AL PERFIL?", false, false);
+            CargarInforme("¿DESEAS DAR DE BAJA AL USUARIO?", false, false);
         }
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
             if (ValidarCampos())
             {
-                string nombrePerfil = txtNombrePerfil.Text.ToString();
+                string descripcion = txtDescripcion.Text.ToString();
+                string version = txtVersion.Text.ToString();
+                string alcance = txtAlcance.Text.ToString();
+                Usuario asignado = new Usuario(cboResponsable.SelectedIndex + 1, cboResponsable.Text);
+                
 
-                Perfil perfilAuxiliar = new Perfil(nombrePerfil);
+                Proyecto proyectoAuxiliar = new Proyecto(descripcion, version, alcance, asignado, false);
                 string error = "";
 
                 switch (botonPresionado)
                 {
                     case "Agregar":
-                        perfil = Perfil.ObtenerPerfilPorNombre(nombrePerfil);
-                        if (perfil != null)
+                        proyecto = Proyecto.ObtenerProyectoPorDescripcion(txtDescripcion.Text);
+                        if (proyecto != null)
                         {
-                            if (perfil.Borrado)
+                            if (proyecto.Borrado)
                             {
-                                perfilAuxiliar.Id_perfil = perfil.Id_perfil;
-                                error = Perfil.ModificarPerfil(perfilAuxiliar);
+                                error = Proyecto.ModificarProyecto(proyectoAuxiliar);
                             }
                             else
                             {
-                                CargarInforme("EL PERFIL YA SE ENCUENTRA REGISTRADO", false, false);
+                                CargarInforme("EL PROYECTO YA SE ENCUENTRA REGISTRADO", false, false);
 
-                                txtNombrePerfil.Focus();
+                                txtDescripcion.Focus();
 
                                 return;
                             }
                         }
                         else
                         {
-                            error = Perfil.AgregarPerfil(perfilAuxiliar);
+                            error = Proyecto.AgregarProyecto(proyectoAuxiliar);
                         }
 
                         break;
 
                     case "Modificar":
-                        perfilAuxiliar.Id_perfil = Perfil.ObtenerPerfilPorNombre(dgvPerfiles.CurrentRow.Cells[0].Value.ToString()).Id_perfil;
-                        error = Perfil.ModificarPerfil(perfilAuxiliar);
+                        error = Proyecto.ModificarProyecto(proyectoAuxiliar);
 
                         break;
 
                     case "Eliminar":
-                        IList<Usuario> listaUsuarios = UsuarioDatos.ConsultarTablaUsuarios();
-                        for (int i = 0; i < listaUsuarios.Count; i++)
-                        {
-                            if (listaUsuarios[i].Perfil.Id_perfil.Equals(Perfil.ObtenerPerfilPorNombre(dgvPerfiles.CurrentRow.Cells[0].Value.ToString()).Id_perfil))
-                            {
-                                CargarInforme("EXISTEN USUARIOS ASIGNADOS A ESTE PERFIL", false, false);
-                                return;
-                            }
-                        }
-
-                        error = Perfil.EliminarPerfil(perfil);
+                        error = Proyecto.EliminarProyecto(proyecto);
 
                         break;
                 }
@@ -296,17 +317,17 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
                 {
                     if (botonPresionado == "Agregar")
                     {
-                        CargarInforme("PERFIL REGISTRADO CON ÉXITO", true, false);
+                        CargarInforme("PROYECTO REGISTRADO CON ÉXITO", true, false);
                     }
 
                     if (botonPresionado == "Modificar")
                     {
-                        CargarInforme("PERFIL MODIFICADO CON ÉXITO", true, false);
+                        CargarInforme("PROYECTO MODIFICADO CON ÉXITO", true, false);
                     }
 
                     if (botonPresionado == "Eliminar")
                     {
-                        CargarInforme("PERFIL ELIMINADO CON ÉXITO", true, false);
+                        CargarInforme("PROYECTO ELIMINADO CON ÉXITO", true, false);
                     }
                 }
                 else
@@ -314,7 +335,7 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
                     CargarInforme(error, false, false);
                 }
 
-                CargarTablaPerfilesNoBorrados(dgvPerfiles, Perfil.ObtenerPerfiles());
+                CargarTablaProyectosNoBorrados(dgvProyectos, Proyecto.ObtenerTablaProyectos());
                 EstadoCampos("NO");
             }
         }
@@ -323,7 +344,7 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
         {
             EstadoCampos("NO");
             LimpiarCampos();
-            dgvPerfiles.ClearSelection();
+            dgvProyectos.ClearSelection();
             CargarInforme("INFORME", false, true);
         }
 
@@ -331,25 +352,25 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
         {
             if (btnMostrarBorrados.Text == "Mostrar Borrados")
             {
-                CargarTablaPerfilesBorrados(dgvPerfiles, Perfil.ObtenerPerfiles());
+                CargarTablaProyectosBorrados(dgvProyectos, Proyecto.ObtenerTablaProyectos());
             }
             else
             {
-                CargarTablaPerfilesNoBorrados(dgvPerfiles, Perfil.ObtenerPerfiles());
+                CargarTablaProyectosNoBorrados(dgvProyectos, Proyecto.ObtenerTablaProyectos());
             }
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-            CargarTablaPerfilesNoBorrados(dgvPerfiles, Perfil.ObtenerTablaPerfilesFiltro(txtBuscarPerfil.Text));
+            CargarTablaProyectosNoBorrados(dgvProyectos, Proyecto.ObtenerTablaProyectosFiltro(txtBuscarDescripcion.Text));
 
-            if (dgvPerfiles.Rows.Count == 0)
+            if (dgvProyectos.Rows.Count == 0)
             {
-                CargarInforme("NO EXISTEN USUARIOS\n DE ACUERDO AL FILTRO APLICADO", false, false);
+                CargarInforme("NO EXISTEN PROYECTOS\n DE ACUERDO AL FILTRO APLICADO", false, false);
             }
             else
             {
-                CargarInforme("SE ENCONTRARON USUARIOS\n DE ACUERDO AL FILTRO APLICADO", true, false);
+                CargarInforme("SE ENCONTRARON PROYECTOS\n DE ACUERDO AL FILTRO APLICADO", true, false);
             }
         }
     }

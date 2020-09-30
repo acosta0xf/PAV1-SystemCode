@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
-using SYSTEMCODE.Capa_de_Datos;
 using SYSTEMCODE.Capa_de_Negocio;
 
 namespace SYSTEMCODE.Capa_de_Vista.ABMC
 {
-    public partial class FrmPerfiles : Form
+    public partial class FrmBarrios : Form
     {
-        Perfil perfil;
+        Barrio barrio;
 
         private string botonPresionado = "";
 
-        public FrmPerfiles()
+        public FrmBarrios()
         {
             InitializeComponent();
         }
@@ -37,34 +36,34 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
             }
         }
 
-        private void CargarTablaPerfilesNoBorrados(DataGridView dgv, DataTable tablaPerfiles)
+        private void CargarTablaBarriosNoBorrados(DataGridView dgv, DataTable tablaBarrios)
         {
             btnMostrarBorrados.Text = "Mostrar Borrados";
 
             dgv.Rows.Clear();
 
-            for (int i = 0; i < tablaPerfiles.Rows.Count; i++)
+            for (int i = 0; i < tablaBarrios.Rows.Count; i++)
             {
-                if (!Convert.ToBoolean(tablaPerfiles.Rows[i]["Borrado"]))
+                if (!Convert.ToBoolean(tablaBarrios.Rows[i]["Borrado"]))
                 {
-                    dgv.Rows.Add(tablaPerfiles.Rows[i]["Nombre"]);
+                    dgv.Rows.Add(tablaBarrios.Rows[i]["Nombre"]);
                 }
             }
 
             dgv.ClearSelection();
         }
 
-        private void CargarTablaPerfilesBorrados(DataGridView dgv, DataTable tablaPerfiles)
+        private void CargarTablaBarriosBorrados(DataGridView dgv, DataTable tablaBarrios)
         {
             btnMostrarBorrados.Text = "Ocultar Borrados";
 
             dgv.Rows.Clear();
 
-            for (int i = 0; i < tablaPerfiles.Rows.Count; i++)
+            for (int i = 0; i < tablaBarrios.Rows.Count; i++)
             {
-                dgv.Rows.Add(tablaPerfiles.Rows[i]["Nombre"]);
+                dgv.Rows.Add(tablaBarrios.Rows[i]["Nombre"]);
 
-                if (Convert.ToBoolean(tablaPerfiles.Rows[i]["Borrado"]))
+                if (Convert.ToBoolean(tablaBarrios.Rows[i]["Borrado"]))
                 {
                     dgv.Rows[dgv.Rows.Count - 1].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                     dgv.Rows[dgv.Rows.Count - 1].DefaultCellStyle.ForeColor = System.Drawing.Color.White;
@@ -76,8 +75,8 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
 
         private void CargarCampos()
         {
-            perfil = Perfil.ObtenerPerfilPorNombre(dgvPerfiles.CurrentRow.Cells[0].Value.ToString());
-            txtNombrePerfil.Text = perfil.Nombre;
+            barrio = Barrio.ObtenerBarrioPorNombre(dgvBarrios.CurrentRow.Cells[0].Value.ToString());
+            txtNombreBarrio.Text = barrio.Nombre;
         }
 
         private void CargarInforme(string mensaje, bool estado, bool defecto)
@@ -107,10 +106,10 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
 
         private bool ValidarCampos()
         {
-            if (txtNombrePerfil.Text == "")
+            if (txtNombreBarrio.Text == "")
             {
-                CargarInforme("DATO OBLIGATORIO: NOMBRE DE PERFIL", false, false);
-                txtNombrePerfil.Focus();
+                CargarInforme("DATO OBLIGATORIO: NOMBRE DE BARRIO", false, false);
+                txtNombreBarrio.Focus();
 
                 return false;
             }
@@ -123,24 +122,24 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
             switch (accion)
             {
                 case "SI":
-                    dgvPerfiles.Enabled = false;
+                    dgvBarrios.Enabled = false;
                     btnAgregar.Enabled = false;
                     btnModificar.Enabled = false;
                     btnEliminar.Enabled = false;
 
-                    txtNombrePerfil.Enabled = true;
+                    txtNombreBarrio.Enabled = true;
                     btnGuardar.Enabled = true;
                     btnCancelar.Enabled = true;
 
                     return;
 
                 case "NO":
-                    dgvPerfiles.Enabled = true;
+                    dgvBarrios.Enabled = true;
                     btnAgregar.Enabled = true;
                     btnModificar.Enabled = true;
                     btnEliminar.Enabled = true;
 
-                    txtNombrePerfil.Enabled = false;
+                    txtNombreBarrio.Enabled = false;
                     btnGuardar.Enabled = false;
                     btnCancelar.Enabled = false;
                     btnGuardar.Text = "Guardar";
@@ -148,12 +147,12 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
                     return;
 
                 case "ELIMINAR":
-                    dgvPerfiles.Enabled = false;
+                    dgvBarrios.Enabled = false;
                     btnAgregar.Enabled = false;
                     btnModificar.Enabled = false;
                     btnEliminar.Enabled = false;
 
-                    txtNombrePerfil.Enabled = false;
+                    txtNombreBarrio.Enabled = false;
                     btnGuardar.Enabled = true;
                     btnCancelar.Enabled = true;
                     btnCancelar.Focus();
@@ -164,19 +163,19 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
 
         private void LimpiarCampos()
         {
-            txtNombrePerfil.Text = "";
+            txtNombreBarrio.Text = "";
         }
 
-        private void FrmPerfiles_Load(object sender, EventArgs e)
+        private void FrmBarrios_Load(object sender, EventArgs e)
         {
-            CargarTablaPerfilesNoBorrados(dgvPerfiles, Perfil.ObtenerPerfiles());
+            CargarTablaBarriosNoBorrados(dgvBarrios, Barrio.ObtenerBarrios());
         }
 
-        private void DgvPerfiles_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvBarrios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvPerfiles.CurrentRow.DefaultCellStyle.BackColor == System.Drawing.Color.Red)
+            if (dgvBarrios.CurrentRow.DefaultCellStyle.BackColor == System.Drawing.Color.Red)
             {
-                dgvPerfiles.ClearSelection();
+                dgvBarrios.ClearSelection();
                 LimpiarCampos();
             }
             else
@@ -197,14 +196,14 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-            if (dgvPerfiles.Rows.Count == 0)
+            if (dgvBarrios.Rows.Count == 0)
             {
-                CargarInforme("NO EXISTEN PERFILES REGISTRADOS", false, false);
+                CargarInforme("NO EXISTEN BARRIOS REGISTRADOS", false, false);
                 return;
             }
-            else if (!dgvPerfiles.CurrentRow.Selected)
+            else if (!dgvBarrios.CurrentRow.Selected)
             {
-                CargarInforme("DEBE SELECCIONAR UN PERFIL", false, false);
+                CargarInforme("DEBE SELECCIONAR UN BARRIO", false, false);
                 LimpiarCampos();
                 return;
             }
@@ -216,14 +215,14 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvPerfiles.Rows.Count == 0)
+            if (dgvBarrios.Rows.Count == 0)
             {
-                CargarInforme("NO EXISTEN PERFILES REGISTRADOS", false, false);
+                CargarInforme("NO EXISTEN BARRIOS REGISTRADOS", false, false);
                 return;
             }
-            else if (!dgvPerfiles.CurrentRow.Selected)
+            else if (!dgvBarrios.CurrentRow.Selected)
             {
-                CargarInforme("DEBE SELECCIONAR UN PERFIL", false, false);
+                CargarInforme("DEBE SELECCIONAR UN BARRIO", false, false);
                 LimpiarCampos();
                 return;
             }
@@ -231,63 +230,63 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
             botonPresionado = "Eliminar";
             btnGuardar.Text = "Eliminar";
             EstadoCampos("ELIMINAR");
-            CargarInforme("¿DESEAS DAR DE BAJA AL PERFIL?", false, false);
+            CargarInforme("¿DESEAS DAR DE BAJA AL BARRIO?", false, false);
         }
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
             if (ValidarCampos())
             {
-                string nombrePerfil = txtNombrePerfil.Text.ToString();
+                string nombreBarrio = txtNombreBarrio.Text.ToString();
 
-                Perfil perfilAuxiliar = new Perfil(nombrePerfil);
+                Barrio barrioAuxiliar = new Barrio(nombreBarrio);
                 string error = "";
 
                 switch (botonPresionado)
                 {
                     case "Agregar":
-                        perfil = Perfil.ObtenerPerfilPorNombre(nombrePerfil);
-                        if (perfil != null)
+                        barrio = Barrio.ObtenerBarrioPorNombre(nombreBarrio);
+                        if (barrio != null)
                         {
-                            if (perfil.Borrado)
+                            if (barrio.Borrado)
                             {
-                                perfilAuxiliar.Id_perfil = perfil.Id_perfil;
-                                error = Perfil.ModificarPerfil(perfilAuxiliar);
+                                barrioAuxiliar.Id_barrio = barrio.Id_barrio;
+                                error = Barrio.ModificarBarrio(barrioAuxiliar);
                             }
                             else
                             {
-                                CargarInforme("EL PERFIL YA SE ENCUENTRA REGISTRADO", false, false);
+                                CargarInforme("EL BARRIO YA SE ENCUENTRA REGISTRADO", false, false);
 
-                                txtNombrePerfil.Focus();
+                                txtNombreBarrio.Focus();
 
                                 return;
                             }
                         }
                         else
                         {
-                            error = Perfil.AgregarPerfil(perfilAuxiliar);
+                            error = Barrio.AgregarBarrio(barrioAuxiliar);
                         }
 
                         break;
 
                     case "Modificar":
-                        perfilAuxiliar.Id_perfil = Perfil.ObtenerPerfilPorNombre(dgvPerfiles.CurrentRow.Cells[0].Value.ToString()).Id_perfil;
-                        error = Perfil.ModificarPerfil(perfilAuxiliar);
+                        barrioAuxiliar.Id_barrio = Barrio.ObtenerBarrioPorNombre(dgvBarrios.CurrentRow.Cells[0].Value.ToString()).Id_barrio;
+                        error = Barrio.ModificarBarrio(barrioAuxiliar);
 
                         break;
 
                     case "Eliminar":
-                        IList<Usuario> listaUsuarios = UsuarioDatos.ConsultarTablaUsuarios();
-                        for (int i = 0; i < listaUsuarios.Count; i++)
+                        IList<Cliente> listaClientes = Cliente.ObtenerTablaClientes();
+                        for (int i = 0; i < listaClientes.Count; i++)
                         {
-                            if (listaUsuarios[i].Perfil.Id_perfil.Equals(Perfil.ObtenerPerfilPorNombre(dgvPerfiles.CurrentRow.Cells[0].Value.ToString()).Id_perfil))
+                            if (listaClientes[i].BarrioAsociado.Id_barrio.Equals(Barrio.ObtenerBarrioPorNombre(dgvBarrios.CurrentRow.Cells[0].Value.ToString()).Id_barrio) && !listaClientes[i].Borrado)
                             {
-                                CargarInforme("EXISTEN USUARIOS ASIGNADOS A ESTE PERFIL", false, false);
+                                CargarInforme("EXISTEN CLIENTES ASIGNADOS A ESTE BARRIO", false, false);
                                 return;
                             }
                         }
 
-                        error = Perfil.EliminarPerfil(perfil);
+                        error = Barrio.EliminarBarrio(barrio);
 
                         break;
                 }
@@ -296,17 +295,17 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
                 {
                     if (botonPresionado == "Agregar")
                     {
-                        CargarInforme("PERFIL REGISTRADO CON ÉXITO", true, false);
+                        CargarInforme("BARRIO REGISTRADO CON ÉXITO", true, false);
                     }
 
                     if (botonPresionado == "Modificar")
                     {
-                        CargarInforme("PERFIL MODIFICADO CON ÉXITO", true, false);
+                        CargarInforme("BARRIO MODIFICADO CON ÉXITO", true, false);
                     }
 
                     if (botonPresionado == "Eliminar")
                     {
-                        CargarInforme("PERFIL ELIMINADO CON ÉXITO", true, false);
+                        CargarInforme("BARRIO ELIMINADO CON ÉXITO", true, false);
                     }
                 }
                 else
@@ -314,7 +313,7 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
                     CargarInforme(error, false, false);
                 }
 
-                CargarTablaPerfilesNoBorrados(dgvPerfiles, Perfil.ObtenerPerfiles());
+                CargarTablaBarriosNoBorrados(dgvBarrios, Barrio.ObtenerBarrios());
                 EstadoCampos("NO");
             }
         }
@@ -323,7 +322,7 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
         {
             EstadoCampos("NO");
             LimpiarCampos();
-            dgvPerfiles.ClearSelection();
+            dgvBarrios.ClearSelection();
             CargarInforme("INFORME", false, true);
         }
 
@@ -331,19 +330,19 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
         {
             if (btnMostrarBorrados.Text == "Mostrar Borrados")
             {
-                CargarTablaPerfilesBorrados(dgvPerfiles, Perfil.ObtenerPerfiles());
+                CargarTablaBarriosBorrados(dgvBarrios, Barrio.ObtenerBarrios());
             }
             else
             {
-                CargarTablaPerfilesNoBorrados(dgvPerfiles, Perfil.ObtenerPerfiles());
+                CargarTablaBarriosNoBorrados(dgvBarrios, Barrio.ObtenerBarrios());
             }
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-            CargarTablaPerfilesNoBorrados(dgvPerfiles, Perfil.ObtenerTablaPerfilesFiltro(txtBuscarPerfil.Text));
+            CargarTablaBarriosNoBorrados(dgvBarrios, Barrio.ObtenerTablaBarriosFiltro(txtBuscarBarrio.Text));
 
-            if (dgvPerfiles.Rows.Count == 0)
+            if (dgvBarrios.Rows.Count == 0)
             {
                 CargarInforme("NO EXISTEN USUARIOS\n DE ACUERDO AL FILTRO APLICADO", false, false);
             }

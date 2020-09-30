@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using SYSTEMCODE.Capa_de_Datos;
 
 namespace SYSTEMCODE.Capa_de_Negocio
@@ -21,6 +22,12 @@ namespace SYSTEMCODE.Capa_de_Negocio
         public Usuario(string dni)
         {
             this.Dni = dni;
+        }
+
+        public Usuario(int id_usuario, string nombreUsuario)
+        {
+            this.id_usuario = id_usuario;
+            this.nombreUsuario = nombreUsuario;
         }
 
         public Usuario(string dni, string nombreUsuario, Perfil perfil, string clave, string email)
@@ -88,9 +95,24 @@ namespace SYSTEMCODE.Capa_de_Negocio
             return UsuarioDatos.ConsultarTablaUsuarios();
         }
 
+        public static IList<Usuario> ObtenerTablaUsuariosFiltro(string filtro)
+        {
+            return UsuarioDatos.ConsultarTablaUsuariosFiltro(filtro);
+        }
+
+        public static DataTable ObtenerTablaUsuariosComboBox()
+        {
+            return UsuarioDatos.ConsultarTablaUsuariosComboBox();
+        }
+
         public static Usuario ObtenerUsuario(string dni)
         {
             return UsuarioDatos.ConsultarUsuarioPorDNI(dni);
+        }
+
+        public static Usuario ObtenerUsuarioPorNombre(string nombreUsuario)
+        {
+            return UsuarioDatos.ConsultarUsuarioPorNombreUsuario(nombreUsuario);
         }
 
         public static string AgregarUsuario(Usuario usuario)

@@ -41,6 +41,16 @@ namespace SYSTEMCODE.Capa_de_Negocio
             return PerfilDatos.ConsultarPerfiles();
         }
 
+        public static DataTable ObtenerPerfilesComboBox()
+        {
+            return PerfilDatos.ConsultarPerfilesComboBox();
+        }
+
+        public static DataTable ObtenerTablaPerfilesFiltro(string filtro)
+        {
+            return PerfilDatos.ConsultarTablaPerfilesFiltro(filtro);
+        }
+
         public static Perfil ObtenerPerfilPorID(int id_perfil)
         {
             return PerfilDatos.ConsultarPerfil(id_perfil)[0];

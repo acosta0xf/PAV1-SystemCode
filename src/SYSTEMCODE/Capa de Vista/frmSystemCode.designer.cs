@@ -1,6 +1,6 @@
 ﻿namespace SYSTEMCODE
 {
-    partial class frmSystemCode
+    partial class FrmSystemCode
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSystemCode));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSystemCode));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPerfiles = new System.Windows.Forms.ToolStripMenuItem();
             this.menuClientes = new System.Windows.Forms.ToolStripMenuItem();
             this.menuBarrios = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuContactos = new System.Windows.Forms.ToolStripMenuItem();
             this.menuProyectos = new System.Windows.Forms.ToolStripMenuItem();
             this.menuVentas = new System.Windows.Forms.ToolStripMenuItem();
             this.menuInformes = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,7 +54,6 @@
             this.menuPerfiles,
             this.menuClientes,
             this.menuBarrios,
-            this.menuContactos,
             this.menuProyectos,
             this.menuVentas,
             this.menuInformes,
@@ -71,38 +69,35 @@
             this.menuUsuarios.Name = "menuUsuarios";
             this.menuUsuarios.Size = new System.Drawing.Size(64, 20);
             this.menuUsuarios.Text = "Usuarios";
-            this.menuUsuarios.Click += new System.EventHandler(this.menuUsuarios_Click);
+            this.menuUsuarios.Click += new System.EventHandler(this.MenuUsuarios_Click);
             // 
             // menuPerfiles
             // 
             this.menuPerfiles.Name = "menuPerfiles";
             this.menuPerfiles.Size = new System.Drawing.Size(57, 20);
             this.menuPerfiles.Text = "Perfiles";
-            this.menuPerfiles.Click += new System.EventHandler(this.menuPerfiles_Click);
+            this.menuPerfiles.Click += new System.EventHandler(this.MenuPerfiles_Click);
             // 
             // menuClientes
             // 
             this.menuClientes.Name = "menuClientes";
             this.menuClientes.Size = new System.Drawing.Size(61, 20);
             this.menuClientes.Text = "Clientes";
+            this.menuClientes.Click += new System.EventHandler(this.MenuClientes_Click);
             // 
             // menuBarrios
             // 
             this.menuBarrios.Name = "menuBarrios";
             this.menuBarrios.Size = new System.Drawing.Size(55, 20);
             this.menuBarrios.Text = "Barrios";
-            // 
-            // menuContactos
-            // 
-            this.menuContactos.Name = "menuContactos";
-            this.menuContactos.Size = new System.Drawing.Size(73, 20);
-            this.menuContactos.Text = "Contactos";
+            this.menuBarrios.Click += new System.EventHandler(this.MenuBarrios_Click);
             // 
             // menuProyectos
             // 
             this.menuProyectos.Name = "menuProyectos";
             this.menuProyectos.Size = new System.Drawing.Size(71, 20);
             this.menuProyectos.Text = "Proyectos";
+            this.menuProyectos.Click += new System.EventHandler(this.MenuProyectos_Click);
             // 
             // menuVentas
             // 
@@ -121,7 +116,7 @@
             this.menuSalir.Name = "menuSalir";
             this.menuSalir.Size = new System.Drawing.Size(41, 20);
             this.menuSalir.Text = "Salir";
-            this.menuSalir.Click += new System.EventHandler(this.menuSalir_Click);
+            this.menuSalir.Click += new System.EventHandler(this.MenuSalir_Click);
             // 
             // label1
             // 
@@ -156,7 +151,7 @@
             this.lblBienvenida.TabIndex = 5;
             this.lblBienvenida.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // frmSystemCode
+            // FrmSystemCode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -171,10 +166,10 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "frmSystemCode";
+            this.Name = "FrmSystemCode";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SC -> Principal";
-            this.Load += new System.EventHandler(this.frmSystemCode_Load);
+            this.Text = "SYSTEMCODE";
+            this.Load += new System.EventHandler(this.FrmSystemCode_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -194,7 +189,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuPerfiles;
         private System.Windows.Forms.ToolStripMenuItem menuClientes;
         private System.Windows.Forms.ToolStripMenuItem menuBarrios;
-        private System.Windows.Forms.ToolStripMenuItem menuContactos;
         private System.Windows.Forms.ToolStripMenuItem menuProyectos;
         private System.Windows.Forms.ToolStripMenuItem menuVentas;
         private System.Windows.Forms.ToolStripMenuItem menuInformes;

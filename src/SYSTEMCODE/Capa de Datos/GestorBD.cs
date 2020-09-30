@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
 
-namespace BugTracker.Capa_de_Datos
+namespace SYSTEMCODE.Capa_de_Datos
 {
     public static class GestorBD
     {

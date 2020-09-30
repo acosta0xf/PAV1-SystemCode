@@ -20,7 +20,7 @@ namespace SYSTEMCODE.Capa_de_Vista
         public bool Cerrado { get => cerrado; set => cerrado = value; }
         public static Usuario UsuarioActual { get => usuarioActual; set => usuarioActual = value; }
 
-        private void labelEstadoLogin(string mensaje, bool estado)
+        private void LabelEstadoLogin(string mensaje, bool estado)
         {
             if (!estado)
             {
@@ -36,13 +36,13 @@ namespace SYSTEMCODE.Capa_de_Vista
             }
         }
 
-        private void btnIngresar_Click(object sender, EventArgs e)
+        private void BtnIngresar_Click(object sender, EventArgs e)
         {
             btnIngresarPresionado = true;
 
             if (txtUsuario.Text.Length == 0)
             {
-                labelEstadoLogin("DATO OBLIGATORIO: USUARIO", false);
+                LabelEstadoLogin("DATO OBLIGATORIO: USUARIO", false);
                 txtUsuario.Focus();
 
                 return;
@@ -50,7 +50,7 @@ namespace SYSTEMCODE.Capa_de_Vista
 
             if (txtClave.Text.Length == 0)
             {
-                labelEstadoLogin("DATO OBLIGATORIO: CLAVE", false);
+                LabelEstadoLogin("DATO OBLIGATORIO: CLAVE", false);
                 txtClave.Focus();
 
                 return;
@@ -68,7 +68,7 @@ namespace SYSTEMCODE.Capa_de_Vista
                 }
                 else
                 {
-                    labelEstadoLogin("ACCESO DENEGADO - DATOS INCORRECTOS", false);
+                    LabelEstadoLogin("ACCESO DENEGADO - DATOS INCORRECTOS", false);
 
                     txtClave.Text = "";
                     txtUsuario.Text = "";
@@ -77,7 +77,7 @@ namespace SYSTEMCODE.Capa_de_Vista
             }
             catch (SqlException)
             {
-                labelEstadoLogin("ERROR DE CONEXIÓN - BASE DE DATOS", false);
+                LabelEstadoLogin("ERROR DE CONEXIÓN - BASE DE DATOS", false);
 
                 txtUsuario.Enabled = false;
                 txtClave.Enabled = false;
@@ -85,15 +85,15 @@ namespace SYSTEMCODE.Capa_de_Vista
             }
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
+        private void BtnSalir_Click(object sender, EventArgs e)
         {
             cerrado = true;
             Close();
         }
 
-        private void temporizadorAcceso_Tick(object sender, EventArgs e)
+        private void TemporizadorAcceso_Tick(object sender, EventArgs e)
         {
-            labelEstadoLogin("ACCESO CORRECTO [" + temporizador.ToString() + "]", true);
+            LabelEstadoLogin("ACCESO CORRECTO [" + temporizador.ToString() + "]", true);
             temporizador--;
 
             if (temporizador == -1)
@@ -103,7 +103,7 @@ namespace SYSTEMCODE.Capa_de_Vista
             }
         }
 
-        private void frmLogin_FormClosed(object sender, FormClosedEventArgs e)
+        private void FrmLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (!btnIngresarPresionado)
             {

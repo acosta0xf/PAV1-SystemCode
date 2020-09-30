@@ -1,5 +1,4 @@
-﻿using BugTracker.Capa_de_Datos;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using SYSTEMCODE.Capa_de_Negocio;
@@ -36,6 +35,32 @@ namespace SYSTEMCODE.Capa_de_Datos
             return listaUsuarios;
         }
 
+        public static IList<Usuario> ConsultarTablaUsuariosFiltro(string filtro)
+        {
+            string SQL = "SELECT usuarios.* " +
+                         "FROM Usuarios usuarios " +
+                         "WHERE dni LIKE '" + filtro + "%'";
+            
+            List<Usuario> listaUsuarios = new List<Usuario>();
+
+            DataTable tabla = GestorBD.Consultar(SQL);
+            for (int i = 0; i < tabla.Rows.Count; i++)
+            {
+                listaUsuarios.Add(DiseniarUsuario(i, tabla));
+            }
+
+            return listaUsuarios;
+        }
+
+        public static DataTable ConsultarTablaUsuariosComboBox()
+        {
+            string SQL = "SELECT usuarios.* " +
+                         "FROM Usuarios usuarios " +
+                         "WHERE borrado = 0";
+
+            return GestorBD.Consultar(SQL);
+        }
+
         public static Usuario ConsultarUsuarioPorNombreUsuario(string nombreUsuario)
         {
             string SQL = "SELECT usuarios.* " +
@@ -54,6 +79,17 @@ namespace SYSTEMCODE.Capa_de_Datos
             string SQL = "SELECT usuarios.* " +
                          "FROM Usuarios usuarios " +
                          "WHERE dni = '" + DNI + "'";
+
+            DataTable tabla = GestorBD.Consultar(SQL);
+
+            return (tabla.Rows.Count > 0) ? DiseniarUsuario(0, tabla) : null;
+        }
+
+        public static Usuario ConsultarUsuarioPorID(int idUsuario)
+        {
+            string SQL = "SELECT usuarios.* " +
+                         "FROM Usuarios usuarios " +
+                         "WHERE id_usuario = " + idUsuario.ToString();
 
             DataTable tabla = GestorBD.Consultar(SQL);
 

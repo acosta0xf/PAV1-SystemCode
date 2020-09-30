@@ -7,25 +7,15 @@ using SYSTEMCODE.Capa_de_Negocio;
 
 namespace SYSTEMCODE.Capa_de_Vista.ABMC
 {
-    public partial class FrmUsuarios : Form
+    public partial class FrmClientes : Form
     {
-        Usuario usuario;
+        Cliente cliente;
 
         private string botonPresionado = "";
 
-        public FrmUsuarios()
+        public FrmClientes()
         {
             InitializeComponent();
-        }
-
-        private void BtnVisualizar_MouseDown(object sender, MouseEventArgs e)
-        {
-            txtClave.UseSystemPasswordChar = false;
-        }
-
-        private void BtnVisualizar_MouseUp(object sender, MouseEventArgs e)
-        {
-            txtClave.UseSystemPasswordChar = true;
         }
 
         private void Numero_KeyPress(object sender, KeyPressEventArgs e)
@@ -47,21 +37,32 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
             }
         }
 
-        private void CargarTablaUsuariosNoBorrados(DataGridView dgv, IList<Usuario> listaUsuarios)
+        private bool ValidarEmail(string email)
+        {
+            string expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            if (Regex.IsMatch(email, expresion))
+            {
+                return (Regex.Replace(email, expresion, String.Empty).Length == 0);
+            }
+
+            return false;
+        }
+
+        private void CargarTablaClientesNoBorrados(DataGridView dgv, IList<Cliente> listaClientes)
         {
             btnMostrarBorrados.Text = "Mostrar Borrados";
 
             dgv.Rows.Clear();
 
-            for (int i = 0; i < listaUsuarios.Count; i++)
+            for (int i = 0; i < listaClientes.Count; i++)
             {
-                if (!listaUsuarios[i].Borrado)
+                if (!listaClientes[i].Borrado)
                 {
                     dgv.Rows.Add
                     (
-                        listaUsuarios[i].Dni,
-                        listaUsuarios[i].NombreUsuario,
-                        listaUsuarios[i].Email
+                        listaClientes[i].Cuit,
+                        listaClientes[i].Razon_social,
+                        listaClientes[i].Fecha_alta.ToString("dd-MM-yyyy")
                     );
                 }
             }
@@ -69,22 +70,22 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
             dgv.ClearSelection();
         }
 
-        private void CargarTablaUsuariosBorrados(DataGridView dgv, IList<Usuario> listaUsuarios)
+        private void CargarTablaClientesBorrados(DataGridView dgv, IList<Cliente> listaClientes)
         {
             btnMostrarBorrados.Text = "Ocultar Borrados";
 
             dgv.Rows.Clear();
 
-            for (int i = 0; i < listaUsuarios.Count; i++)
+            for (int i = 0; i < listaClientes.Count; i++)
             {
                 dgv.Rows.Add
                 (
-                    listaUsuarios[i].Dni,
-                    listaUsuarios[i].NombreUsuario,
-                    listaUsuarios[i].Email
+                    listaClientes[i].Cuit,
+                    listaClientes[i].Razon_social,
+                    listaClientes[i].Fecha_alta.ToString("dd-MM-yyyy")
                 );
 
-                if (listaUsuarios[i].Borrado)
+                if (listaClientes[i].Borrado)
                 {
                     dgv.Rows[dgv.Rows.Count - 1].DefaultCellStyle.BackColor = System.Drawing.Color.Red;
                     dgv.Rows[dgv.Rows.Count - 1].DefaultCellStyle.ForeColor = System.Drawing.Color.White;
@@ -104,21 +105,19 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
 
         private void CargarCampos()
         {
-            usuario = Usuario.ObtenerUsuario(dgvUsuarios.CurrentRow.Cells[0].Value.ToString());
+            cliente = Cliente.ObtenerCliente(dgvClientes.CurrentRow.Cells[0].Value.ToString());
 
-            numDNI.Text = usuario.Dni.ToString();
-            DataTable tablaPerfiles = Perfil.ObtenerPerfiles();
-            for (int i = 0; i < tablaPerfiles.Rows.Count; i++)
-            {
-                if (tablaPerfiles.Rows[i]["nombre"].ToString() == usuario.Perfil.Nombre.ToString())
-                {
-                    cboPerfiles.SelectedIndex = i;
-                    break;
-                }
-            }
-            txtNombreUsuario.Text = usuario.NombreUsuario.ToString();
-            txtClave.Text = usuario.Clave.ToString();
-            txtEmail.Text = usuario.Email.ToString();
+            numCUIT.Text = cliente.Cuit.ToString();
+            txtRazonSocial.Text = cliente.Razon_social.ToString();
+            txtCalle.Text = cliente.Calle.ToString();
+            numDomicilio.Text = cliente.Numero.ToString();
+            cboBarrios.SelectedIndex = cliente.BarrioAsociado.Id_barrio - 1;
+
+            Contacto contactoAuxiliar = Contacto.ObtenerContacto(numCUIT.Text);
+            txtNombre.Text = contactoAuxiliar.Nombre.ToString();
+            txtApellido.Text = contactoAuxiliar.Apellido.ToString();
+            txtEmail.Text = contactoAuxiliar.Email.ToString();
+            txtTelefono.Text = contactoAuxiliar.Telefono.ToString();
         }
 
         private void CargarInforme(string mensaje, bool estado, bool defecto)
@@ -146,39 +145,60 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
             }
         }
 
-        private bool ValidarEmail(string email)
-        {
-            string expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
-            if (Regex.IsMatch(email, expresion))
-            {
-                return (Regex.Replace(email, expresion, String.Empty).Length == 0);
-            }
-
-            return false;
-        }
-
         private bool ValidarCampos()
         {
-            if (cboPerfiles.SelectedIndex == -1)
+            if (numCUIT.Value.ToString().Length < 11)
             {
-                CargarInforme("DATO OBLIGATORIO: PERFIL DE USUARIO", false, false);
-                cboPerfiles.Focus();
+                CargarInforme("DATO OBLIGATORIO: CUIT [11 NÚMEROS]", false, false);
+                numCUIT.Focus();
+                
+                return false;
+            }
+
+            if (txtRazonSocial.Text == "")
+            {
+                CargarInforme("DATO OBLIGATORIO: RAZÓN SOCIAL", false, false);
+                txtRazonSocial.Focus();
 
                 return false;
             }
 
-            if (txtNombreUsuario.Text == "")
+            if (txtCalle.Text == "")
             {
-                CargarInforme("DATO OBLIGATORIO: NOMBRE DE USUARIO", false, false);
-                txtNombreUsuario.Focus();
+                CargarInforme("DATO OBLIGATORIO: CALLE", false, false);
+                txtCalle.Focus();
 
                 return false;
             }
 
-            if (txtClave.Text == "")
+            if (numDomicilio.Value == -1)
             {
-                CargarInforme("DATO OBLIGATORIO: CLAVE", false, false);
-                txtClave.Focus();
+                CargarInforme("DATO OBLIGATORIO: NÚMERO", false, false);
+                numDomicilio.Focus();
+
+                return false;
+            }
+
+            if (cboBarrios.SelectedIndex == -1)
+            {
+                CargarInforme("DATO OBLIGATORIO: BARRIO", false, false);
+                cboBarrios.Focus();
+
+                return false;
+            }
+
+            if (txtNombre.Text == "")
+            {
+                CargarInforme("DATO OBLIGATORIO: NOMBRE", false, false);
+                txtNombre.Focus();
+
+                return false;
+            }
+
+            if (txtApellido.Text == "")
+            {
+                CargarInforme("DATO OBLIGATORIO: APELLIDO", false, false);
+                txtApellido.Focus();
 
                 return false;
             }
@@ -199,6 +219,14 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
                 return false;
             }
 
+            if (txtTelefono.Text == "")
+            {
+                CargarInforme("DATO OBLIGATORIO: TELÉFONO", false, false);
+                txtTelefono.Focus();
+
+                return false;
+            }
+
             return true;
         }
 
@@ -207,32 +235,40 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
             switch (accion)
             {
                 case "SI":
-                    dgvUsuarios.Enabled = false;
+                    dgvClientes.Enabled = false;
                     btnAgregar.Enabled = false;
                     btnModificar.Enabled = false;
                     btnEliminar.Enabled = false;
 
-                    numDNI.Enabled = true;
-                    cboPerfiles.Enabled = true;
-                    txtNombreUsuario.Enabled = true;
-                    txtClave.Enabled = true;
+                    numCUIT.Enabled = true;
+                    txtRazonSocial.Enabled = true;
+                    txtCalle.Enabled = true;
+                    numDomicilio.Enabled = true;
+                    cboBarrios.Enabled = true;
+                    txtNombre.Enabled = true;
+                    txtApellido.Enabled = true;
                     txtEmail.Enabled = true;
+                    txtTelefono.Enabled = true;
                     btnGuardar.Enabled = true;
                     btnCancelar.Enabled = true;
 
                     return;
 
                 case "NO":
-                    dgvUsuarios.Enabled = true;
+                    dgvClientes.Enabled = true;
                     btnAgregar.Enabled = true;
                     btnModificar.Enabled = true;
                     btnEliminar.Enabled = true;
 
-                    numDNI.Enabled = false;
-                    cboPerfiles.Enabled = false;
-                    txtNombreUsuario.Enabled = false;
-                    txtClave.Enabled = false;
+                    numCUIT.Enabled = false;
+                    txtRazonSocial.Enabled = false;
+                    txtCalle.Enabled = false;
+                    numDomicilio.Enabled = false;
+                    cboBarrios.Enabled = false;
+                    txtNombre.Enabled = false;
+                    txtApellido.Enabled = false;
                     txtEmail.Enabled = false;
+                    txtTelefono.Enabled = false;
                     btnGuardar.Enabled = false;
                     btnCancelar.Enabled = false;
                     btnGuardar.Text = "Guardar";
@@ -240,16 +276,20 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
                     return;
 
                 case "ELIMINAR":
-                    dgvUsuarios.Enabled = false;
+                    dgvClientes.Enabled = false;
                     btnAgregar.Enabled = false;
                     btnModificar.Enabled = false;
                     btnEliminar.Enabled = false;
 
-                    numDNI.Enabled = false;
-                    cboPerfiles.Enabled = false;
-                    txtNombreUsuario.Enabled = false;
-                    txtClave.Enabled = false;
+                    numCUIT.Enabled = false;
+                    txtRazonSocial.Enabled = false;
+                    txtCalle.Enabled = false;
+                    numDomicilio.Enabled = false;
+                    cboBarrios.Enabled = false;
+                    txtNombre.Enabled = false;
+                    txtApellido.Enabled = false;
                     txtEmail.Enabled = false;
+                    txtTelefono.Enabled = false;
                     btnGuardar.Enabled = true;
                     btnCancelar.Enabled = true;
                     btnCancelar.Focus();
@@ -260,24 +300,28 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
 
         private void LimpiarCampos()
         {
-            numDNI.Value = 0;
-            cboPerfiles.SelectedIndex = -1;
-            txtNombreUsuario.Text = "";
-            txtClave.Text = "";
+            numCUIT.Value = 0;
+            txtRazonSocial.Text = "";
+            txtCalle.Text = "";
+            numDomicilio.Value = -1;
+            cboBarrios.SelectedIndex = -1;
+            txtNombre.Text = "";
+            txtApellido.Text = "";
             txtEmail.Text = "";
+            txtTelefono.Text = "";
         }
 
         private void FrmUsuarios_Load(object sender, EventArgs e)
         {
-            CargarTablaUsuariosNoBorrados(dgvUsuarios, Usuario.ObtenerTablaUsuarios());
-            CargarComboBox(cboPerfiles, Perfil.ObtenerPerfilesComboBox());
+            CargarTablaClientesNoBorrados(dgvClientes, Cliente.ObtenerTablaClientes());
+            CargarComboBox(cboBarrios, Barrio.ObtenerBarriosComboBox());
         }
 
-        private void DgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DgvClientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvUsuarios.CurrentRow.DefaultCellStyle.BackColor == System.Drawing.Color.Red)
+            if (dgvClientes.CurrentRow.DefaultCellStyle.BackColor == System.Drawing.Color.Red)
             {
-                dgvUsuarios.ClearSelection();
+                dgvClientes.ClearSelection();
                 LimpiarCampos();
             }
             else
@@ -298,33 +342,34 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
 
         private void BtnModificar_Click(object sender, EventArgs e)
         {
-            if (dgvUsuarios.Rows.Count == 0)
+            if (dgvClientes.Rows.Count == 0)
             {
-                CargarInforme("NO EXISTEN USUARIOS REGISTRADOS", false, false);
+                CargarInforme("NO EXISTEN CLIENTES REGISTRADOS", false, false);
                 return;
             }
-            else if (!dgvUsuarios.CurrentRow.Selected)
+            else if (!dgvClientes.CurrentRow.Selected)
             {
-                CargarInforme("DEBE SELECCIONAR UN USUARIO", false, false);
+                CargarInforme("DEBE SELECCIONAR UN CLIENTE", false, false);
                 LimpiarCampos();
                 return;
             }
 
             botonPresionado = "Modificar";
             EstadoCampos("SI");
+            numCUIT.Enabled = false;
             CargarInforme("INFORME", false, true);
         }
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvUsuarios.Rows.Count == 0)
+            if (dgvClientes.Rows.Count == 0)
             {
-                CargarInforme("NO EXISTEN USUARIOS REGISTRADOS", false, false);
+                CargarInforme("NO EXISTEN CLIENTES REGISTRADOS", false, false);
                 return;
             }
-            else if (!dgvUsuarios.CurrentRow.Selected)
+            else if (!dgvClientes.CurrentRow.Selected)
             {
-                CargarInforme("DEBE SELECCIONAR UN USUARIO", false, false);
+                CargarInforme("DEBE SELECCIONAR UN CLIENTE", false, false);
                 LimpiarCampos();
                 return;
             }
@@ -332,55 +377,60 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
             botonPresionado = "Eliminar";
             btnGuardar.Text = "Eliminar";
             EstadoCampos("ELIMINAR");
-            CargarInforme("¿DESEAS DAR DE BAJA AL USUARIO?", false, false);
+            CargarInforme("¿DESEAS DAR DE BAJA AL CLIENTE?", false, false);
         }
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
             if (ValidarCampos())
             {
-                string dni = numDNI.Text.ToString();
-                Perfil perfil = new Perfil(Perfil.ObtenerPerfilPorNombre(cboPerfiles.Text).Id_perfil, cboPerfiles.Text, false);
-                string nombreUsuario = txtNombreUsuario.Text.ToString();
-                string clave = txtClave.Text.ToString();
+                string cuit = numCUIT.Value.ToString();
+                string razonSocial = txtRazonSocial.Text.ToString();
+                string calle = txtCalle.Text.ToString();
+                int numero = Convert.ToInt32(numDomicilio.Value);
+                Barrio barrio = new Barrio(Barrio.ObtenerBarrioPorNombre(cboBarrios.Text).Id_barrio, cboBarrios.Text, false);
+                string nombre = txtNombre.Text.ToString();
+                string apellido = txtApellido.Text.ToString();
                 string email = txtEmail.Text.ToString();
+                string telefono = txtTelefono.Text.ToString();
+                Contacto contacto = new Contacto(cuit, nombre, apellido, email, telefono);
 
-                Usuario usuarioAuxiliar = new Usuario(dni, nombreUsuario, perfil, clave, email, false);
+                Cliente clienteAuxiliar = new Cliente(cuit, razonSocial, false, calle, numero, DateTime.Today, barrio, contacto);
                 string error = "";
 
                 switch (botonPresionado)
                 {
                     case "Agregar":
-                        usuario = Usuario.ObtenerUsuario(numDNI.Text);
-                        if (usuario != null)
+                        cliente = Cliente.ObtenerCliente(numCUIT.Text.ToString());
+                        if (cliente != null)
                         {
-                            if (usuario.Borrado)
+                            if (cliente.Borrado)
                             {
-                                error = Usuario.ModificarUsuario(usuarioAuxiliar);
+                                error = Cliente.ModificarCliente(clienteAuxiliar);
                             }
                             else
                             {
-                                CargarInforme("EL USUARIO YA SE ENCUENTRA REGISTRADO", false, false);
+                                CargarInforme("EL CLIENTE YA SE ENCUENTRA REGISTRADO", false, false);
 
-                                numDNI.Focus();
+                                numCUIT.Focus();
 
                                 return;
                             }
                         }
                         else
                         {
-                            error = Usuario.AgregarUsuario(usuarioAuxiliar);
+                            error = Cliente.AgregarCliente(clienteAuxiliar);
                         }
 
                         break;
 
                     case "Modificar":
-                        error = Usuario.ModificarUsuario(usuarioAuxiliar);
+                        error = Cliente.ModificarCliente(clienteAuxiliar);
 
                         break;
 
                     case "Eliminar":
-                        error = Usuario.EliminarUsuario(usuario);
+                        error = Cliente.EliminarCliente(clienteAuxiliar);
 
                         break;
                 }
@@ -389,17 +439,17 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
                 {
                     if (botonPresionado == "Agregar")
                     {
-                        CargarInforme("USUARIO REGISTRADO CON ÉXITO", true, false);
+                        CargarInforme("CLIENTE REGISTRADO CON ÉXITO", true, false);
                     }
 
                     if (botonPresionado == "Modificar")
                     {
-                        CargarInforme("USUARIO MODIFICADO CON ÉXITO", true, false);
+                        CargarInforme("CLIENTE MODIFICADO CON ÉXITO", true, false);
                     }
 
                     if (botonPresionado == "Eliminar")
                     {
-                        CargarInforme("USUARIO ELIMINADO CON ÉXITO", true, false);
+                        CargarInforme("CLIENTE ELIMINADO CON ÉXITO", true, false);
                     }
                 }
                 else
@@ -407,7 +457,7 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
                     CargarInforme(error, false, false);
                 }
 
-                CargarTablaUsuariosNoBorrados(dgvUsuarios, Usuario.ObtenerTablaUsuarios());
+                CargarTablaClientesNoBorrados(dgvClientes, Cliente.ObtenerTablaClientes());
                 EstadoCampos("NO");
             }
         }
@@ -416,7 +466,7 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
         {
             EstadoCampos("NO");
             LimpiarCampos();
-            dgvUsuarios.ClearSelection();
+            dgvClientes.ClearSelection();
             CargarInforme("INFORME", false, true);
         }
 
@@ -424,19 +474,19 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
         {
             if (btnMostrarBorrados.Text == "Mostrar Borrados")
             {
-                CargarTablaUsuariosBorrados(dgvUsuarios, Usuario.ObtenerTablaUsuarios());
+                CargarTablaClientesBorrados(dgvClientes, Cliente.ObtenerTablaClientes());
             }
             else
             {
-                CargarTablaUsuariosNoBorrados(dgvUsuarios, Usuario.ObtenerTablaUsuarios());
+                CargarTablaClientesNoBorrados(dgvClientes, Cliente.ObtenerTablaClientes());
             }
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-            CargarTablaUsuariosNoBorrados(dgvUsuarios, Usuario.ObtenerTablaUsuariosFiltro(txtBuscarDNI.Text));
+            CargarTablaClientesNoBorrados(dgvClientes, Cliente.ObtenerTablaClientesFiltro(txtBuscarCUIT.Text));
 
-            if (dgvUsuarios.Rows.Count == 0)
+            if (dgvClientes.Rows.Count == 0)
             {
                 CargarInforme("NO EXISTEN USUARIOS\n DE ACUERDO AL FILTRO APLICADO", false, false);
             }

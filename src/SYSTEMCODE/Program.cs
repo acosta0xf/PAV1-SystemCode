@@ -13,7 +13,7 @@ namespace SYSTEMCODE
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmSystemCode());
+            Application.Run(new FrmSystemCode());
         }
     }
 }

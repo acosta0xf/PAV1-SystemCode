@@ -1,5 +1,4 @@
-﻿using BugTracker.Capa_de_Datos;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using SYSTEMCODE.Capa_de_Negocio;
@@ -35,6 +34,15 @@ namespace SYSTEMCODE.Capa_de_Datos
             return listaPerfiles;
         }
 
+        public static DataTable ConsultarTablaPerfilesFiltro(string filtro)
+        {
+            string SQL = "SELECT perfiles.* " +
+                         "FROM Perfiles perfiles " +
+                         "WHERE nombre LIKE '" + filtro + "%'";
+
+            return GestorBD.Consultar(SQL);
+        }
+
         public static Perfil ConsultarPerfilPorNombre(string nombrePerfil)
         {
             string SQL = "SELECT * " +
@@ -50,6 +58,16 @@ namespace SYSTEMCODE.Capa_de_Datos
         public static DataTable ConsultarPerfiles()
         {
             return GestorBD.ConsultarTabla("Perfiles");
+        }
+
+        public static DataTable ConsultarPerfilesComboBox()
+        {
+            string SQL = "SELECT * " +
+                         "FROM Perfiles " +
+                         "WHERE " +
+                             "borrado = 0";
+
+            return GestorBD.Consultar(SQL);
         }
 
         public static string InsertarPerfil(Perfil perfil)

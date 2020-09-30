@@ -46,48 +46,83 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Capa de Datos\BarrioDatos.cs" />
+    <Compile Include="Capa de Datos\ClienteDatos.cs" />
+    <Compile Include="Capa de Datos\ContactoDatos.cs" />
     <Compile Include="Capa de Datos\GestorBD.cs" />
     <Compile Include="Capa de Datos\PerfilDatos.cs" />
+    <Compile Include="Capa de Datos\ProyectoDatos.cs" />
     <Compile Include="Capa de Datos\UsuarioDatos.cs" />
+    <Compile Include="Capa de Negocio\Barrio.cs" />
+    <Compile Include="Capa de Negocio\Cliente.cs" />
+    <Compile Include="Capa de Negocio\Contacto.cs" />
     <Compile Include="Capa de Negocio\Perfil.cs" />
+    <Compile Include="Capa de Negocio\Proyecto.cs" />
     <Compile Include="Capa de Negocio\Usuario.cs" />
-    <Compile Include="Capa de Vista\ABMC\frmPerfiles.cs">
+    <Compile Include="Capa de Vista\ABMC\FrmBarrios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Capa de Vista\ABMC\frmPerfiles.Designer.cs">
-      <DependentUpon>frmPerfiles.cs</DependentUpon>
+    <Compile Include="Capa de Vista\ABMC\FrmBarrios.Designer.cs">
+      <DependentUpon>FrmBarrios.cs</DependentUpon>
     </Compile>
-    <Compile Include="Capa de Vista\ABMC\frmUsuarios.cs">
+    <Compile Include="Capa de Vista\ABMC\FrmPerfiles.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Capa de Vista\ABMC\frmUsuarios.Designer.cs">
-      <DependentUpon>frmUsuarios.cs</DependentUpon>
+    <Compile Include="Capa de Vista\ABMC\FrmPerfiles.Designer.cs">
+      <DependentUpon>FrmPerfiles.cs</DependentUpon>
     </Compile>
-    <Compile Include="Capa de Vista\frmLogin.cs">
+    <Compile Include="Capa de Vista\ABMC\FrmClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Capa de Vista\frmLogin.Designer.cs">
-      <DependentUpon>frmLogin.cs</DependentUpon>
+    <Compile Include="Capa de Vista\ABMC\FrmClientes.Designer.cs">
+      <DependentUpon>FrmClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Capa de Vista\frmSystemCode.cs">
+    <Compile Include="Capa de Vista\ABMC\FrmProyectos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Capa de Vista\frmSystemCode.designer.cs">
-      <DependentUpon>frmSystemCode.cs</DependentUpon>
+    <Compile Include="Capa de Vista\ABMC\FrmProyectos.Designer.cs">
+      <DependentUpon>FrmProyectos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Capa de Vista\ABMC\FrmUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Capa de Vista\ABMC\FrmUsuarios.Designer.cs">
+      <DependentUpon>FrmUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Capa de Vista\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Capa de Vista\FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Capa de Vista\FrmSystemCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Capa de Vista\FrmSystemCode.designer.cs">
+      <DependentUpon>FrmSystemCode.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Capa de Vista\ABMC\frmPerfiles.resx">
-      <DependentUpon>frmPerfiles.cs</DependentUpon>
+    <EmbeddedResource Include="Capa de Vista\ABMC\FrmBarrios.resx">
+      <DependentUpon>FrmBarrios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Capa de Vista\ABMC\frmUsuarios.resx">
-      <DependentUpon>frmUsuarios.cs</DependentUpon>
+    <EmbeddedResource Include="Capa de Vista\ABMC\FrmPerfiles.resx">
+      <DependentUpon>FrmPerfiles.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Capa de Vista\frmLogin.resx">
-      <DependentUpon>frmLogin.cs</DependentUpon>
+    <EmbeddedResource Include="Capa de Vista\ABMC\FrmClientes.resx">
+      <DependentUpon>FrmClientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Capa de Vista\frmSystemCode.resx">
-      <DependentUpon>frmSystemCode.cs</DependentUpon>
+    <EmbeddedResource Include="Capa de Vista\ABMC\FrmProyectos.resx">
+      <DependentUpon>FrmProyectos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Capa de Vista\ABMC\FrmUsuarios.resx">
+      <DependentUpon>FrmUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Capa de Vista\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Capa de Vista\FrmSystemCode.resx">
+      <DependentUpon>FrmSystemCode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

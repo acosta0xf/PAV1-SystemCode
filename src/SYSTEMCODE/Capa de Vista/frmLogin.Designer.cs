@@ -70,7 +70,7 @@
             this.btnSalir.TabStop = false;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = false;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            this.btnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
             // btnIngresar
             // 
@@ -89,7 +89,7 @@
             this.btnIngresar.TabStop = false;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = false;
-            this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
+            this.btnIngresar.Click += new System.EventHandler(this.BtnIngresar_Click);
             // 
             // txtClave
             // 
@@ -97,7 +97,7 @@
             this.txtClave.Location = new System.Drawing.Point(73, 283);
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(227, 26);
-            this.txtClave.TabIndex = 10;
+            this.txtClave.TabIndex = 1;
             this.txtClave.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtClave.UseSystemPasswordChar = true;
             // 
@@ -107,7 +107,7 @@
             this.txtUsuario.Location = new System.Drawing.Point(73, 218);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(227, 26);
-            this.txtUsuario.TabIndex = 9;
+            this.txtUsuario.TabIndex = 0;
             this.txtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblClave
@@ -143,9 +143,9 @@
             // temporizadorAcceso
             // 
             this.temporizadorAcceso.Interval = 1000;
-            this.temporizadorAcceso.Tick += new System.EventHandler(this.temporizadorAcceso_Tick);
+            this.temporizadorAcceso.Tick += new System.EventHandler(this.TemporizadorAcceso_Tick);
             // 
-            // frmLogin
+            // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -162,10 +162,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "frmLogin";
+            this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SC - Iniciar Sesión";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmLogin_FormClosed);
+            this.Text = "Iniciar Sesión";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmLogin_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
