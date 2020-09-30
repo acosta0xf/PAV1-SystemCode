@@ -137,12 +137,12 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Clientes](
 	[id_cliente] [int] IDENTITY(1,1) NOT NULL,
-	[cuit] [varchar](50) NULL,
+	[cuit] [varchar](11) NULL,
 	[razon_social] [varchar](50) NULL,
 	[borrado] [bit] NULL,
 	[calle] [varchar](500) NULL,
 	[numero] [varchar](50) NULL,
-	[fecha_alta] [datetime] NULL,
+	[fecha_alta] [date] NULL,
 	[id_barrio] [int] NULL,
 	[id_contacto] [int] NULL,
  CONSTRAINT [PK_Cliente] PRIMARY KEY CLUSTERED 
@@ -160,6 +160,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Contactos](
 	[id_contacto] [int] IDENTITY(1,1) NOT NULL,
+	[cuit] [varchar](11) NOT NULL,
 	[nombre] [varchar](50) NULL,
 	[apellido] [varchar](50) NULL,
 	[email] [varchar](50) NULL,
@@ -407,13 +408,13 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Proyectos](
-	[id_proyecto] [int] NOT NULL,
+	[id_proyecto] [int] IDENTITY(1,1) NOT NULL,
 	[id_producto] [int] NULL,
 	[descripcion] [varchar](50) NULL,
 	[version] [varchar](50) NULL,
 	[alcance] [varchar](50) NULL,
 	[id_responsable] [int] NULL,
-	[borrado] [nchar](10) NULL,
+	[borrado] [bit] NULL,
  CONSTRAINT [PK_Proyectos] PRIMARY KEY CLUSTERED 
 (
 	[id_proyecto] ASC
@@ -1047,6 +1048,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Contactos](
 	[id_contacto] [int] IDENTITY(1,1) NOT NULL,
+	[cuit] [varchar](11) NOT NULL,
 	[nombre] [varchar](50) NULL,
 	[apellido] [varchar](50) NULL,
 	[email] [varchar](50) NULL,
@@ -1294,13 +1296,13 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Proyectos](
-	[id_proyecto] [int] NOT NULL,
+	[id_proyecto] [int] IDENTITY(1,1) NOT NULL,
 	[id_producto] [int] NULL,
 	[descripcion] [varchar](50) NULL,
 	[version] [varchar](50) NULL,
 	[alcance] [varchar](50) NULL,
 	[id_responsable] [int] NULL,
-	[borrado] [nchar](10) NULL,
+	[borrado] [bit] NULL,
  CONSTRAINT [PK_Proyectos] PRIMARY KEY CLUSTERED 
 (
 	[id_proyecto] ASC
@@ -1454,7 +1456,46 @@ INSERT [dbo].[Bugs] ([id_bug], [titulo], [descripcion], [fecha_alta], [id_usuari
 INSERT [dbo].[Bugs] ([id_bug], [titulo], [descripcion], [fecha_alta], [id_usuario_responsable], [id_usuario_asignado], [id_producto], [id_prioridad], [id_criticidad], [id_estado], [borrado]) VALUES (7, N'Transacciรณn', N'Graba mas de un registro sin contemplar transacciรณn', CAST(N'2019-10-07' AS Date), 5, 5, 3, 3, 2, 1, 0)
 INSERT [dbo].[Bugs] ([id_bug], [titulo], [descripcion], [fecha_alta], [id_usuario_responsable], [id_usuario_asignado], [id_producto], [id_prioridad], [id_criticidad], [id_estado], [borrado]) VALUES (8, N'Cรกlculos', N'Calcula mal el total', CAST(N'2019-10-07' AS Date), 4, 5, 4, 2, 2, 2, 0)
 SET IDENTITY_INSERT [dbo].[Bugs] OFF
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						 
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																
+
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Agua del Peñón', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Aires de Rio', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Alberdi', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Amuchástegui', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Bela Vista', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Cantegril', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Don Bosco', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Don Justo', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'El Caracol', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'El Cedro', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'La Amistad', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'La Lucinda', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'La Quebrada', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Los Vascos', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Los Nogales', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Los Nogales Sur', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Loza', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Marino', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Moreyra', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Nueevo Rio Ceballos', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Ñu-Porá', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Pajas Blancas', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Parque Atalaya', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Parque Guerrero', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Parque Luján', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Pérez Taboada', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Pietri', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Ramenville', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Sábato', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'San Cayetano', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'San Francisco', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'San José', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'San Jorge', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'San Miguel', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Santa Fe', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Villa Los Altos', 0)
+INSERT [dbo].[Barrios] ([nombre], [borrado]) VALUES (N'Villa Catalina', 0)
+																																																																																																																																	 
 SET IDENTITY_INSERT [dbo].[BugsHistorico] ON 
 
 INSERT [dbo].[BugsHistorico] ([id_bug_historico], [fecha_historico], [titulo], [descripcion], [id_bug], [id_usuario_responsable], [id_usuario_asignado], [id_producto], [id_prioridad], [id_criticidad], [id_estado], [borrado]) VALUES (10, CAST(N'2019-10-07' AS Date), N'probando transaccion', N'probando transaccion insert en bug e insert en historico', 6, NULL, NULL, 1, 2, 1, 1, 0)
