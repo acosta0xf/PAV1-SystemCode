@@ -29,7 +29,7 @@ Se debe cargar la base de datos con el script almacenado en el repositorio, por 
 - Se quitaron los usuarios existentes para agregar los acordes al dominio
 - Se quitaron los perfiles existentes para agregar los acordes al dominio
 - Se actualizó cantidad de caracteres en la columna cuit de la tabla Clientes para pasar de 50 a 11
-- Se actualizó tipo de fecha en la columna fecha_alta de la tabla Clientes para pasar de DateTime a Date
+- Se modificó tipo de fecha en la columna fecha_alta de la tabla Clientes para pasar de DateTime a Date
 - Se agregó el campo cuit a la tabla de Contactos
 - Se agregaron datos de barrios a la tabla de Barrios para agregar los acordes al dominio
 - Se modificó el campo id_proyecto de la tabla Proyectos para ser un identity
