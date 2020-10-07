@@ -261,10 +261,11 @@ GO
 CREATE TABLE [dbo].[FacturasDetalle](
 	[id_detalle_factura] [int] IDENTITY(1,1) NOT NULL,
 	[id_factura] [int] NULL,
-	[numero_orden] [int] NULL,
+	[numero_factura] [int] NULL,
 	[id_producto] [int] NULL,
 	[id_proyecto] [int] NULL,
 	[id_ciclo_prueba] [int] NULL,
+	[cantidad_licencias] [int] NULL,
 	[precio] [decimal](18, 0) NULL,
 	[borrado] [bit] NULL,
  CONSTRAINT [PK_FacturaDetalles] PRIMARY KEY CLUSTERED 
@@ -1149,10 +1150,11 @@ GO
 CREATE TABLE [dbo].[FacturasDetalle](
 	[id_detalle_factura] [int] IDENTITY(1,1) NOT NULL,
 	[id_factura] [int] NULL,
-	[numero_orden] [int] NULL,
+	[numero_factura] [int] NULL,
 	[id_producto] [int] NULL,
 	[id_proyecto] [int] NULL,
 	[id_ciclo_prueba] [int] NULL,
+	[cantidad_licencias] [int] NULL,
 	[precio] [decimal](18, 0) NULL,
 	[borrado] [bit] NULL,
  CONSTRAINT [PK_FacturaDetalles] PRIMARY KEY CLUSTERED 
