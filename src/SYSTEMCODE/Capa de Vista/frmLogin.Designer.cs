@@ -39,6 +39,7 @@
             this.lblUsuario = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.temporizadorAcceso = new System.Windows.Forms.Timer(this.components);
+            this.btnLock = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,12 +144,32 @@
             this.temporizadorAcceso.Interval = 1000;
             this.temporizadorAcceso.Tick += new System.EventHandler(this.TemporizadorAcceso_Tick);
             // 
+            // btnLock
+            // 
+            this.btnLock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(50)))), ((int)(((byte)(55)))));
+            this.btnLock.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLock.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(50)))), ((int)(((byte)(55)))));
+            this.btnLock.FlatAppearance.BorderSize = 2;
+            this.btnLock.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
+            this.btnLock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLock.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLock.ForeColor = System.Drawing.Color.White;
+            this.btnLock.Image = ((System.Drawing.Image)(resources.GetObject("btnLock.Image")));
+            this.btnLock.Location = new System.Drawing.Point(306, 283);
+            this.btnLock.Name = "btnLock";
+            this.btnLock.Size = new System.Drawing.Size(24, 24);
+            this.btnLock.TabIndex = 12;
+            this.btnLock.UseVisualStyleBackColor = false;
+            this.btnLock.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnLock_MouseDown);
+            this.btnLock.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnLock_MouseUp);
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(372, 441);
+            this.Controls.Add(this.btnLock);
             this.Controls.Add(this.lblEstadoLogin);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnIngresar);
@@ -181,5 +202,6 @@
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer temporizadorAcceso;
+        private System.Windows.Forms.Button btnLock;
     }
 }

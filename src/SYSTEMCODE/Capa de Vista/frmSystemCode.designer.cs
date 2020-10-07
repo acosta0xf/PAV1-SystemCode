@@ -122,11 +122,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Eurostile ExtendedTwo", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(326, 350);
+            this.label1.Location = new System.Drawing.Point(376, 350);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(356, 44);
+            this.label1.Size = new System.Drawing.Size(250, 37);
             this.label1.TabIndex = 3;
             this.label1.Text = "SYSTEMCODE";
             // 
@@ -144,7 +144,7 @@
             // 
             this.lblBienvenida.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(50)))), ((int)(((byte)(55)))));
             this.lblBienvenida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblBienvenida.Font = new System.Drawing.Font("Eurostile", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBienvenida.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBienvenida.ForeColor = System.Drawing.Color.White;
             this.lblBienvenida.Location = new System.Drawing.Point(-5, 492);
             this.lblBienvenida.Name = "lblBienvenida";
