@@ -56,6 +56,7 @@
             this.cboPerfiles = new System.Windows.Forms.ComboBox();
             this.txtNombreUsuario = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblCantidad = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -64,6 +65,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblCantidad);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtBuscarDNI);
             this.groupBox1.Controls.Add(this.btnBuscar);
@@ -79,10 +81,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(7, 23);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 15);
+            this.label2.Size = new System.Drawing.Size(79, 15);
             this.label2.TabIndex = 22;
             this.label2.Text = "DNI a Buscar";
             // 
@@ -91,7 +93,7 @@
             this.txtBuscarDNI.Location = new System.Drawing.Point(10, 41);
             this.txtBuscarDNI.MaxLength = 8;
             this.txtBuscarDNI.Name = "txtBuscarDNI";
-            this.txtBuscarDNI.Size = new System.Drawing.Size(311, 23);
+            this.txtBuscarDNI.Size = new System.Drawing.Size(311, 22);
             this.txtBuscarDNI.TabIndex = 22;
             this.txtBuscarDNI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
@@ -103,7 +105,7 @@
             this.btnBuscar.FlatAppearance.BorderSize = 2;
             this.btnBuscar.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Font = new System.Drawing.Font("Eurostile", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
             this.btnBuscar.Location = new System.Drawing.Point(327, 38);
             this.btnBuscar.Name = "btnBuscar";
@@ -122,7 +124,7 @@
             this.btnMostrarBorrados.FlatAppearance.BorderSize = 2;
             this.btnMostrarBorrados.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
             this.btnMostrarBorrados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMostrarBorrados.Font = new System.Drawing.Font("Eurostile", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMostrarBorrados.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMostrarBorrados.ForeColor = System.Drawing.Color.White;
             this.btnMostrarBorrados.Location = new System.Drawing.Point(136, 380);
             this.btnMostrarBorrados.Name = "btnMostrarBorrados";
@@ -144,13 +146,13 @@
             this.dni,
             this.nombreUsuario,
             this.email});
-            this.dgvUsuarios.Location = new System.Drawing.Point(6, 73);
+            this.dgvUsuarios.Location = new System.Drawing.Point(6, 95);
             this.dgvUsuarios.MultiSelect = false;
             this.dgvUsuarios.Name = "dgvUsuarios";
             this.dgvUsuarios.ReadOnly = true;
             this.dgvUsuarios.RowHeadersVisible = false;
             this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsuarios.Size = new System.Drawing.Size(419, 301);
+            this.dgvUsuarios.Size = new System.Drawing.Size(419, 279);
             this.dgvUsuarios.TabIndex = 0;
             this.dgvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUsuarios_CellClick);
             this.dgvUsuarios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUsuarios_CellClick);
@@ -184,7 +186,7 @@
             this.btnAgregar.FlatAppearance.BorderSize = 2;
             this.btnAgregar.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Font = new System.Drawing.Font("Eurostile", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.ForeColor = System.Drawing.Color.White;
             this.btnAgregar.Location = new System.Drawing.Point(17, 448);
             this.btnAgregar.Name = "btnAgregar";
@@ -203,7 +205,7 @@
             this.btnModificar.FlatAppearance.BorderSize = 2;
             this.btnModificar.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
             this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModificar.Font = new System.Drawing.Font("Eurostile", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificar.ForeColor = System.Drawing.Color.White;
             this.btnModificar.Location = new System.Drawing.Point(180, 448);
             this.btnModificar.Name = "btnModificar";
@@ -222,7 +224,7 @@
             this.btnEliminar.FlatAppearance.BorderSize = 2;
             this.btnEliminar.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Font = new System.Drawing.Font("Eurostile", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
             this.btnEliminar.Location = new System.Drawing.Point(344, 448);
             this.btnEliminar.Name = "btnEliminar";
@@ -253,7 +255,7 @@
             this.btnCancelar.FlatAppearance.BorderSize = 2;
             this.btnCancelar.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Eurostile", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.Location = new System.Drawing.Point(682, 448);
             this.btnCancelar.Name = "btnCancelar";
@@ -273,7 +275,7 @@
             this.btnGuardar.FlatAppearance.BorderSize = 2;
             this.btnGuardar.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Font = new System.Drawing.Font("Eurostile", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.Location = new System.Drawing.Point(564, 448);
             this.btnGuardar.Name = "btnGuardar";
@@ -314,14 +316,14 @@
             0,
             0});
             this.numDNI.Name = "numDNI";
-            this.numDNI.Size = new System.Drawing.Size(372, 23);
+            this.numDNI.Size = new System.Drawing.Size(372, 22);
             this.numDNI.TabIndex = 0;
             this.numDNI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(33, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 15);
@@ -336,7 +338,7 @@
             this.btnVisualizar.FlatAppearance.BorderSize = 2;
             this.btnVisualizar.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
             this.btnVisualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVisualizar.Font = new System.Drawing.Font("Eurostile", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVisualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVisualizar.ForeColor = System.Drawing.Color.White;
             this.btnVisualizar.Location = new System.Drawing.Point(316, 230);
             this.btnVisualizar.Name = "btnVisualizar";
@@ -351,10 +353,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(33, 269);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(114, 15);
+            this.label6.Size = new System.Drawing.Size(108, 15);
             this.label6.TabIndex = 19;
             this.label6.Text = "Correo Electrónico";
             // 
@@ -364,13 +366,13 @@
             this.txtEmail.Location = new System.Drawing.Point(36, 287);
             this.txtEmail.MaxLength = 255;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(372, 23);
+            this.txtEmail.Size = new System.Drawing.Size(372, 22);
             this.txtEmail.TabIndex = 5;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(33, 215);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 15);
@@ -383,17 +385,17 @@
             this.txtClave.Location = new System.Drawing.Point(36, 233);
             this.txtClave.MaxLength = 255;
             this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(274, 23);
+            this.txtClave.Size = new System.Drawing.Size(274, 22);
             this.txtClave.TabIndex = 3;
             this.txtClave.UseSystemPasswordChar = true;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(33, 161);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(119, 15);
+            this.label4.Size = new System.Drawing.Size(115, 15);
             this.label4.TabIndex = 15;
             this.label4.Text = "Nombre de Usuario";
             // 
@@ -414,18 +416,28 @@
             this.txtNombreUsuario.Location = new System.Drawing.Point(36, 179);
             this.txtNombreUsuario.MaxLength = 255;
             this.txtNombreUsuario.Name = "txtNombreUsuario";
-            this.txtNombreUsuario.Size = new System.Drawing.Size(372, 23);
+            this.txtNombreUsuario.Size = new System.Drawing.Size(372, 22);
             this.txtNombreUsuario.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(33, 106);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 15);
+            this.label3.Size = new System.Drawing.Size(35, 15);
             this.label3.TabIndex = 12;
             this.label3.Text = "Perfil";
+            // 
+            // lblCantidad
+            // 
+            this.lblCantidad.AutoSize = true;
+            this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidad.Location = new System.Drawing.Point(7, 77);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(104, 15);
+            this.lblCantidad.TabIndex = 23;
+            this.lblCantidad.Text = "Total de registros:";
             // 
             // FrmUsuarios
             // 
@@ -441,7 +453,7 @@
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.groupBox1);
-            this.Font = new System.Drawing.Font("Eurostile", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -489,5 +501,6 @@
         private System.Windows.Forms.TextBox txtBuscarDNI;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblCantidad;
     }
 }
