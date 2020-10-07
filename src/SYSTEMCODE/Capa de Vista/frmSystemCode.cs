@@ -80,7 +80,7 @@ namespace SYSTEMCODE
         {
             FrmUsuarios usuarios = new FrmUsuarios
             {
-                Text = "Usuarios [Usuario: " + UsuarioActual.NombreUsuario + "]"
+                Text = "Usuarios [Usuario logueado: " + UsuarioActual.NombreUsuario + "]"
             };
             usuarios.ShowDialog();
         }
@@ -89,7 +89,7 @@ namespace SYSTEMCODE
         {
             FrmPerfiles perfiles = new FrmPerfiles
             {
-                Text = "Perfiles [Usuario: " + UsuarioActual.NombreUsuario + "]"
+                Text = "Perfiles [Usuario logueado: " + UsuarioActual.NombreUsuario + "]"
             };
             perfiles.ShowDialog();
         }
@@ -98,7 +98,7 @@ namespace SYSTEMCODE
         {
             FrmClientes clientes = new FrmClientes
             {
-                Text = "Clientes [Usuario: " + UsuarioActual.NombreUsuario + "]"
+                Text = "Clientes [Usuario logueado: " + UsuarioActual.NombreUsuario + "]"
             };
             clientes.ShowDialog();
         }
@@ -107,7 +107,7 @@ namespace SYSTEMCODE
         {
             FrmBarrios barrios = new FrmBarrios
             {
-                Text = "Barrios [Usuario: " + UsuarioActual.NombreUsuario + "]"
+                Text = "Barrios [Usuario logueado: " + UsuarioActual.NombreUsuario + "]"
             };
             barrios.ShowDialog();
         }
@@ -116,7 +116,7 @@ namespace SYSTEMCODE
         {
             FrmProyectos proyectos = new FrmProyectos
             {
-                Text = "Proyectos [Usuario: " + UsuarioActual.NombreUsuario + "]"
+                Text = "Proyectos [Usuario logueado: " + UsuarioActual.NombreUsuario + "]"
             };
             proyectos.ShowDialog();
         }
@@ -125,7 +125,7 @@ namespace SYSTEMCODE
         {
             FrmGestionarVentas ventas = new FrmGestionarVentas(UsuarioActual.NombreUsuario)
             {
-                Text = "Venta [Usuario: " + UsuarioActual.NombreUsuario + "]"
+                Text = "Venta [Usuario logueado: " + UsuarioActual.NombreUsuario + "]"
             };
             ventas.ShowDialog();
         }
