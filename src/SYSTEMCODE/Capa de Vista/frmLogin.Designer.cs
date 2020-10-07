@@ -67,7 +67,7 @@
             this.btnSalir.Location = new System.Drawing.Point(189, 335);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(134, 33);
-            this.btnSalir.TabIndex = 3;
+            this.btnSalir.TabIndex = 4;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
@@ -85,7 +85,7 @@
             this.btnIngresar.Location = new System.Drawing.Point(49, 335);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(134, 33);
-            this.btnIngresar.TabIndex = 2;
+            this.btnIngresar.TabIndex = 3;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = false;
             this.btnIngresar.Click += new System.EventHandler(this.BtnIngresar_Click);
@@ -158,7 +158,8 @@
             this.btnLock.Location = new System.Drawing.Point(306, 283);
             this.btnLock.Name = "btnLock";
             this.btnLock.Size = new System.Drawing.Size(24, 24);
-            this.btnLock.TabIndex = 12;
+            this.btnLock.TabIndex = 2;
+            this.btnLock.TabStop = false;
             this.btnLock.UseVisualStyleBackColor = false;
             this.btnLock.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BtnLock_MouseDown);
             this.btnLock.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BtnLock_MouseUp);

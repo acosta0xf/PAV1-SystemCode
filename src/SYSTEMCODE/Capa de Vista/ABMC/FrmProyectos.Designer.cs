@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProyectos));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblCantidad = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBuscarDescripcion = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -51,7 +52,6 @@
             this.cboResponsable = new System.Windows.Forms.ComboBox();
             this.txtVersion = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblCantidad = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProyectos)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -71,6 +71,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Proyectos Existentes";
+            // 
+            // lblCantidad
+            // 
+            this.lblCantidad.AutoSize = true;
+            this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidad.Location = new System.Drawing.Point(7, 76);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(104, 15);
+            this.lblCantidad.TabIndex = 23;
+            this.lblCantidad.Text = "Total de registros:";
             // 
             // label2
             // 
@@ -104,7 +114,6 @@
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(92, 29);
             this.btnBuscar.TabIndex = 1;
-            this.btnBuscar.TabStop = false;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
@@ -122,8 +131,7 @@
             this.btnMostrarBorrados.Location = new System.Drawing.Point(136, 311);
             this.btnMostrarBorrados.Name = "btnMostrarBorrados";
             this.btnMostrarBorrados.Size = new System.Drawing.Size(159, 29);
-            this.btnMostrarBorrados.TabIndex = 3;
-            this.btnMostrarBorrados.TabStop = false;
+            this.btnMostrarBorrados.TabIndex = 5;
             this.btnMostrarBorrados.Text = "Mostrar Borrados";
             this.btnMostrarBorrados.UseVisualStyleBackColor = false;
             this.btnMostrarBorrados.Click += new System.EventHandler(this.BtnMostrarBorrados_Click);
@@ -144,7 +152,8 @@
             this.dgvProyectos.RowHeadersVisible = false;
             this.dgvProyectos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProyectos.Size = new System.Drawing.Size(419, 210);
-            this.dgvProyectos.TabIndex = 2;
+            this.dgvProyectos.TabIndex = 60;
+            this.dgvProyectos.TabStop = false;
             this.dgvProyectos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvProyectos_CellClick);
             this.dgvProyectos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvProyectos_CellClick);
             // 
@@ -168,8 +177,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(18, 382);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(92, 29);
-            this.btnAgregar.TabIndex = 1;
-            this.btnAgregar.TabStop = false;
+            this.btnAgregar.TabIndex = 2;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
@@ -187,8 +195,7 @@
             this.btnModificar.Location = new System.Drawing.Point(181, 382);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(92, 29);
-            this.btnModificar.TabIndex = 2;
-            this.btnModificar.TabStop = false;
+            this.btnModificar.TabIndex = 3;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
@@ -206,8 +213,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(345, 382);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(92, 29);
-            this.btnEliminar.TabIndex = 3;
-            this.btnEliminar.TabStop = false;
+            this.btnEliminar.TabIndex = 4;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
@@ -237,8 +243,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(683, 382);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(92, 29);
-            this.btnCancelar.TabIndex = 6;
-            this.btnCancelar.TabStop = false;
+            this.btnCancelar.TabIndex = 20;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
@@ -257,8 +262,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(565, 382);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(92, 29);
-            this.btnGuardar.TabIndex = 5;
-            this.btnGuardar.TabStop = false;
+            this.btnGuardar.TabIndex = 19;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
@@ -287,7 +291,7 @@
             this.txtDescripcion.MaxLength = 255;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(372, 22);
-            this.txtDescripcion.TabIndex = 0;
+            this.txtDescripcion.TabIndex = 15;
             // 
             // label1
             // 
@@ -306,7 +310,7 @@
             this.txtAlcance.MaxLength = 255;
             this.txtAlcance.Name = "txtAlcance";
             this.txtAlcance.Size = new System.Drawing.Size(372, 22);
-            this.txtAlcance.TabIndex = 2;
+            this.txtAlcance.TabIndex = 17;
             // 
             // label5
             // 
@@ -337,7 +341,7 @@
             this.cboResponsable.Location = new System.Drawing.Point(36, 227);
             this.cboResponsable.Name = "cboResponsable";
             this.cboResponsable.Size = new System.Drawing.Size(372, 24);
-            this.cboResponsable.TabIndex = 3;
+            this.cboResponsable.TabIndex = 18;
             // 
             // txtVersion
             // 
@@ -346,7 +350,7 @@
             this.txtVersion.MaxLength = 255;
             this.txtVersion.Name = "txtVersion";
             this.txtVersion.Size = new System.Drawing.Size(372, 22);
-            this.txtVersion.TabIndex = 1;
+            this.txtVersion.TabIndex = 16;
             // 
             // label3
             // 
@@ -357,16 +361,6 @@
             this.label3.Size = new System.Drawing.Size(48, 15);
             this.label3.TabIndex = 12;
             this.label3.Text = "Versión";
-            // 
-            // lblCantidad
-            // 
-            this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidad.Location = new System.Drawing.Point(7, 76);
-            this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(104, 15);
-            this.lblCantidad.TabIndex = 23;
-            this.lblCantidad.Text = "Total de registros:";
             // 
             // FrmProyectos
             // 

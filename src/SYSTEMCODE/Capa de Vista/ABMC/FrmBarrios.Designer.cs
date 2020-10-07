@@ -99,8 +99,7 @@
             this.btnMostrarBorrados.Location = new System.Drawing.Point(136, 215);
             this.btnMostrarBorrados.Name = "btnMostrarBorrados";
             this.btnMostrarBorrados.Size = new System.Drawing.Size(159, 29);
-            this.btnMostrarBorrados.TabIndex = 0;
-            this.btnMostrarBorrados.TabStop = false;
+            this.btnMostrarBorrados.TabIndex = 5;
             this.btnMostrarBorrados.Text = "Mostrar Borrados";
             this.btnMostrarBorrados.UseVisualStyleBackColor = false;
             this.btnMostrarBorrados.Click += new System.EventHandler(this.BtnMostrarBorrados_Click);
@@ -111,7 +110,7 @@
             this.txtBuscarBarrio.MaxLength = 256;
             this.txtBuscarBarrio.Name = "txtBuscarBarrio";
             this.txtBuscarBarrio.Size = new System.Drawing.Size(310, 22);
-            this.txtBuscarBarrio.TabIndex = 27;
+            this.txtBuscarBarrio.TabIndex = 0;
             this.txtBuscarBarrio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Letra_KeyPress);
             // 
             // btnBuscar
@@ -127,8 +126,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(327, 37);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(92, 29);
-            this.btnBuscar.TabIndex = 26;
-            this.btnBuscar.TabStop = false;
+            this.btnBuscar.TabIndex = 1;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
@@ -149,7 +147,8 @@
             this.dgvBarrios.RowHeadersVisible = false;
             this.dgvBarrios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBarrios.Size = new System.Drawing.Size(419, 123);
-            this.dgvBarrios.TabIndex = 0;
+            this.dgvBarrios.TabIndex = 60;
+            this.dgvBarrios.TabStop = false;
             this.dgvBarrios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvBarrios_CellClick);
             this.dgvBarrios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvBarrios_CellClick);
             // 
@@ -173,7 +172,6 @@
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(92, 29);
             this.btnAgregar.TabIndex = 2;
-            this.btnAgregar.TabStop = false;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
@@ -192,7 +190,6 @@
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(92, 29);
             this.btnModificar.TabIndex = 3;
-            this.btnModificar.TabStop = false;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
@@ -211,7 +208,6 @@
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(92, 29);
             this.btnEliminar.TabIndex = 4;
-            this.btnEliminar.TabStop = false;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
@@ -244,7 +240,7 @@
             this.txtNombreBarrio.MaxLength = 255;
             this.txtNombreBarrio.Name = "txtNombreBarrio";
             this.txtNombreBarrio.Size = new System.Drawing.Size(372, 22);
-            this.txtNombreBarrio.TabIndex = 0;
+            this.txtNombreBarrio.TabIndex = 15;
             // 
             // lblInformes
             // 
@@ -271,8 +267,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(678, 283);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(92, 29);
-            this.btnCancelar.TabIndex = 6;
-            this.btnCancelar.TabStop = false;
+            this.btnCancelar.TabIndex = 17;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
@@ -291,8 +286,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(560, 283);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(92, 29);
-            this.btnGuardar.TabIndex = 5;
-            this.btnGuardar.TabStop = false;
+            this.btnGuardar.TabIndex = 16;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);

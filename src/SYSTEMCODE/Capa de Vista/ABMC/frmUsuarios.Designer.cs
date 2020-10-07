@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUsuarios));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblCantidad = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBuscarDNI = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -56,7 +57,6 @@
             this.cboPerfiles = new System.Windows.Forms.ComboBox();
             this.txtNombreUsuario = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblCantidad = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -78,6 +78,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Usuarios Existentes";
             // 
+            // lblCantidad
+            // 
+            this.lblCantidad.AutoSize = true;
+            this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidad.Location = new System.Drawing.Point(7, 77);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(104, 15);
+            this.lblCantidad.TabIndex = 23;
+            this.lblCantidad.Text = "Total de registros:";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -94,7 +104,7 @@
             this.txtBuscarDNI.MaxLength = 8;
             this.txtBuscarDNI.Name = "txtBuscarDNI";
             this.txtBuscarDNI.Size = new System.Drawing.Size(311, 22);
-            this.txtBuscarDNI.TabIndex = 22;
+            this.txtBuscarDNI.TabIndex = 0;
             this.txtBuscarDNI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // btnBuscar
@@ -111,7 +121,6 @@
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(92, 29);
             this.btnBuscar.TabIndex = 1;
-            this.btnBuscar.TabStop = false;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
@@ -129,8 +138,7 @@
             this.btnMostrarBorrados.Location = new System.Drawing.Point(136, 380);
             this.btnMostrarBorrados.Name = "btnMostrarBorrados";
             this.btnMostrarBorrados.Size = new System.Drawing.Size(159, 29);
-            this.btnMostrarBorrados.TabIndex = 0;
-            this.btnMostrarBorrados.TabStop = false;
+            this.btnMostrarBorrados.TabIndex = 5;
             this.btnMostrarBorrados.Text = "Mostrar Borrados";
             this.btnMostrarBorrados.UseVisualStyleBackColor = false;
             this.btnMostrarBorrados.Click += new System.EventHandler(this.BtnMostrarBorrados_Click);
@@ -153,7 +161,8 @@
             this.dgvUsuarios.RowHeadersVisible = false;
             this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsuarios.Size = new System.Drawing.Size(419, 279);
-            this.dgvUsuarios.TabIndex = 0;
+            this.dgvUsuarios.TabIndex = 60;
+            this.dgvUsuarios.TabStop = false;
             this.dgvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUsuarios_CellClick);
             this.dgvUsuarios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUsuarios_CellClick);
             // 
@@ -192,7 +201,6 @@
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(92, 29);
             this.btnAgregar.TabIndex = 2;
-            this.btnAgregar.TabStop = false;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
@@ -211,7 +219,6 @@
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(92, 29);
             this.btnModificar.TabIndex = 3;
-            this.btnModificar.TabStop = false;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
@@ -230,7 +237,6 @@
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(92, 29);
             this.btnEliminar.TabIndex = 4;
-            this.btnEliminar.TabStop = false;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
@@ -260,8 +266,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(682, 448);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(92, 29);
-            this.btnCancelar.TabIndex = 6;
-            this.btnCancelar.TabStop = false;
+            this.btnCancelar.TabIndex = 23;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
@@ -280,8 +285,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(564, 448);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(92, 29);
-            this.btnGuardar.TabIndex = 5;
-            this.btnGuardar.TabStop = false;
+            this.btnGuardar.TabIndex = 22;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
@@ -317,7 +321,7 @@
             0});
             this.numDNI.Name = "numDNI";
             this.numDNI.Size = new System.Drawing.Size(372, 22);
-            this.numDNI.TabIndex = 0;
+            this.numDNI.TabIndex = 16;
             this.numDNI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // label1
@@ -343,7 +347,7 @@
             this.btnVisualizar.Location = new System.Drawing.Point(316, 230);
             this.btnVisualizar.Name = "btnVisualizar";
             this.btnVisualizar.Size = new System.Drawing.Size(92, 29);
-            this.btnVisualizar.TabIndex = 4;
+            this.btnVisualizar.TabIndex = 20;
             this.btnVisualizar.TabStop = false;
             this.btnVisualizar.Text = "Visualizar";
             this.btnVisualizar.UseVisualStyleBackColor = false;
@@ -367,7 +371,7 @@
             this.txtEmail.MaxLength = 255;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(372, 22);
-            this.txtEmail.TabIndex = 5;
+            this.txtEmail.TabIndex = 21;
             // 
             // label5
             // 
@@ -386,7 +390,7 @@
             this.txtClave.MaxLength = 255;
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(274, 22);
-            this.txtClave.TabIndex = 3;
+            this.txtClave.TabIndex = 19;
             this.txtClave.UseSystemPasswordChar = true;
             // 
             // label4
@@ -408,7 +412,7 @@
             this.cboPerfiles.Location = new System.Drawing.Point(36, 124);
             this.cboPerfiles.Name = "cboPerfiles";
             this.cboPerfiles.Size = new System.Drawing.Size(372, 24);
-            this.cboPerfiles.TabIndex = 1;
+            this.cboPerfiles.TabIndex = 17;
             // 
             // txtNombreUsuario
             // 
@@ -417,7 +421,7 @@
             this.txtNombreUsuario.MaxLength = 255;
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.Size = new System.Drawing.Size(372, 22);
-            this.txtNombreUsuario.TabIndex = 2;
+            this.txtNombreUsuario.TabIndex = 18;
             // 
             // label3
             // 
@@ -428,16 +432,6 @@
             this.label3.Size = new System.Drawing.Size(35, 15);
             this.label3.TabIndex = 12;
             this.label3.Text = "Perfil";
-            // 
-            // lblCantidad
-            // 
-            this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidad.Location = new System.Drawing.Point(7, 77);
-            this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(104, 15);
-            this.lblCantidad.TabIndex = 23;
-            this.lblCantidad.Text = "Total de registros:";
             // 
             // FrmUsuarios
             // 
