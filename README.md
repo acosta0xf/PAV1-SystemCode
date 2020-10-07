@@ -14,6 +14,9 @@ Repositorio para el Trabajo Práctico Integrador de la materia PAV1
 - Ventana ABMC de Clientes
 - Ventana ABMC de Barrios
 - Ventana ABMC de Proyectos
+- Ventana de Gestión de Ventas
+- Ventana de Consulta de Ventas
+- Ventana de Confirmación de Salida del Sistema
 - Validaciones de DNI repetidos
 - Validaciones de Perfiles repetidos
 - Validaciones de Perfiles (Cada perfil, tiene permitida determinada actividad)
@@ -22,6 +25,7 @@ Repositorio para el Trabajo Práctico Integrador de la materia PAV1
 - Validaciones de Barrios repetidos
 - Validaciones de Control de Barrios (No se permite borrar un barrio si aún siguen clientes asociados)
 - Validaciones de Proyectos repetidos
+- Validaciones en el Número de Factura al momento de generar una Venta (Autoincrementable)
 
 # BASE DE DATOS
 Se debe cargar la base de datos con el script almacenado en el repositorio, por los siguientes motivos:
@@ -34,6 +38,8 @@ Se debe cargar la base de datos con el script almacenado en el repositorio, por 
 - Se agregaron datos de barrios a la tabla de Barrios para agregar los acordes al dominio
 - Se modificó el campo id_proyecto de la tabla Proyectos para ser un identity
 - Se modificó el campo borrado de la tabla Proyectos pasando de tipo nchar a bit
+- Se agregó campo cantidad_licencias a tabla FacturasDetalles
+- Se modificó campo numero_orden para pasar a numero_factura en tabla FacturasDetalle
 
 # DATOS DE INICIO DE SESIÓN
 - Usuario: general --> Clave: general --> Permisos: Encargado General
