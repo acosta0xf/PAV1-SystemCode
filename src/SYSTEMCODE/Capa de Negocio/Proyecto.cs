@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using SYSTEMCODE.Capa_de_Datos;
 
 namespace SYSTEMCODE.Capa_de_Negocio
 {
     public class Proyecto
     {
+        private int idProyecto;
         private string descripcion;
         private string version;
         private string alcance;
@@ -25,6 +27,17 @@ namespace SYSTEMCODE.Capa_de_Negocio
             this.Borrado = borrado;
         }
 
+        public Proyecto(int idProyecto, string descripcion, string version, string alcance, Usuario responsable, bool borrado)
+        {
+            this.idProyecto = idProyecto;
+            this.Descripcion = descripcion;
+            this.Version = version;
+            this.Alcance = alcance;
+            this.Responsable = responsable;
+            this.Borrado = borrado;
+        }
+
+        public int IdProyecto { get => idProyecto; set => idProyecto = value; }
         public string Descripcion { get => descripcion; set => descripcion = value; }
         public string Version { get => version; set => version = value; }
         public string Alcance { get => alcance; set => alcance = value; }
@@ -36,9 +49,19 @@ namespace SYSTEMCODE.Capa_de_Negocio
             return ProyectoDatos.ConsultarProyectoPorDescripcion(descripcionProyecto);
         }
 
+        public static Proyecto ObtenerProyectoPorID(int idProyecto)
+        {
+            return ProyectoDatos.ConsultarProyectoPorID(idProyecto);
+        }
+
         public static IList<Proyecto> ObtenerTablaProyectos()
         {
             return ProyectoDatos.ConsultarTablaProyectos();
+        }
+
+        public static DataTable ObtenerTablaProyectosComboBox()
+        {
+            return ProyectoDatos.ConsultarTablaProyectosComboBox();
         }
 
         public static IList<Proyecto> ObtenerTablaProyectosFiltro(string filtro)

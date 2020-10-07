@@ -255,6 +255,22 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
                     btnCancelar.Focus();
 
                     return;
+
+                case "Modificar":
+                    dgvUsuarios.Enabled = false;
+                    btnAgregar.Enabled = false;
+                    btnModificar.Enabled = false;
+                    btnEliminar.Enabled = false;
+
+                    numDNI.Enabled = false;
+                    cboPerfiles.Enabled = true;
+                    txtNombreUsuario.Enabled = true;
+                    txtClave.Enabled = true;
+                    txtEmail.Enabled = true;
+                    btnGuardar.Enabled = true;
+                    btnCancelar.Enabled = true;
+
+                    return;
             }
         }
 
@@ -311,7 +327,7 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
             }
 
             botonPresionado = "Modificar";
-            EstadoCampos("SI");
+            EstadoCampos("Modificar");
             CargarInforme("INFORME", false, true);
         }
 

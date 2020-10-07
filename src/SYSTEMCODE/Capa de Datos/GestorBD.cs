@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace SYSTEMCODE.Capa_de_Datos
@@ -57,6 +58,38 @@ namespace SYSTEMCODE.Capa_de_Datos
                 transaccion = conexion.BeginTransaction();
                 SqlCommand comando = new SqlCommand(SQL, conexion, transaccion);
                 comando.ExecuteNonQuery();
+                transaccion.Commit();
+            }
+            catch (SqlException)
+            {
+                if (transaccion != null)
+                {
+                    transaccion.Rollback();
+                }
+
+                return "ERROR DE ESCRITURA EN LA BASE DE DATOS";
+            }
+            finally
+            {
+                Desconectar();
+            }
+
+            return "";
+        }
+
+        public static string MultipleEjecucion(IList<string> listaSQL)
+        {
+            try
+            {
+                Conectar();
+                transaccion = conexion.BeginTransaction();
+
+                for (int i = 0; i < listaSQL.Count; i++)
+                {
+                    SqlCommand comando = new SqlCommand(listaSQL[i], conexion, transaccion);
+                    comando.ExecuteNonQuery();
+                }
+                
                 transaccion.Commit();
             }
             catch (SqlException)

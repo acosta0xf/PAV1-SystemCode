@@ -49,6 +49,8 @@
     <Compile Include="Capa de Datos\BarrioDatos.cs" />
     <Compile Include="Capa de Datos\ClienteDatos.cs" />
     <Compile Include="Capa de Datos\ContactoDatos.cs" />
+    <Compile Include="Capa de Datos\FacturaDatos.cs" />
+    <Compile Include="Capa de Datos\FacturaDetalleDatos.cs" />
     <Compile Include="Capa de Datos\GestorBD.cs" />
     <Compile Include="Capa de Datos\PerfilDatos.cs" />
     <Compile Include="Capa de Datos\ProyectoDatos.cs" />
@@ -56,6 +58,8 @@
     <Compile Include="Capa de Negocio\Barrio.cs" />
     <Compile Include="Capa de Negocio\Cliente.cs" />
     <Compile Include="Capa de Negocio\Contacto.cs" />
+    <Compile Include="Capa de Negocio\Factura.cs" />
+    <Compile Include="Capa de Negocio\FacturaDetalle.cs" />
     <Compile Include="Capa de Negocio\Perfil.cs" />
     <Compile Include="Capa de Negocio\Proyecto.cs" />
     <Compile Include="Capa de Negocio\Usuario.cs" />
@@ -89,6 +93,24 @@
     <Compile Include="Capa de Vista\ABMC\FrmUsuarios.Designer.cs">
       <DependentUpon>FrmUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Capa de Vista\FrmConfirmacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Capa de Vista\FrmConfirmacion.Designer.cs">
+      <DependentUpon>FrmConfirmacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Capa de Vista\FrmConsultarVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Capa de Vista\FrmConsultarVentas.Designer.cs">
+      <DependentUpon>FrmConsultarVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Capa de Vista\FrmGestionarVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Capa de Vista\FrmGestionarVentas.Designer.cs">
+      <DependentUpon>FrmGestionarVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Capa de Vista\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +139,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Capa de Vista\ABMC\FrmUsuarios.resx">
       <DependentUpon>FrmUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Capa de Vista\FrmConfirmacion.resx">
+      <DependentUpon>FrmConfirmacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Capa de Vista\FrmConsultarVentas.resx">
+      <DependentUpon>FrmConsultarVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Capa de Vista\FrmGestionarVentas.resx">
+      <DependentUpon>FrmGestionarVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Capa de Vista\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

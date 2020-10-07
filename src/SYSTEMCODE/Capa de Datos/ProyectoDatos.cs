@@ -9,6 +9,7 @@ namespace SYSTEMCODE.Capa_de_Datos
     {
         private static Proyecto DiseniarProyecto(int posicion, DataTable tabla)
         {
+            int idProyecto = Convert.ToInt32(tabla.Rows[posicion]["id_proyecto"].ToString());
             string descripcion = tabla.Rows[posicion]["descripcion"].ToString();
             string version = tabla.Rows[posicion]["version"].ToString();
             string alcance = tabla.Rows[posicion]["alcance"].ToString();
@@ -17,7 +18,7 @@ namespace SYSTEMCODE.Capa_de_Datos
 
             Usuario usuarioResponsable = UsuarioDatos.ConsultarUsuarioPorID(idResponsable);
 
-            return new Proyecto(descripcion, version, alcance, usuarioResponsable, borrado);
+            return new Proyecto(idProyecto, descripcion, version, alcance, usuarioResponsable, borrado);
         }
 
         public static Proyecto ConsultarProyectoPorDescripcion(string descripcionProyecto)
@@ -26,6 +27,19 @@ namespace SYSTEMCODE.Capa_de_Datos
                          "FROM Proyectos " +
                          "WHERE " +
                             "descripcion = '" + descripcionProyecto.ToString() + "'";
+
+            DataTable tabla = GestorBD.Consultar(SQL);
+
+            return (tabla.Rows.Count > 0) ? DiseniarProyecto(0, tabla) : null;
+        }
+
+        public static Proyecto ConsultarProyectoPorID(int idProyecto)
+        {
+            string SQL = "SELECT proyectos.* " +
+                         "FROM Proyectos proyectos " +
+                         "WHERE " +
+                            "id_proyecto = " + idProyecto.ToString() + " AND " +
+                            "borrado = 0";
 
             DataTable tabla = GestorBD.Consultar(SQL);
 
@@ -43,6 +57,15 @@ namespace SYSTEMCODE.Capa_de_Datos
             }
 
             return listaProyectos;
+        }
+
+        public static DataTable ConsultarTablaProyectosComboBox()
+        {
+            string SQL = "SELECT proyectos.* " +
+                        "FROM Proyectos proyectos " +
+                        "WHERE borrado = 0";
+
+            return GestorBD.Consultar(SQL);
         }
 
         public static IList<Proyecto> ConsultarTablaProyectosFiltro(string filtro)

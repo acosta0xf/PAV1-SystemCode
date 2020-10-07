@@ -37,7 +37,7 @@ namespace SYSTEMCODE.Capa_de_Datos
 
             return listaContactos;
         }
-
+        
         public static string InsertarContacto(Contacto contacto)
         {
             string SQL = "INSERT INTO Contactos " +

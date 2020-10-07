@@ -35,11 +35,11 @@ namespace SYSTEMCODE
                 case "Encargado General":
                     menuUsuarios.Enabled = true;
                     menuPerfiles.Enabled = true;
-                    menuClientes.Enabled = true;
-                    menuBarrios.Enabled = true;
-                    menuProyectos.Enabled = true;
-                    menuVentas.Enabled = true;
-                    menuInformes.Enabled = true;
+                    menuClientes.Enabled = false;
+                    menuBarrios.Enabled = false;
+                    menuProyectos.Enabled = false;
+                    menuVentas.Enabled = false;
+                    menuInformes.Enabled = false;
                     break;
 
                 case "Encargado de Administración":
@@ -66,8 +66,14 @@ namespace SYSTEMCODE
 
         private void MenuSalir_Click(object sender, EventArgs e)
         {
-            Close();
-            return;
+            FrmConfirmacion confirmacion = new FrmConfirmacion();
+            confirmacion.ShowDialog();
+
+            if (confirmacion.BtnSiPresionado)
+            {
+                Close();
+                return;
+            }
         }
 
         private void MenuUsuarios_Click(object sender, EventArgs e)
@@ -113,6 +119,15 @@ namespace SYSTEMCODE
                 Text = "Proyectos [Usuario: " + UsuarioActual.NombreUsuario + "]"
             };
             proyectos.ShowDialog();
+        }
+
+        private void MenuVentas_Click(object sender, EventArgs e)
+        {
+            FrmGestionarVentas ventas = new FrmGestionarVentas(UsuarioActual.NombreUsuario)
+            {
+                Text = "Venta [Usuario: " + UsuarioActual.NombreUsuario + "]"
+            };
+            ventas.ShowDialog();
         }
     }
 }

@@ -48,6 +48,15 @@ namespace SYSTEMCODE.Capa_de_Datos
             return listaClientes;
         }
 
+        public static DataTable ConsultarTablaClientesComboBox()
+        {
+            string SQL = "SELECT clientes.* " +
+                        "FROM Clientes clientes " +
+                        "WHERE borrado = 0";
+
+            return GestorBD.Consultar(SQL);
+        }
+
         public static IList<Cliente> ConsultarTablaClientesFiltro(string filtro)
         {
             string SQL = "SELECT clientes.* " +
@@ -70,6 +79,19 @@ namespace SYSTEMCODE.Capa_de_Datos
             string SQL = "SELECT clientes.* " +
                          "FROM Clientes clientes " +
                          "WHERE cuit = '" + CUIT.ToString() + "'";
+
+            DataTable tabla = GestorBD.Consultar(SQL);
+
+            return (tabla.Rows.Count > 0) ? DiseniarCliente(0, tabla) : null;
+        }
+
+        public static Cliente ConsultarClientePorID(int idCliente)
+        {
+            string SQL = "SELECT clientes.* " +
+                         "FROM Clientes clientes " +
+                         "WHERE " +
+                            "id_cliente = " + idCliente.ToString() + " AND " +
+                            "borrado = 0";
 
             DataTable tabla = GestorBD.Consultar(SQL);
 

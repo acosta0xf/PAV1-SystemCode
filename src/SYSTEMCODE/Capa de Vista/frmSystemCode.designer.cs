@@ -104,6 +104,7 @@
             this.menuVentas.Name = "menuVentas";
             this.menuVentas.Size = new System.Drawing.Size(53, 20);
             this.menuVentas.Text = "Ventas";
+            this.menuVentas.Click += new System.EventHandler(this.MenuVentas_Click);
             // 
             // menuInformes
             // 
