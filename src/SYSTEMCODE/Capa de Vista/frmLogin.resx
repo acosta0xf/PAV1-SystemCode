@@ -2086,6 +2086,16 @@
   <metadata name="temporizadorAcceso.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="btnLock.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAPBJREFUKFNjgIH///8z7jx82HjrvkNlILz30HEjkBhUGgH2HDoWsGbr9m+zVqy8
+        OWvlqptrt+38uu/oCX+oNAKs2b5rx7Sly9fOnz+fA4RnLF+xdu32nduh0hDw/4QQ37Qli24vXdWd/PoI
+        lxQIL1/bnTx92eJbIDmoMgaGj0f4T5/c7PT/+QHZ/0A2GD8DskFiIDmoMgaGz8uFnn6cLvr/wzRUDBID
+        yUGVARXOEXr6fpL4/3cTUPH7SWL/QXJQZRCFb/sl/r/plUTBIDEMhW96pf6/7pJGwSAxFIVf5gitAAqA
+        BFHxXKF/QHoFAwMDAwCiR70x9MS1MwAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAAAAAAAEAIAAvIAAAZgAAAICAAAABACAAKAgBAJUgAABAQAAAAQAgAChCAAC9KAEAMDAAAAEA

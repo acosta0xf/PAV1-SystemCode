@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPerfiles));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblCantidad = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBuscarPerfil = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -52,6 +53,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblCantidad);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtBuscarPerfil);
             this.groupBox1.Controls.Add(this.btnBuscar);
@@ -64,13 +66,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Perfiles Existentes";
             // 
+            // lblCantidad
+            // 
+            this.lblCantidad.AutoSize = true;
+            this.lblCantidad.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidad.Location = new System.Drawing.Point(7, 75);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(104, 15);
+            this.lblCantidad.TabIndex = 26;
+            this.lblCantidad.Text = "Total de registros:";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(7, 22);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 15);
+            this.label2.Size = new System.Drawing.Size(103, 15);
             this.label2.TabIndex = 25;
             this.label2.Text = "Nombre a Buscar";
             // 
@@ -79,7 +91,7 @@
             this.txtBuscarPerfil.Location = new System.Drawing.Point(10, 40);
             this.txtBuscarPerfil.MaxLength = 255;
             this.txtBuscarPerfil.Name = "txtBuscarPerfil";
-            this.txtBuscarPerfil.Size = new System.Drawing.Size(310, 23);
+            this.txtBuscarPerfil.Size = new System.Drawing.Size(310, 22);
             this.txtBuscarPerfil.TabIndex = 24;
             this.txtBuscarPerfil.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Letra_KeyPress);
             // 
@@ -97,7 +109,6 @@
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(92, 29);
             this.btnBuscar.TabIndex = 23;
-            this.btnBuscar.TabStop = false;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
@@ -116,7 +127,6 @@
             this.btnMostrarBorrados.Name = "btnMostrarBorrados";
             this.btnMostrarBorrados.Size = new System.Drawing.Size(159, 29);
             this.btnMostrarBorrados.TabIndex = 0;
-            this.btnMostrarBorrados.TabStop = false;
             this.btnMostrarBorrados.Text = "Mostrar Borrados";
             this.btnMostrarBorrados.UseVisualStyleBackColor = false;
             this.btnMostrarBorrados.Click += new System.EventHandler(this.BtnMostrarBorrados_Click);
@@ -130,14 +140,15 @@
             this.dgvPerfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPerfiles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nombre});
-            this.dgvPerfiles.Location = new System.Drawing.Point(5, 72);
+            this.dgvPerfiles.Location = new System.Drawing.Point(5, 93);
             this.dgvPerfiles.MultiSelect = false;
             this.dgvPerfiles.Name = "dgvPerfiles";
             this.dgvPerfiles.ReadOnly = true;
             this.dgvPerfiles.RowHeadersVisible = false;
             this.dgvPerfiles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPerfiles.Size = new System.Drawing.Size(419, 134);
+            this.dgvPerfiles.Size = new System.Drawing.Size(419, 113);
             this.dgvPerfiles.TabIndex = 0;
+            this.dgvPerfiles.TabStop = false;
             this.dgvPerfiles.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvPerfiles_CellClick);
             this.dgvPerfiles.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvPerfiles_CellClick);
             // 
@@ -161,7 +172,6 @@
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(92, 29);
             this.btnAgregar.TabIndex = 2;
-            this.btnAgregar.TabStop = false;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
@@ -180,7 +190,6 @@
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(92, 29);
             this.btnModificar.TabIndex = 3;
-            this.btnModificar.TabStop = false;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.BtnModificar_Click);
@@ -199,7 +208,6 @@
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(92, 29);
             this.btnEliminar.TabIndex = 4;
-            this.btnEliminar.TabStop = false;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
@@ -221,7 +229,7 @@
             this.label4.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(26, 75);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 15);
+            this.label4.Size = new System.Drawing.Size(52, 15);
             this.label4.TabIndex = 15;
             this.label4.Text = "Nombre";
             // 
@@ -231,7 +239,7 @@
             this.txtNombrePerfil.Location = new System.Drawing.Point(29, 93);
             this.txtNombrePerfil.MaxLength = 255;
             this.txtNombrePerfil.Name = "txtNombrePerfil";
-            this.txtNombrePerfil.Size = new System.Drawing.Size(372, 23);
+            this.txtNombrePerfil.Size = new System.Drawing.Size(372, 22);
             this.txtNombrePerfil.TabIndex = 0;
             // 
             // lblInformes
@@ -260,7 +268,6 @@
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(92, 29);
             this.btnCancelar.TabIndex = 6;
-            this.btnCancelar.TabStop = false;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
@@ -280,7 +287,6 @@
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(92, 29);
             this.btnGuardar.TabIndex = 5;
-            this.btnGuardar.TabStop = false;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
@@ -335,5 +341,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBuscarPerfil;
         private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Label lblCantidad;
     }
 }

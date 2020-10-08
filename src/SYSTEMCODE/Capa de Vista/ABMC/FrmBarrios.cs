@@ -169,6 +169,7 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
         private void FrmBarrios_Load(object sender, EventArgs e)
         {
             CargarTablaBarriosNoBorrados(dgvBarrios, Barrio.ObtenerBarrios());
+            lblCantidad.Text = "Total de registros: " + dgvBarrios.Rows.Count;
         }
 
         private void DgvBarrios_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -315,6 +316,7 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
 
                 CargarTablaBarriosNoBorrados(dgvBarrios, Barrio.ObtenerBarrios());
                 EstadoCampos("NO");
+                lblCantidad.Text = "Total de registros: " + dgvBarrios.Rows.Count;
             }
         }
 
@@ -331,10 +333,12 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
             if (btnMostrarBorrados.Text == "Mostrar Borrados")
             {
                 CargarTablaBarriosBorrados(dgvBarrios, Barrio.ObtenerBarrios());
+                lblCantidad.Text = "Total de registros: " + dgvBarrios.Rows.Count;
             }
             else
             {
                 CargarTablaBarriosNoBorrados(dgvBarrios, Barrio.ObtenerBarrios());
+                lblCantidad.Text = "Total de registros: " + dgvBarrios.Rows.Count;
             }
         }
 
@@ -349,6 +353,7 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
             else
             {
                 CargarInforme("SE ENCONTRARON USUARIOS\n DE ACUERDO AL FILTRO APLICADO", true, false);
+                lblCantidad.Text = "Total de registros: " + dgvBarrios.Rows.Count;
             }
         }
     }

@@ -199,6 +199,7 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
         {
             CargarTablaProyectosNoBorrados(dgvProyectos, Proyecto.ObtenerTablaProyectos());
             CargarComboBox(cboResponsable, Usuario.ObtenerTablaUsuariosComboBox());
+            lblCantidad.Text = "Total de registros: " + dgvProyectos.Rows.Count;
         }
 
         private void DgvProyectos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -337,6 +338,7 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
 
                 CargarTablaProyectosNoBorrados(dgvProyectos, Proyecto.ObtenerTablaProyectos());
                 EstadoCampos("NO");
+                lblCantidad.Text = "Total de registros: " + dgvProyectos.Rows.Count;
             }
         }
 
@@ -358,11 +360,13 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
             {
                 CargarTablaProyectosNoBorrados(dgvProyectos, Proyecto.ObtenerTablaProyectos());
             }
+            lblCantidad.Text = "Total de registros: " + dgvProyectos.Rows.Count;
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             CargarTablaProyectosNoBorrados(dgvProyectos, Proyecto.ObtenerTablaProyectosFiltro(txtBuscarDescripcion.Text));
+            lblCantidad.Text = "Total de registros: " + dgvProyectos.Rows.Count;
 
             if (dgvProyectos.Rows.Count == 0)
             {

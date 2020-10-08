@@ -36,6 +36,17 @@ namespace SYSTEMCODE.Capa_de_Vista
             }
         }
 
+        private void BtnLock_MouseDown(object sender, MouseEventArgs e)
+        {
+            txtClave.UseSystemPasswordChar = false;
+        }
+
+        private void BtnLock_MouseUp(object sender, MouseEventArgs e)
+        {
+            txtClave.UseSystemPasswordChar = true;
+        }
+
+
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
             btnIngresarPresionado = true;

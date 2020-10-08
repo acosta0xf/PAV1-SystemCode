@@ -91,6 +91,7 @@ namespace SYSTEMCODE.Capa_de_Vista
         private void FrmConsultarVentas_Load(object sender, EventArgs e)
         {
             CargarTablaVentasNoBorradas(dgvVentas, Factura.ObtenerTablaFacturas());
+            lblCantidad.Text = "Total de registros: " + dgvVentas.Rows.Count;
 
             dgvVentas.ClearSelection();
         }
@@ -133,6 +134,7 @@ namespace SYSTEMCODE.Capa_de_Vista
             {
                 CargarTablaVentasNoBorradas(dgvVentas, Factura.ObtenerTablaFacturas());
             }
+            lblCantidad.Text = "Total de registros: " + dgvVentas.Rows.Count;
         }
 
         private void DgvVentas_CellClick(object sender, DataGridViewCellEventArgs e)

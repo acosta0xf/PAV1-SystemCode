@@ -170,6 +170,7 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
         private void FrmPerfiles_Load(object sender, EventArgs e)
         {
             CargarTablaPerfilesNoBorrados(dgvPerfiles, Perfil.ObtenerPerfiles());
+            lblCantidad.Text = "Total de registros: " + dgvPerfiles.Rows.Count;
         }
 
         private void DgvPerfiles_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -316,6 +317,7 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
 
                 CargarTablaPerfilesNoBorrados(dgvPerfiles, Perfil.ObtenerPerfiles());
                 EstadoCampos("NO");
+                lblCantidad.Text = "Total de registros: " + dgvPerfiles.Rows.Count;
             }
         }
 
@@ -337,11 +339,13 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
             {
                 CargarTablaPerfilesNoBorrados(dgvPerfiles, Perfil.ObtenerPerfiles());
             }
+            lblCantidad.Text = "Total de registros: " + dgvPerfiles.Rows.Count;
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             CargarTablaPerfilesNoBorrados(dgvPerfiles, Perfil.ObtenerTablaPerfilesFiltro(txtBuscarPerfil.Text));
+            lblCantidad.Text = "Total de registros: " + dgvPerfiles.Rows.Count;
 
             if (dgvPerfiles.Rows.Count == 0)
             {

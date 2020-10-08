@@ -59,8 +59,7 @@
             this.btnSalir.Location = new System.Drawing.Point(191, 192);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(134, 33);
-            this.btnSalir.TabIndex = 8;
-            this.btnSalir.TabStop = false;
+            this.btnSalir.TabIndex = 1;
             this.btnSalir.Text = "NO";
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
@@ -78,8 +77,7 @@
             this.btnIngresar.Location = new System.Drawing.Point(51, 192);
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(134, 33);
-            this.btnIngresar.TabIndex = 9;
-            this.btnIngresar.TabStop = false;
+            this.btnIngresar.TabIndex = 2;
             this.btnIngresar.Text = "SI";
             this.btnIngresar.UseVisualStyleBackColor = false;
             this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
@@ -89,6 +87,7 @@
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Eurostile ExtendedTwo", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.Location = new System.Drawing.Point(13, 158);
+            this.lblUsuario.Location = new System.Drawing.Point(69, 160);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(348, 20);
             this.lblUsuario.TabIndex = 10;
