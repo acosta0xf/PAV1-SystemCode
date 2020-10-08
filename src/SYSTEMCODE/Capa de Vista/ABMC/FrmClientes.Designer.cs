@@ -81,6 +81,7 @@
             this.groupBox1.Controls.Add(this.btnBuscar);
             this.groupBox1.Controls.Add(this.btnMostrarBorrados);
             this.groupBox1.Controls.Add(this.dgvClientes);
+            this.groupBox1.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 20);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(431, 587);
@@ -94,7 +95,7 @@
             this.lblCantidad.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCantidad.Location = new System.Drawing.Point(7, 85);
             this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(104, 15);
+            this.lblCantidad.Size = new System.Drawing.Size(111, 15);
             this.lblCantidad.TabIndex = 26;
             this.lblCantidad.Text = "Total de registros:";
             // 
@@ -104,7 +105,7 @@
             this.label5.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(7, 30);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 15);
+            this.label5.Size = new System.Drawing.Size(89, 15);
             this.label5.TabIndex = 25;
             this.label5.Text = "CUIT a Buscar";
             // 
@@ -312,6 +313,7 @@
             this.groupBox2.Controls.Add(this.cboBarrios);
             this.groupBox2.Controls.Add(this.txtCalle);
             this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(449, 20);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(440, 266);
@@ -349,7 +351,7 @@
             this.label2.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(275, 140);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 15);
+            this.label2.Size = new System.Drawing.Size(53, 15);
             this.label2.TabIndex = 25;
             this.label2.Text = "Número";
             // 
@@ -392,7 +394,7 @@
             this.label6.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(33, 194);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 15);
+            this.label6.Size = new System.Drawing.Size(42, 15);
             this.label6.TabIndex = 19;
             this.label6.Text = "Barrio";
             // 
@@ -414,7 +416,7 @@
             this.cboBarrios.FormattingEnabled = true;
             this.cboBarrios.Location = new System.Drawing.Point(36, 212);
             this.cboBarrios.Name = "cboBarrios";
-            this.cboBarrios.Size = new System.Drawing.Size(372, 24);
+            this.cboBarrios.Size = new System.Drawing.Size(372, 23);
             this.cboBarrios.TabIndex = 19;
             // 
             // txtCalle
@@ -446,6 +448,7 @@
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.txtEmail);
             this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(449, 292);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(440, 266);
@@ -487,7 +490,7 @@
             this.label7.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(33, 31);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(52, 15);
+            this.label7.Size = new System.Drawing.Size(53, 15);
             this.label7.TabIndex = 21;
             this.label7.Text = "Nombre";
             // 
@@ -497,7 +500,7 @@
             this.label8.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(33, 194);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(55, 15);
+            this.label8.Size = new System.Drawing.Size(56, 15);
             this.label8.TabIndex = 19;
             this.label8.Text = "Teléfono";
             // 
@@ -507,7 +510,7 @@
             this.label9.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(33, 140);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(43, 15);
+            this.label9.Size = new System.Drawing.Size(42, 15);
             this.label9.TabIndex = 15;
             this.label9.Text = "E-Mail";
             // 
@@ -526,7 +529,7 @@
             this.label10.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(33, 85);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(51, 15);
+            this.label10.Size = new System.Drawing.Size(52, 15);
             this.label10.TabIndex = 12;
             this.label10.Text = "Apellido";
             // 

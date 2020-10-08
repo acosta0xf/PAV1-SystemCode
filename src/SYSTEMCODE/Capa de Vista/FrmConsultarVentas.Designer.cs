@@ -37,8 +37,9 @@
             this.nombreCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaCreacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnMostrarBorrados = new System.Windows.Forms.Button();
-            this.lblCantidad = new System.Windows.Forms.Label();
+            this.lblCantidad = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
+            this.lblCantidad.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -51,7 +52,7 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Eurostile", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(798, 382);
+            this.btnCancelar.Location = new System.Drawing.Point(798, 384);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(123, 29);
             this.btnCancelar.TabIndex = 9;
@@ -64,7 +65,7 @@
             // 
             this.lblInformes.Enabled = false;
             this.lblInformes.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInformes.Location = new System.Drawing.Point(190, 374);
+            this.lblInformes.Location = new System.Drawing.Point(190, 376);
             this.lblInformes.Name = "lblInformes";
             this.lblInformes.Size = new System.Drawing.Size(473, 46);
             this.lblInformes.TabIndex = 20;
@@ -81,7 +82,7 @@
             this.btnSeleccionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSeleccionar.Font = new System.Drawing.Font("Eurostile", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSeleccionar.ForeColor = System.Drawing.Color.White;
-            this.btnSeleccionar.Location = new System.Drawing.Point(669, 382);
+            this.btnSeleccionar.Location = new System.Drawing.Point(669, 384);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(123, 29);
             this.btnSeleccionar.TabIndex = 8;
@@ -101,13 +102,13 @@
             this.numeroFactura,
             this.nombreCliente,
             this.fechaCreacion});
-            this.dgvVentas.Location = new System.Drawing.Point(25, 34);
+            this.dgvVentas.Location = new System.Drawing.Point(6, 19);
             this.dgvVentas.MultiSelect = false;
             this.dgvVentas.Name = "dgvVentas";
             this.dgvVentas.ReadOnly = true;
             this.dgvVentas.RowHeadersVisible = false;
             this.dgvVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVentas.Size = new System.Drawing.Size(896, 326);
+            this.dgvVentas.Size = new System.Drawing.Size(910, 325);
             this.dgvVentas.TabIndex = 4;
             this.dgvVentas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvVentas_CellClick);
             this.dgvVentas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvVentas_CellClick);
@@ -140,7 +141,7 @@
             this.btnMostrarBorrados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMostrarBorrados.Font = new System.Drawing.Font("Eurostile", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMostrarBorrados.ForeColor = System.Drawing.Color.White;
-            this.btnMostrarBorrados.Location = new System.Drawing.Point(25, 382);
+            this.btnMostrarBorrados.Location = new System.Drawing.Point(25, 384);
             this.btnMostrarBorrados.Name = "btnMostrarBorrados";
             this.btnMostrarBorrados.Size = new System.Drawing.Size(159, 29);
             this.btnMostrarBorrados.TabIndex = 21;
@@ -151,11 +152,13 @@
             // 
             // lblCantidad
             // 
-            this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Location = new System.Drawing.Point(25, 13);
+            this.lblCantidad.Controls.Add(this.dgvVentas);
+            this.lblCantidad.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidad.Location = new System.Drawing.Point(12, 14);
             this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(91, 13);
-            this.lblCantidad.TabIndex = 22;
+            this.lblCantidad.Size = new System.Drawing.Size(922, 350);
+            this.lblCantidad.TabIndex = 23;
+            this.lblCantidad.TabStop = false;
             this.lblCantidad.Text = "Total de registros:";
             // 
             // FrmConsultarVentas
@@ -166,7 +169,6 @@
             this.ClientSize = new System.Drawing.Size(946, 436);
             this.Controls.Add(this.lblCantidad);
             this.Controls.Add(this.btnMostrarBorrados);
-            this.Controls.Add(this.dgvVentas);
             this.Controls.Add(this.btnSeleccionar);
             this.Controls.Add(this.lblInformes);
             this.Controls.Add(this.btnCancelar);
@@ -178,8 +180,8 @@
             this.Text = "FrmConsultarVentas";
             this.Load += new System.EventHandler(this.FrmConsultarVentas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
+            this.lblCantidad.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -192,6 +194,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaCreacion;
         private System.Windows.Forms.Button btnMostrarBorrados;
-        private System.Windows.Forms.Label lblCantidad;
+        private System.Windows.Forms.GroupBox lblCantidad;
     }
 }

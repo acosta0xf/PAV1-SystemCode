@@ -71,6 +71,7 @@
             this.groupBox1.Controls.Add(this.btnBuscar);
             this.groupBox1.Controls.Add(this.btnMostrarBorrados);
             this.groupBox1.Controls.Add(this.dgvUsuarios);
+            this.groupBox1.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 19);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(431, 421);
@@ -84,7 +85,7 @@
             this.lblCantidad.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCantidad.Location = new System.Drawing.Point(7, 77);
             this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(104, 15);
+            this.lblCantidad.Size = new System.Drawing.Size(111, 15);
             this.lblCantidad.TabIndex = 23;
             this.lblCantidad.Text = "Total de registros:";
             // 
@@ -94,7 +95,7 @@
             this.label2.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(7, 23);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 15);
+            this.label2.Size = new System.Drawing.Size(83, 15);
             this.label2.TabIndex = 22;
             this.label2.Text = "DNI a Buscar";
             // 
@@ -303,6 +304,7 @@
             this.groupBox2.Controls.Add(this.cboPerfiles);
             this.groupBox2.Controls.Add(this.txtNombreUsuario);
             this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(449, 19);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(440, 362);
@@ -360,7 +362,7 @@
             this.label6.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(33, 269);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(108, 15);
+            this.label6.Size = new System.Drawing.Size(114, 15);
             this.label6.TabIndex = 19;
             this.label6.Text = "Correo Electrónico";
             // 
@@ -399,7 +401,7 @@
             this.label4.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(33, 161);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(115, 15);
+            this.label4.Size = new System.Drawing.Size(119, 15);
             this.label4.TabIndex = 15;
             this.label4.Text = "Nombre de Usuario";
             // 
@@ -411,7 +413,7 @@
             this.cboPerfiles.FormattingEnabled = true;
             this.cboPerfiles.Location = new System.Drawing.Point(36, 124);
             this.cboPerfiles.Name = "cboPerfiles";
-            this.cboPerfiles.Size = new System.Drawing.Size(372, 24);
+            this.cboPerfiles.Size = new System.Drawing.Size(372, 23);
             this.cboPerfiles.TabIndex = 17;
             // 
             // txtNombreUsuario
@@ -429,7 +431,7 @@
             this.label3.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(33, 106);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 15);
+            this.label3.Size = new System.Drawing.Size(37, 15);
             this.label3.TabIndex = 12;
             this.label3.Text = "Perfil";
             // 

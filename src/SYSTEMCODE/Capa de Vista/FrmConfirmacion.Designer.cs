@@ -86,8 +86,7 @@
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Eurostile ExtendedTwo", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(13, 158);
-            this.lblUsuario.Location = new System.Drawing.Point(69, 160);
+            this.lblUsuario.Location = new System.Drawing.Point(11, 160);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(348, 20);
             this.lblUsuario.TabIndex = 10;

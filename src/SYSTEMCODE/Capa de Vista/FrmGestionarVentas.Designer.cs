@@ -95,6 +95,7 @@
             this.groupBox2.Controls.Add(this.cboBarrios);
             this.groupBox2.Controls.Add(this.txtCalle);
             this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(28, 59);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(440, 266);
@@ -128,7 +129,7 @@
             this.txtCUIT.Location = new System.Drawing.Point(36, 49);
             this.txtCUIT.MaxLength = 11;
             this.txtCUIT.Name = "txtCUIT";
-            this.txtCUIT.Size = new System.Drawing.Size(272, 20);
+            this.txtCUIT.Size = new System.Drawing.Size(272, 22);
             this.txtCUIT.TabIndex = 0;
             this.txtCUIT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
@@ -138,7 +139,7 @@
             this.txtNumero.Location = new System.Drawing.Point(276, 158);
             this.txtNumero.MaxLength = 255;
             this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(132, 20);
+            this.txtNumero.Size = new System.Drawing.Size(132, 22);
             this.txtNumero.TabIndex = 4;
             // 
             // label1
@@ -157,7 +158,7 @@
             this.txtRazonSocial.Location = new System.Drawing.Point(36, 103);
             this.txtRazonSocial.MaxLength = 255;
             this.txtRazonSocial.Name = "txtRazonSocial";
-            this.txtRazonSocial.Size = new System.Drawing.Size(372, 20);
+            this.txtRazonSocial.Size = new System.Drawing.Size(372, 22);
             this.txtRazonSocial.TabIndex = 2;
             // 
             // label3
@@ -198,7 +199,7 @@
             this.cboBarrios.FormattingEnabled = true;
             this.cboBarrios.Location = new System.Drawing.Point(36, 212);
             this.cboBarrios.Name = "cboBarrios";
-            this.cboBarrios.Size = new System.Drawing.Size(372, 21);
+            this.cboBarrios.Size = new System.Drawing.Size(372, 23);
             this.cboBarrios.TabIndex = 5;
             // 
             // txtCalle
@@ -207,7 +208,7 @@
             this.txtCalle.Location = new System.Drawing.Point(36, 158);
             this.txtCalle.MaxLength = 255;
             this.txtCalle.Name = "txtCalle";
-            this.txtCalle.Size = new System.Drawing.Size(234, 20);
+            this.txtCalle.Size = new System.Drawing.Size(234, 22);
             this.txtCalle.TabIndex = 3;
             // 
             // label5
@@ -230,6 +231,7 @@
             this.groupBox1.Controls.Add(this.cboResponsable);
             this.groupBox1.Controls.Add(this.txtVersion);
             this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(484, 59);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(440, 266);
@@ -245,7 +247,7 @@
             this.cboDescripcion.FormattingEnabled = true;
             this.cboDescripcion.Location = new System.Drawing.Point(36, 50);
             this.cboDescripcion.Name = "cboDescripcion";
-            this.cboDescripcion.Size = new System.Drawing.Size(372, 21);
+            this.cboDescripcion.Size = new System.Drawing.Size(372, 23);
             this.cboDescripcion.TabIndex = 0;
             this.cboDescripcion.SelectedIndexChanged += new System.EventHandler(this.CboDescripcion_SelectedIndexChanged);
             this.cboDescripcion.Click += new System.EventHandler(this.CboDescripcion_Click);
@@ -266,7 +268,7 @@
             this.txtAlcance.Location = new System.Drawing.Point(36, 159);
             this.txtAlcance.MaxLength = 255;
             this.txtAlcance.Name = "txtAlcance";
-            this.txtAlcance.Size = new System.Drawing.Size(372, 20);
+            this.txtAlcance.Size = new System.Drawing.Size(372, 22);
             this.txtAlcance.TabIndex = 2;
             // 
             // label8
@@ -297,7 +299,7 @@
             this.cboResponsable.FormattingEnabled = true;
             this.cboResponsable.Location = new System.Drawing.Point(36, 213);
             this.cboResponsable.Name = "cboResponsable";
-            this.cboResponsable.Size = new System.Drawing.Size(372, 21);
+            this.cboResponsable.Size = new System.Drawing.Size(372, 23);
             this.cboResponsable.TabIndex = 3;
             // 
             // txtVersion
@@ -306,7 +308,7 @@
             this.txtVersion.Location = new System.Drawing.Point(36, 104);
             this.txtVersion.MaxLength = 255;
             this.txtVersion.Name = "txtVersion";
-            this.txtVersion.Size = new System.Drawing.Size(372, 20);
+            this.txtVersion.Size = new System.Drawing.Size(372, 22);
             this.txtVersion.TabIndex = 1;
             // 
             // label10
@@ -330,6 +332,7 @@
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.txtCantidadLicencias);
             this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(28, 333);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(896, 220);
@@ -343,7 +346,7 @@
             this.txtCostoLicencia.Location = new System.Drawing.Point(26, 117);
             this.txtCostoLicencia.MaxLength = 5;
             this.txtCostoLicencia.Name = "txtCostoLicencia";
-            this.txtCostoLicencia.Size = new System.Drawing.Size(150, 20);
+            this.txtCostoLicencia.Size = new System.Drawing.Size(150, 22);
             this.txtCostoLicencia.TabIndex = 3;
             this.txtCostoLicencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             this.txtCostoLicencia.Leave += new System.EventHandler(this.TxtCostoLicencia_Leave);
@@ -354,7 +357,7 @@
             this.txtFechaRegistrada.MaxLength = 256;
             this.txtFechaRegistrada.Name = "txtFechaRegistrada";
             this.txtFechaRegistrada.ReadOnly = true;
-            this.txtFechaRegistrada.Size = new System.Drawing.Size(150, 20);
+            this.txtFechaRegistrada.Size = new System.Drawing.Size(150, 22);
             this.txtFechaRegistrada.TabIndex = 1;
             // 
             // label15
@@ -471,7 +474,7 @@
             this.txtCantidadLicencias.Location = new System.Drawing.Point(26, 76);
             this.txtCantidadLicencias.MaxLength = 3;
             this.txtCantidadLicencias.Name = "txtCantidadLicencias";
-            this.txtCantidadLicencias.Size = new System.Drawing.Size(150, 20);
+            this.txtCantidadLicencias.Size = new System.Drawing.Size(150, 22);
             this.txtCantidadLicencias.TabIndex = 2;
             this.txtCantidadLicencias.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
@@ -509,7 +512,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(25, 615);
+            this.label13.Location = new System.Drawing.Point(22, 613);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(104, 15);
             this.label13.TabIndex = 7;
@@ -517,11 +520,12 @@
             // 
             // txtCostoTotal
             // 
-            this.txtCostoTotal.Location = new System.Drawing.Point(28, 633);
+            this.txtCostoTotal.Font = new System.Drawing.Font("Eurostile", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCostoTotal.Location = new System.Drawing.Point(25, 631);
             this.txtCostoTotal.MaxLength = 256;
             this.txtCostoTotal.Name = "txtCostoTotal";
             this.txtCostoTotal.ReadOnly = true;
-            this.txtCostoTotal.Size = new System.Drawing.Size(101, 20);
+            this.txtCostoTotal.Size = new System.Drawing.Size(101, 22);
             this.txtCostoTotal.TabIndex = 6;
             this.txtCostoTotal.Text = "$0";
             // 
@@ -587,7 +591,7 @@
             // 
             this.lblInformes.Enabled = false;
             this.lblInformes.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInformes.Location = new System.Drawing.Point(30, 564);
+            this.lblInformes.Location = new System.Drawing.Point(30, 561);
             this.lblInformes.Name = "lblInformes";
             this.lblInformes.Size = new System.Drawing.Size(894, 46);
             this.lblInformes.TabIndex = 20;
