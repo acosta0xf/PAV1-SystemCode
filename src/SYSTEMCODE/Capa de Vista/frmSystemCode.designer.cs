@@ -144,7 +144,7 @@
             // 
             this.lblBienvenida.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(50)))), ((int)(((byte)(55)))));
             this.lblBienvenida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblBienvenida.Font = new System.Drawing.Font("Eurostile ExtendedTwo", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBienvenida.Font = new System.Drawing.Font("Eurostile", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBienvenida.ForeColor = System.Drawing.Color.White;
             this.lblBienvenida.Location = new System.Drawing.Point(-5, 492);
             this.lblBienvenida.Name = "lblBienvenida";
