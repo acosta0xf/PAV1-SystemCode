@@ -37,6 +37,7 @@
             this.nombreCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaCreacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnMostrarBorrados = new System.Windows.Forms.Button();
+            this.lblCantidad = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,13 +101,13 @@
             this.numeroFactura,
             this.nombreCliente,
             this.fechaCreacion});
-            this.dgvVentas.Location = new System.Drawing.Point(25, 17);
+            this.dgvVentas.Location = new System.Drawing.Point(25, 34);
             this.dgvVentas.MultiSelect = false;
             this.dgvVentas.Name = "dgvVentas";
             this.dgvVentas.ReadOnly = true;
             this.dgvVentas.RowHeadersVisible = false;
             this.dgvVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVentas.Size = new System.Drawing.Size(896, 343);
+            this.dgvVentas.Size = new System.Drawing.Size(896, 326);
             this.dgvVentas.TabIndex = 4;
             this.dgvVentas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvVentas_CellClick);
             this.dgvVentas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvVentas_CellClick);
@@ -148,12 +149,22 @@
             this.btnMostrarBorrados.UseVisualStyleBackColor = false;
             this.btnMostrarBorrados.Click += new System.EventHandler(this.BtnMostrarBorrados_Click);
             // 
+            // lblCantidad
+            // 
+            this.lblCantidad.AutoSize = true;
+            this.lblCantidad.Location = new System.Drawing.Point(25, 13);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(91, 13);
+            this.lblCantidad.TabIndex = 22;
+            this.lblCantidad.Text = "Total de registros:";
+            // 
             // FrmConsultarVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(946, 436);
+            this.Controls.Add(this.lblCantidad);
             this.Controls.Add(this.btnMostrarBorrados);
             this.Controls.Add(this.dgvVentas);
             this.Controls.Add(this.btnSeleccionar);
@@ -168,6 +179,7 @@
             this.Load += new System.EventHandler(this.FrmConsultarVentas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVentas)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -180,5 +192,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaCreacion;
         private System.Windows.Forms.Button btnMostrarBorrados;
+        private System.Windows.Forms.Label lblCantidad;
     }
 }

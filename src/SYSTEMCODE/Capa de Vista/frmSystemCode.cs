@@ -62,7 +62,7 @@ namespace SYSTEMCODE
                     menuInformes.Enabled = false;
                     break;
 
-                case "Testing":
+                /*case "Testing":
                     menuUsuarios.Enabled = true;
                     menuPerfiles.Enabled = true;
                     menuClientes.Enabled = true;
@@ -71,7 +71,7 @@ namespace SYSTEMCODE
                     menuVentas.Enabled = true;
                     menuInformes.Enabled = true;
                     break;
-
+                    */
                 default:
                     menuUsuarios.Enabled = false;
                     menuPerfiles.Enabled = false;

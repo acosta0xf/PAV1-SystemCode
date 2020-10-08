@@ -122,11 +122,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Eurostile ExtendedTwo", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(376, 350);
+            this.label1.Location = new System.Drawing.Point(326, 350);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(250, 37);
+            this.label1.Size = new System.Drawing.Size(356, 44);
             this.label1.TabIndex = 3;
             this.label1.Text = "SYSTEMCODE";
             // 
