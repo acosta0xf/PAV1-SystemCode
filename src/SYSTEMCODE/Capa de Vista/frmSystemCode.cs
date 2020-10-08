@@ -61,6 +61,27 @@ namespace SYSTEMCODE
                     menuVentas.Enabled = true;
                     menuInformes.Enabled = false;
                     break;
+
+                case "Testing":
+                    menuUsuarios.Enabled = true;
+                    menuPerfiles.Enabled = true;
+                    menuClientes.Enabled = true;
+                    menuBarrios.Enabled = true;
+                    menuProyectos.Enabled = true;
+                    menuVentas.Enabled = true;
+                    menuInformes.Enabled = true;
+                    break;
+
+                default:
+                    menuUsuarios.Enabled = false;
+                    menuPerfiles.Enabled = false;
+                    menuClientes.Enabled = false;
+                    menuBarrios.Enabled = false;
+                    menuProyectos.Enabled = false;
+                    menuVentas.Enabled = false;
+                    menuInformes.Enabled = false;
+                    break;
+
             }
         }
 
