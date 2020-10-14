@@ -68,7 +68,7 @@ namespace SYSTEMCODE.Capa_de_Negocio
         public string Email { get => email; set => email = value; }
         public bool Borrado { get => borrado; set => borrado = value; }
 
-        public static Usuario ValidarUsuario(string nombreUsuario, string clave)
+        public static (Usuario, string) ValidarUsuario(string nombreUsuario, string clave)
         {
             Usuario usuario = UsuarioDatos.ConsultarUsuarioPorNombreUsuario(nombreUsuario);
 
@@ -76,13 +76,13 @@ namespace SYSTEMCODE.Capa_de_Negocio
             {
                 if (usuario.Clave.Equals(clave) && !usuario.Borrado)
                 {
-                    return usuario;
+                    return (usuario, usuario.Perfil.Nombre);
                 }
 
-                return null;
+                return (null, "");
             }
 
-            return null;
+            return (null, "");
         }
 
         public static string ObtenerPerfil(Usuario usuario)
