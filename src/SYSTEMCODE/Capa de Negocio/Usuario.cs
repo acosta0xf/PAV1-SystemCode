@@ -129,5 +129,10 @@ namespace SYSTEMCODE.Capa_de_Negocio
         {
             return UsuarioDatos.EliminarUsuario(usuario);
         }
+
+        public static DataTable ObtenerListadoUsuariosActivos()
+        {
+            return UsuarioDatos.ConsultarListadoUsuariosActivos();
+        }
     }
 }

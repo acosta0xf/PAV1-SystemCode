@@ -96,5 +96,10 @@ namespace SYSTEMCODE.Capa_de_Negocio
         {
             return ClienteDatos.EliminarCliente(cliente);
         }
+
+        public static DataTable ObtenerListadoClientesActivos()
+        {
+            return ClienteDatos.ConsultarListadoClientesActivos();
+        }
     }
 }

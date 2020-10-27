@@ -164,5 +164,15 @@ namespace SYSTEMCODE.Capa_de_Datos
             
             return error;
         }
+
+        public static DataTable ConsultarListadoClientesActivos()
+        {
+            string SQL = "SELECT cuit, razon_social, fecha_alta, borrado " +
+                         "FROM Clientes " +
+                         "WHERE " +
+                            "borrado = 0";
+
+            return GestorBD.Consultar(SQL);
+        }
     }
 }

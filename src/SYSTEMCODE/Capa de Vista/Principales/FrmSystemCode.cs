@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using SYSTEMCODE.Capa_de_Negocio;
 using SYSTEMCODE.Capa_de_Vista;
 using SYSTEMCODE.Capa_de_Vista.ABMC;
+using SYSTEMCODE.Capa_de_Vista.Informes.Listados;
 
 namespace SYSTEMCODE
 {
@@ -82,7 +83,7 @@ namespace SYSTEMCODE
             usuarios.ShowDialog();
         }
 
-        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ClientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmClientes clientes = new FrmClientes
             {
@@ -91,7 +92,7 @@ namespace SYSTEMCODE
             clientes.ShowDialog();
         }
 
-        private void barriosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void BarriosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmBarrios barrios = new FrmBarrios
             {
@@ -100,7 +101,7 @@ namespace SYSTEMCODE
             barrios.ShowDialog();
         }
 
-        private void proyectosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ProyectosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmProyectos proyectos = new FrmProyectos
             {
@@ -109,7 +110,7 @@ namespace SYSTEMCODE
             proyectos.ShowDialog();
         }
 
-        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SalirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmConfirmacion confirmacion = new FrmConfirmacion();
             confirmacion.ShowDialog();
@@ -119,6 +120,49 @@ namespace SYSTEMCODE
                 Close();
                 return;
             }
+        }
+
+        private void ClientesActivosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string usuarioLogueado = UsuarioActual.NombreUsuario;
+
+            FrmListados clientesActivos = new FrmListados(usuarioLogueado, "Clientes Activos") {
+                Text = "Listado de Clientes Activos [Usuario logueado: " + usuarioLogueado + "]"
+            };
+            clientesActivos.ShowDialog();
+        }
+
+        private void UsuariosActivosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string usuarioLogueado = UsuarioActual.NombreUsuario;
+
+            FrmListados usuariosActivos = new FrmListados(usuarioLogueado, "Usuarios Activos")
+            {
+                Text = "Listado de Usuarios Activos [Usuario logueado: " + usuarioLogueado + "]"
+            };
+            usuariosActivos.ShowDialog();
+        }
+
+        private void ProyectosActivosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string usuarioLogueado = UsuarioActual.NombreUsuario;
+
+            FrmListados proyectosActivos = new FrmListados(usuarioLogueado, "Proyectos Activos")
+            {
+                Text = "Listado de Proyectos Activos [Usuario logueado: " + usuarioLogueado + "]"
+            };
+            proyectosActivos.ShowDialog();
+        }
+
+        private void VentasPorFechasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string usuarioLogueado = UsuarioActual.NombreUsuario;
+
+            FrmListados ventasPorFecha = new FrmListados(usuarioLogueado, "Ventas Por Fecha")
+            {
+                Text = "Listado de Ventas por Fecha [Usuario logueado: " + usuarioLogueado + "]"
+            };
+            ventasPorFecha.ShowDialog();
         }
     }
 }

@@ -83,5 +83,10 @@ namespace SYSTEMCODE.Capa_de_Negocio
         {
             return ProyectoDatos.EliminarProyecto(proyecto);
         }
+
+        public static DataTable ObtenerListadoProyectosActivos()
+        {
+            return ProyectoDatos.ConsultarListadoProyectosActivos();
+        }
     }
 }

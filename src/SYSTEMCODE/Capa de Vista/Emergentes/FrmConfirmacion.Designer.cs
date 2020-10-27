@@ -62,7 +62,7 @@
             this.btnSalir.TabIndex = 1;
             this.btnSalir.Text = "NO";
             this.btnSalir.UseVisualStyleBackColor = false;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            this.btnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
             // 
             // btnIngresar
             // 
@@ -80,7 +80,7 @@
             this.btnIngresar.TabIndex = 2;
             this.btnIngresar.Text = "SI";
             this.btnIngresar.UseVisualStyleBackColor = false;
-            this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
+            this.btnIngresar.Click += new System.EventHandler(this.BtnIngresar_Click);
             // 
             // lblUsuario
             // 

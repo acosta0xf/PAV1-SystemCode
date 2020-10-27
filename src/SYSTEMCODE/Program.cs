@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using SYSTEMCODE.Capa_de_Vista;
-using SYSTEMCODE.Capa_de_Vista.ABMC;
+using SYSTEMCODE.Capa_de_Vista.Informes.Listados;
 
 namespace SYSTEMCODE
 {
