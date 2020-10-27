@@ -123,5 +123,16 @@ namespace SYSTEMCODE.Capa_de_Datos
 
             return GestorBD.Ejecutar(SQL);
         }
+
+        public static DataTable ConsultarListadoProyectosActivos()
+        {
+            string SQL = "SELECT p.descripcion, p.version, p.alcance, u.usuario " +
+                         "FROM Proyectos p, Usuarios u " +
+                         "WHERE " +
+                            "p.id_responsable = u.id_usuario AND " +
+                            "p.borrado = 0";
+
+            return GestorBD.Consultar(SQL);
+        }
     }
 }

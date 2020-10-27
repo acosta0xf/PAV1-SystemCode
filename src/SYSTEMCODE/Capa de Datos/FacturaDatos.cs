@@ -91,5 +91,18 @@ namespace SYSTEMCODE.Capa_de_Datos
 
             return GestorBD.MultipleEjecucion(listaSQL);
         }
+
+        public static DataTable ConsultarListadoFacturasPorFecha(string fechaDesde, string fechaHasta)
+        {
+            string SQL = "SELECT f.numero_factura, c.razon_social, FORMAT(f.fecha, 'dd/MM/yyyy') as fecha, u.usuario " +
+                         "FROM Facturas f, Clientes c, Usuarios u " +
+                         "WHERE " +
+                            "f.borrado = 0 AND " +
+                            "f.id_cliente = c.id_cliente AND " +
+                            "f.id_usuario_creador = u.id_usuario AND " +
+                            "f.fecha BETWEEN '" + fechaDesde + "' AND '" + fechaHasta + "'";
+
+            return GestorBD.Consultar(SQL);
+        }
     }
 }

@@ -54,5 +54,10 @@ namespace SYSTEMCODE.Capa_de_Negocio
         {
             return FacturaDatos.AnularFactura(factura);
         }
+
+        public static DataTable ObtenerListadoFacturasPorFecha(string fechaDesde, string fechaHasta)
+        {
+            return FacturaDatos.ConsultarListadoFacturasPorFecha(fechaDesde, fechaHasta);
+        }
     }
 }

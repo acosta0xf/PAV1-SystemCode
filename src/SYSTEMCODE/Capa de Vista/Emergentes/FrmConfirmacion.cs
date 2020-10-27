@@ -14,13 +14,13 @@ namespace SYSTEMCODE.Capa_de_Vista
 
         public bool BtnSiPresionado { get => btnSiPresionado; set => btnSiPresionado = value; }
 
-        private void btnIngresar_Click(object sender, EventArgs e)
+        private void BtnIngresar_Click(object sender, EventArgs e)
         {
             Close();
             BtnSiPresionado = true;
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
+        private void BtnSalir_Click(object sender, EventArgs e)
         {
             Close();
             return;

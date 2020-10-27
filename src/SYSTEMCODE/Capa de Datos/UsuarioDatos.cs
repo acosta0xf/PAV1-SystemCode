@@ -136,5 +136,16 @@ namespace SYSTEMCODE.Capa_de_Datos
 
             return GestorBD.Ejecutar(SQL);
         }
+
+        public static DataTable ConsultarListadoUsuariosActivos()
+        {
+            string SQL = "SELECT u.dni, u.usuario, u.email, p.nombre " +
+                         "FROM Usuarios u, Perfiles p " +
+                         "WHERE " +
+                            "u.id_perfil = p.id_perfil AND " + 
+                            "u.borrado = 0";
+
+            return GestorBD.Consultar(SQL);
+        }
     }
 }
