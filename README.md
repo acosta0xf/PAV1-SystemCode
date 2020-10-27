@@ -23,6 +23,12 @@ Repositorio para el Trabajo Práctico Integrador de la materia PAV1
 - Validaciones de Control de Barrios (No se permite borrar un barrio si aún siguen clientes asociados)
 - Validaciones de Proyectos repetidos
 - Validaciones en el Número de Factura al momento de generar una Venta (Autoincrementable)
+- Ventana de Listados
+- Conjunto de Datos para Listados
+- Diseño de Listado: Clientes Activos
+- Diseño de Listado: Usuarios Activos
+- Diseño de Listado: Proyectos Activos
+- Diseño de Listado: Ventas por Fechas
 
 # BASE DE DATOS
 Se debe cargar la base de datos con el script almacenado en el repositorio, por los siguientes motivos:
