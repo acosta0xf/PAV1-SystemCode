@@ -134,5 +134,16 @@ namespace SYSTEMCODE.Capa_de_Datos
 
             return GestorBD.Consultar(SQL);
         }
+
+        public static DataTable ConsultarProyectosConMasVentas()
+        {
+            string SQL = "SELECT TOP(15) p.descripcion, SUM(fd.cantidad_licencias) as cantidad_licencias " +
+                         "FROM FacturasDetalle fd, Proyectos p " +
+                         "WHERE " +
+                            "fd.id_proyecto = p.id_proyecto " +
+                         "GROUP BY p.descripcion";
+
+            return GestorBD.Consultar(SQL);
+        }
     }
 }

@@ -111,11 +111,22 @@
     <Compile Include="Capa de Vista\Emergentes\FrmConfirmacion.Designer.cs">
       <DependentUpon>FrmConfirmacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Capa de Vista\Informes\Estadisticas\DatosEstadisticas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatosEstadisticas.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Capa de Vista\Informes\FrmFacturaVenta.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Capa de Vista\Informes\FrmFacturaVenta.Designer.cs">
       <DependentUpon>FrmFacturaVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Capa de Vista\Informes\FrmEstadisticas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Capa de Vista\Informes\FrmEstadisticas.Designer.cs">
+      <DependentUpon>FrmEstadisticas.cs</DependentUpon>
     </Compile>
     <Compile Include="Capa de Vista\Informes\FrmProyectosClientes.cs">
       <SubType>Form</SubType>
@@ -181,8 +192,13 @@
     <EmbeddedResource Include="Capa de Vista\Emergentes\FrmConfirmacion.resx">
       <DependentUpon>FrmConfirmacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Capa de Vista\Informes\Estadisticas\ProyectosVentas.rdlc" />
+    <EmbeddedResource Include="Capa de Vista\Informes\Estadisticas\BarriosVentas.rdlc" />
     <EmbeddedResource Include="Capa de Vista\Informes\FrmFacturaVenta.resx">
       <DependentUpon>FrmFacturaVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Capa de Vista\Informes\FrmEstadisticas.resx">
+      <DependentUpon>FrmEstadisticas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Capa de Vista\Informes\FrmProyectosClientes.resx">
       <DependentUpon>FrmProyectosClientes.cs</DependentUpon>
@@ -218,6 +234,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Capa de Vista\Informes\Estadisticas\DatosEstadisticas.xsc">
+      <DependentUpon>DatosEstadisticas.xsd</DependentUpon>
+    </None>
+    <None Include="Capa de Vista\Informes\Estadisticas\DatosEstadisticas.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatosEstadisticas.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Capa de Vista\Informes\Estadisticas\DatosEstadisticas.xss">
+      <DependentUpon>DatosEstadisticas.xsd</DependentUpon>
+    </None>
     <None Include="Capa de Vista\Informes\Listados\DatosListados.xsc">
       <DependentUpon>DatosListados.xsd</DependentUpon>
     </None>

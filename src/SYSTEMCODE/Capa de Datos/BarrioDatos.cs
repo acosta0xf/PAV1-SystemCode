@@ -102,5 +102,17 @@ namespace SYSTEMCODE.Capa_de_Datos
 
             return GestorBD.Ejecutar(SQL);
         }
+
+        public static DataTable ConsultarBarriosConMasVentas()
+        {
+            string SQL = "SELECT TOP(15) b.nombre, COUNT(*) as cantidad_ventas " +
+                         "FROM Barrios b, Facturas f, Clientes c " +
+                         "WHERE " +
+                            "f.id_cliente = c.id_cliente AND " +
+                            "c.id_barrio = b.id_barrio " +
+                         "GROUP BY b.nombre";
+
+            return GestorBD.Consultar(SQL);
+        }
     }
 }

@@ -10,15 +10,15 @@ using SYSTEMCODE.Capa_de_Negocio;
 
 namespace SYSTEMCODE.Capa_de_Vista.Informes
 {
-    public partial class FrmProyectosClientes : Form
+    public partial class FrmEstadisticas : Form
     {
         private readonly string usuarioGenerador;
+        private readonly string modoApertura;
 
-        private Cliente nuevoCliente;
-
-        public FrmProyectosClientes(string usuarioGenerador)
+        public FrmEstadisticas(string usuarioGenerador, string modoApertura)
         {
             this.usuarioGenerador = usuarioGenerador;
+            this.modoApertura = modoApertura;
 
             InitializeComponent();
         }
@@ -59,24 +59,37 @@ namespace SYSTEMCODE.Capa_de_Vista.Informes
             return false;
         }
 
-        private void HabilitarControles(bool modo)
-        {
-            txtEmail.Enabled = modo;
-            btnImprimir.Enabled = modo;
-            btnPDF.Enabled = modo;
-            btnEmail.Enabled = modo;
+        private void ModoListado(DataTable tablaDatos, string modoApertura) {
+            ReportDataSource reporte = new ReportDataSource(modoApertura, tablaDatos);
+
+            IList<ReportParameter> parametros = new List<ReportParameter>
+            {
+                new ReportParameter("FechaCreacion", DateTime.Now.ToString("dd/MM/yyyy - HH:mm:ss")),
+                new ReportParameter("UsuarioCreador", usuarioGenerador.ToString())
+            };
+
+            this.rvListado.LocalReport.ReportEmbeddedResource = "SYSTEMCODE.Capa_de_Vista.Informes.Estadisticas." + modoApertura + ".rdlc";
+            this.rvListado.LocalReport.DataSources.Clear();
+            this.rvListado.LocalReport.DataSources.Add(reporte);
+            this.rvListado.LocalReport.SetParameters(parametros);
+            this.rvListado.RefreshReport();
         }
 
-        private void FrmProyectosClientes_Load(object sender, EventArgs e)
+        private void FrmEstadisticas_Load(object sender, EventArgs e)
         {
-            HabilitarControles(false);
-            dtpFechaDesde.Enabled = false;
-            dtpFechaHasta.Enabled = false;
-            btnGenerar.Enabled = false;
-            btnBuscar.Enabled = true;
+            switch (modoApertura)
+            {
+                case "Barrios con más Ventas":
+                    ModoListado(Barrio.ObtenerBarriosConMasVentas(), "BarriosVentas");
+                    break;
 
-            dtpFechaDesde.Value = DateTime.Now;
-            dtpFechaHasta.Value = DateTime.Now;
+                case "Proyectos con más Ventas":
+                    ModoListado(Proyecto.ObtenerProyectosConMasVentas(), "ProyectosVentas");
+                    break;
+
+                default:
+                    break;
+            }
         }
 
         private void BtnImprimir_Click(object sender, EventArgs e)
@@ -97,7 +110,7 @@ namespace SYSTEMCODE.Capa_de_Vista.Informes
 
             SaveFileDialog guardar = new SaveFileDialog
             {
-                FileName = "Reporte",
+                FileName = "Estadistica",
                 DefaultExt = ".pdf",
                 Filter = "PDF (*.pdf)|*.pdf"
             };
@@ -140,9 +153,9 @@ namespace SYSTEMCODE.Capa_de_Vista.Informes
 
                 MailMessage correo = new MailMessage { From = new MailAddress(emailRemitente, nombreRemitente) };
                 correo.To.Add(new MailAddress(emailDestinatario));
-                correo.Subject = "Reporte de Proyectos Comprados";
-                correo.Attachments.Add(new Attachment(new MemoryStream(bytes), "Reporte.pdf"));
-                correo.Body = "Estimado, se le adjunta el reporte solicitado. Saludos!";
+                correo.Subject = "Estadística de " + modoApertura.ToString();
+                correo.Attachments.Add(new Attachment(new MemoryStream(bytes), "Estadistica.pdf"));
+                correo.Body = "Estimado, se le adjunta la estadística solicitada. Saludos!";
 
                 try
                 {
@@ -185,98 +198,6 @@ namespace SYSTEMCODE.Capa_de_Vista.Informes
             if (txtEmail.Text == "Correo Electrónico")
             {
                 txtEmail.Text = "";
-            }
-        }
-
-        private void BtnGenerar_Click(object sender, EventArgs e)
-        {
-            if (dtpFechaDesde.Value > dtpFechaHasta.Value)
-            {
-                CargarInforme("FECHA INICIAL NO PUEDE SER SUPERIOR A\n" + dtpFechaHasta.Value.ToString("dd/MM/yyyy"), false, false);
-                return;
-            }
-
-            if (dtpFechaHasta.Value > DateTime.Now)
-            {
-                CargarInforme("FECHA FINAL NO PUEDE SER SUPERIOR A\n" + DateTime.Now.ToString("dd/MM/yyyy"), false, false);
-                return;
-            }
-
-            if (dtpFechaHasta.Value < dtpFechaDesde.Value)
-            {
-                CargarInforme("FECHA FINAL NO PUEDE SER INFERIOR A\n" + dtpFechaDesde.Value.ToString("dd/MM/yyyy"), false, false);
-                return;
-            }
-
-            CargarInforme("INFORME", false, true);
-
-            DateTime fechaDesde = dtpFechaDesde.Value;
-            DateTime fechaHasta = dtpFechaHasta.Value;
-            string numeroCliente = txtCuit.Text;
-
-            DataTable tablaResultado = Cliente.ObtenerProyectosPorCliente(numeroCliente, fechaDesde.ToString("yyyy-MM-dd"), fechaHasta.ToString("yyyy-MM-dd"));
-
-            if (tablaResultado.Rows.Count > 0)
-            {
-                HabilitarControles(true);
-
-                ReportDataSource reporte = new ReportDataSource("ProyectosClientes", tablaResultado);
-
-                IList<ReportParameter> parametros = new List<ReportParameter>
-                {
-                    new ReportParameter("RazonSocial", nuevoCliente.Razon_social.ToString()),
-                    new ReportParameter("FechaDesde", fechaDesde.ToString("dd/MM/yyyy")),
-                    new ReportParameter("FechaHasta", fechaHasta.ToString("dd/MM/yyyy")),
-                    new ReportParameter("FechaCreacion", DateTime.Now.ToString("dd/MM/yyyy - HH:mm:ss")),
-                    new ReportParameter("CantidadProyectos", tablaResultado.Rows.Count.ToString()),
-                    new ReportParameter("UsuarioCreador", usuarioGenerador.ToString())
-                };
-
-                this.rvListado.LocalReport.ReportEmbeddedResource = "SYSTEMCODE.Capa_de_Vista.Informes.Reportes.ProyectosClientes.rdlc";
-                this.rvListado.LocalReport.DataSources.Clear();
-                this.rvListado.LocalReport.DataSources.Add(reporte);
-                this.rvListado.LocalReport.SetParameters(parametros);
-                this.rvListado.RefreshReport();
-            }
-            else
-            {
-                HabilitarControles(false);
-                rvListado.Clear();
-                CargarInforme("LA BÚSQUEDA NO ARROJÓ RESULTADOS", false, false);
-            }
-        }
-
-        private void BtnBuscar_Click(object sender, EventArgs e)
-        {
-            if (txtCuit.Text == "")
-            {
-                CargarInforme("DATO OBLIGATORIO: CUIT", false, false);
-                txtCuit.Text = "";
-                txtCuit.Focus();
-
-                return;
-            }
-
-            if (txtCuit.Text.ToString().Length < 11)
-            {
-                CargarInforme("DATO OBLIGATORIO: CUIT [11 NÚMEROS]", false, false);
-                txtCuit.Focus();
-
-                return;
-            }
-
-            nuevoCliente = Cliente.ObtenerCliente(txtCuit.Text);
-            if (nuevoCliente != null)
-            {
-                dtpFechaDesde.Enabled = true;
-                dtpFechaHasta.Enabled = true;
-                btnGenerar.Enabled = true;
-
-                CargarInforme("CLIENTE LOCALIZADO\nINGRESE FECHAS", true, false);
-            }
-            else
-            {
-                CargarInforme("CLIENTE NO REGISTRADO", false, false);
             }
         }
     }

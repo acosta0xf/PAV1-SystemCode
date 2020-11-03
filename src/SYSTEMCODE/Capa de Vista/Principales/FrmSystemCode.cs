@@ -176,5 +176,27 @@ namespace SYSTEMCODE
             };
             proyectosClientes.ShowDialog();
         }
+
+        private void BarriosConMásVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string usuarioLogueado = UsuarioActual.NombreUsuario;
+
+            FrmEstadisticas estadisticas = new FrmEstadisticas(usuarioLogueado, "Barrios con más Ventas")
+            {
+                Text = "Barrios con más Ventas [Usuario logueado: " + usuarioLogueado + "]"
+            };
+            estadisticas.ShowDialog();
+        }
+
+        private void ProyectosConMásVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string usuarioLogueado = UsuarioActual.NombreUsuario;
+
+            FrmEstadisticas estadisticas = new FrmEstadisticas(usuarioLogueado, "Proyectos con más Ventas")
+            {
+                Text = "Proyectos con más Ventas [Usuario logueado: " + usuarioLogueado + "]"
+            };
+            estadisticas.ShowDialog();
+        }
     }
 }

@@ -4,8 +4,6 @@ using System.Data;
 using System.Windows.Forms;
 using SYSTEMCODE.Capa_de_Negocio;
 using SYSTEMCODE.Capa_de_Vista.Informes;
-using SYSTEMCODE.Capa_de_Vista.Informes.Listados;
-using SYSTEMCODE.Capa_de_Vista.Informes.Reportes;
 
 namespace SYSTEMCODE.Capa_de_Vista
 {

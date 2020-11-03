@@ -46,12 +46,15 @@
             this.proyectosActivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasPorFechasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.proyectosPorClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeLaLicenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblBienvenida = new System.Windows.Forms.Label();
             this.elemento1 = new System.Windows.Forms.ToolTip(this.components);
-            this.proyectosPorClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.estadísticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.barriosConMásVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.proyectosConMásVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -133,7 +136,8 @@
             // 
             this.menuInformes.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.listadosToolStripMenuItem,
-            this.reportesToolStripMenuItem});
+            this.reportesToolStripMenuItem,
+            this.estadísticasToolStripMenuItem});
             this.menuInformes.Name = "menuInformes";
             this.menuInformes.Size = new System.Drawing.Size(66, 20);
             this.menuInformes.Text = "Informes";
@@ -185,6 +189,13 @@
             this.reportesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.reportesToolStripMenuItem.Text = "Reportes";
             // 
+            // proyectosPorClienteToolStripMenuItem
+            // 
+            this.proyectosPorClienteToolStripMenuItem.Name = "proyectosPorClienteToolStripMenuItem";
+            this.proyectosPorClienteToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.proyectosPorClienteToolStripMenuItem.Text = "Proyectos por Cliente";
+            this.proyectosPorClienteToolStripMenuItem.Click += new System.EventHandler(this.ProyectosPorClienteToolStripMenuItem_Click);
+            // 
             // acercaDeLaLicenciaToolStripMenuItem
             // 
             this.acercaDeLaLicenciaToolStripMenuItem.Name = "acercaDeLaLicenciaToolStripMenuItem";
@@ -224,12 +235,28 @@
             this.lblBienvenida.TabIndex = 5;
             this.lblBienvenida.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // proyectosPorClienteToolStripMenuItem
+            // estadísticasToolStripMenuItem
             // 
-            this.proyectosPorClienteToolStripMenuItem.Name = "proyectosPorClienteToolStripMenuItem";
-            this.proyectosPorClienteToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
-            this.proyectosPorClienteToolStripMenuItem.Text = "Proyectos por Cliente";
-            this.proyectosPorClienteToolStripMenuItem.Click += new System.EventHandler(this.ProyectosPorClienteToolStripMenuItem_Click);
+            this.estadísticasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.barriosConMásVentasToolStripMenuItem,
+            this.proyectosConMásVentasToolStripMenuItem});
+            this.estadísticasToolStripMenuItem.Name = "estadísticasToolStripMenuItem";
+            this.estadísticasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.estadísticasToolStripMenuItem.Text = "Estadísticas";
+            // 
+            // barriosConMásVentasToolStripMenuItem
+            // 
+            this.barriosConMásVentasToolStripMenuItem.Name = "barriosConMásVentasToolStripMenuItem";
+            this.barriosConMásVentasToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.barriosConMásVentasToolStripMenuItem.Text = "Barrios con más Ventas";
+            this.barriosConMásVentasToolStripMenuItem.Click += new System.EventHandler(this.BarriosConMásVentasToolStripMenuItem_Click);
+            // 
+            // proyectosConMásVentasToolStripMenuItem
+            // 
+            this.proyectosConMásVentasToolStripMenuItem.Name = "proyectosConMásVentasToolStripMenuItem";
+            this.proyectosConMásVentasToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.proyectosConMásVentasToolStripMenuItem.Text = "Proyectos con más Ventas";
+            this.proyectosConMásVentasToolStripMenuItem.Click += new System.EventHandler(this.ProyectosConMásVentasToolStripMenuItem_Click);
             // 
             // FrmSystemCode
             // 
@@ -282,5 +309,8 @@
         private System.Windows.Forms.ToolStripMenuItem ventasPorFechasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem proyectosPorClienteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem estadísticasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem barriosConMásVentasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem proyectosConMásVentasToolStripMenuItem;
     }
 }
