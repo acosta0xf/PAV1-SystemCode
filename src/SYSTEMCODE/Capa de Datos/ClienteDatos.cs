@@ -167,10 +167,24 @@ namespace SYSTEMCODE.Capa_de_Datos
 
         public static DataTable ConsultarListadoClientesActivos()
         {
-            string SQL = "SELECT cuit, razon_social, fecha_alta, borrado " +
+            string SQL = "SELECT cuit, razon_social, CONVERT(varchar(10), CAST(fecha_alta AS date), 103) as fecha_alta, borrado " +
                          "FROM Clientes " +
                          "WHERE " +
                             "borrado = 0";
+
+            return GestorBD.Consultar(SQL);
+        }
+
+        public static DataTable ConsultarProyectosPorCliente(int idCliente, string fechaDesde, string fechaHasta)
+        {
+            string SQL = "SELECT CONVERT(varchar(10), CAST(f.fecha AS date), 103) as fecha, p.descripcion, p.version, p.alcance, fd.cantidad_licencias " +
+                         "FROM Facturas f, FacturasDetalle fd, Proyectos p " +
+                         "WHERE " +
+                            "f.borrado = 0 AND " +
+                            "f.id_cliente = " + idCliente.ToString() + " AND " +
+                            "f.numero_factura = fd.numero_factura AND " +
+                            "fd.id_proyecto = p.id_proyecto AND " +
+                            "f.fecha BETWEEN '" + fechaDesde.ToString() + "' AND '" + fechaHasta.ToString() + "'";
 
             return GestorBD.Consultar(SQL);
         }

@@ -111,6 +111,18 @@
     <Compile Include="Capa de Vista\Emergentes\FrmConfirmacion.Designer.cs">
       <DependentUpon>FrmConfirmacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Capa de Vista\Informes\FrmFacturaVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Capa de Vista\Informes\FrmFacturaVenta.Designer.cs">
+      <DependentUpon>FrmFacturaVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Capa de Vista\Informes\FrmProyectosClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Capa de Vista\Informes\FrmProyectosClientes.Designer.cs">
+      <DependentUpon>FrmProyectosClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Capa de Vista\Informes\FrmListados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +133,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DatosListados.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Capa de Vista\Informes\Reportes\DatosReportes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatosReportes.xsd</DependentUpon>
     </Compile>
     <Compile Include="Capa de Vista\Ventas\FrmConsultarVentas.cs">
       <SubType>Form</SubType>
@@ -164,6 +181,12 @@
     <EmbeddedResource Include="Capa de Vista\Emergentes\FrmConfirmacion.resx">
       <DependentUpon>FrmConfirmacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Capa de Vista\Informes\FrmFacturaVenta.resx">
+      <DependentUpon>FrmFacturaVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Capa de Vista\Informes\FrmProyectosClientes.resx">
+      <DependentUpon>FrmProyectosClientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Capa de Vista\Informes\FrmListados.resx">
       <DependentUpon>FrmListados.cs</DependentUpon>
     </EmbeddedResource>
@@ -171,6 +194,8 @@
     <EmbeddedResource Include="Capa de Vista\Informes\Listados\VentasPorFecha.rdlc" />
     <EmbeddedResource Include="Capa de Vista\Informes\Listados\UsuariosActivos.rdlc" />
     <EmbeddedResource Include="Capa de Vista\Informes\Listados\ClientesActivos.rdlc" />
+    <EmbeddedResource Include="Capa de Vista\Informes\Reportes\FacturaVenta.rdlc" />
+    <EmbeddedResource Include="Capa de Vista\Informes\Reportes\ProyectosClientes.rdlc" />
     <EmbeddedResource Include="Capa de Vista\Ventas\FrmConsultarVentas.resx">
       <DependentUpon>FrmConsultarVentas.cs</DependentUpon>
     </EmbeddedResource>
@@ -203,6 +228,17 @@
     </None>
     <None Include="Capa de Vista\Informes\Listados\DatosListados.xss">
       <DependentUpon>DatosListados.xsd</DependentUpon>
+    </None>
+    <None Include="Capa de Vista\Informes\Reportes\DatosReportes.xsc">
+      <DependentUpon>DatosReportes.xsd</DependentUpon>
+    </None>
+    <None Include="Capa de Vista\Informes\Reportes\DatosReportes.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatosReportes.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Capa de Vista\Informes\Reportes\DatosReportes.xss">
+      <DependentUpon>DatosReportes.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

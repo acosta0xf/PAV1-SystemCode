@@ -39,5 +39,24 @@ namespace SYSTEMCODE.Capa_de_Datos
 
             return listaFacturaDetalle;
         }
+
+        public static DataTable ConsultarDetalleFactura(string idFactura)
+        {
+            string SQL = "SELECT " +
+                            "fd.cantidad_licencias, " +
+                            "p.descripcion, " +
+                            "p.version, " +
+                            "p.alcance, " +
+                            "CAST((fd.precio/fd.cantidad_licencias) AS INT) as unitario, " +
+                            "fd.precio " +
+                         "FROM " +
+                            "FacturasDetalle fd, Proyectos p " +
+                         "WHERE " +
+                            "fd.id_proyecto = p.id_proyecto AND " +
+                            "fd.numero_factura = " + idFactura.ToString() + " AND " +
+                            "fd.borrado = 0";
+
+            return GestorBD.Consultar(SQL);
+        }
     }
 }

@@ -101,5 +101,10 @@ namespace SYSTEMCODE.Capa_de_Negocio
         {
             return ClienteDatos.ConsultarListadoClientesActivos();
         }
+
+        public static DataTable ObtenerProyectosPorCliente(string numeroCliente, string fechaDesde, string fechaHasta)
+        {
+            return ClienteDatos.ConsultarProyectosPorCliente(ObtenerCliente(numeroCliente).Id_cliente, fechaDesde, fechaHasta);
+        }
     }
 }

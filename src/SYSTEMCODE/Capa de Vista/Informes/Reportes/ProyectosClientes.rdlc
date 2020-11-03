@@ -2,45 +2,49 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="DatosListados">
+    <DataSource Name="DatosReportes">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>ff986e7a-4385-4e64-bb08-93b98cfb1ce1</rd:DataSourceID>
+      <rd:DataSourceID>a5645849-87ba-4a19-82fe-eaf14ddba44f</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="VentasPorFecha">
+    <DataSet Name="ProyectosClientes">
       <Query>
-        <DataSourceName>DatosListados</DataSourceName>
+        <DataSourceName>DatosReportes</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="numero_factura">
-          <DataField>numero_factura</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="razon_social">
-          <DataField>razon_social</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="fecha">
           <DataField>fecha</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="usuario">
-          <DataField>usuario</DataField>
+        <Field Name="descripcion">
+          <DataField>descripcion</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="version">
+          <DataField>version</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="alcance">
+          <DataField>alcance</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cantidad_licencias">
+          <DataField>cantidad_licencias</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>DatosListados</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\Facundo L. Acosta\Desktop\TPI-SYSTEMCODE\src\SYSTEMCODE\Capa de Vista\Informes\Listados\DatosListados.xsd</rd:SchemaPath>
-        <rd:TableName>VentasPorFecha</rd:TableName>
+        <rd:DataSetName>DatosReportes</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\Facundo L. Acosta\Desktop\src\SYSTEMCODE\Capa de Vista\Informes\Reportes\DatosReportes.xsd</rd:SchemaPath>
+        <rd:TableName>ProyectosClientes</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>VentasPorFechaTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>ProyectosClientesTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -48,25 +52,28 @@
     <ReportSection>
       <Body>
         <ReportItems>
-          <Tablix Name="Tablix2">
+          <Tablix Name="Tablix">
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>4.4336cm</Width>
+                  <Width>3.90459cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.23876cm</Width>
+                  <Width>5.51722cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.99522cm</Width>
+                  <Width>2.12958cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.98554cm</Width>
+                  <Width>4.62803cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.5cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.61763cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -77,7 +84,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>NÚMERO DE FACTURA</Value>
+                                  <Value>FECHA</Value>
                                   <Style>
                                     <FontFamily>Courier New</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -113,7 +120,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>CORRESPONDIENTE A</Value>
+                                  <Value>DESCRIPCIÓN</Value>
                                   <Style>
                                     <FontFamily>Courier New</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -149,7 +156,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>FECHA</Value>
+                                  <Value>VERSIÓN</Value>
                                   <Style>
                                     <FontFamily>Courier New</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -178,14 +185,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox3">
+                        <Textbox Name="Textbox15">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>USUARIO CREADOR</Value>
+                                  <Value>ALCANCE</Value>
                                   <Style>
                                     <FontFamily>Courier New</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -197,7 +204,43 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox3</rd:DefaultName>
+                          <rd:DefaultName>Textbox15</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>#ed3237</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox17">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>LICENCIAS</Value>
+                                  <Style>
+                                    <FontFamily>Courier New</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox17</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -217,74 +260,6 @@
                 <TablixRow>
                   <Height>0.6cm</Height>
                   <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="numero_factura">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!numero_factura.Value</Value>
-                                  <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Left</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>numero_factura</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="razon_social">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!razon_social.Value</Value>
-                                  <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Left</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>razon_social</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="fecha">
@@ -321,14 +296,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="usuario">
+                        <Textbox Name="descripcion">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!usuario.Value</Value>
+                                  <Value>=Fields!descripcion.Value</Value>
                                   <Style>
                                     <FontFamily>Courier New</FontFamily>
                                   </Style>
@@ -339,7 +314,109 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>usuario</rd:DefaultName>
+                          <rd:DefaultName>descripcion</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="version">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!version.Value</Value>
+                                  <Style>
+                                    <FontFamily>Courier New</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>version</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="alcance">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!alcance.Value</Value>
+                                  <Style>
+                                    <FontFamily>Courier New</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>alcance</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="cantidad_licencias">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!cantidad_licencias.Value</Value>
+                                  <Style>
+                                    <FontFamily>Courier New</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>cantidad_licencias</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -363,6 +440,7 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -375,18 +453,18 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>VentasPorFecha</DataSetName>
+            <DataSetName>ProyectosClientes</DataSetName>
             <Top>1.12889cm</Top>
             <Left>1.15094cm</Left>
-            <Height>1.2cm</Height>
-            <Width>18.65312cm</Width>
+            <Height>1.21763cm</Height>
+            <Width>18.67942cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
             </Style>
           </Tablix>
-          <Textbox Name="Textbox4">
+          <Textbox Name="Textbox2">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
@@ -401,7 +479,7 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>=Parameters!FechaInicial.Value</Value>
+                    <Value>=Parameters!FechaDesde.Value</Value>
                     <Style>
                       <FontFamily>Eurostile ExtendedTwo</FontFamily>
                       <FontWeight>Normal</FontWeight>
@@ -417,7 +495,7 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>=Parameters!FechaFinal.Value</Value>
+                    <Value>=Parameters!FechaHasta.Value</Value>
                     <Style>
                       <FontFamily>Eurostile ExtendedTwo</FontFamily>
                       <FontWeight>Normal</FontWeight>
@@ -431,8 +509,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.3175cm</Top>
-            <Left>2.76474cm</Left>
+            <Top>0.22021cm</Top>
+            <Left>3.05594cm</Left>
             <Height>0.6cm</Height>
             <Width>15.42521cm</Width>
             <ZIndex>1</ZIndex>
@@ -447,15 +525,15 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>1.04189in</Height>
+        <Height>1.09049in</Height>
         <Style>
           <BackgroundColor>LightGrey</BackgroundColor>
         </Style>
       </Body>
-      <Width>8.24988in</Width>
+      <Width>8.24982in</Width>
       <Page>
         <PageHeader>
-          <Height>4.36119cm</Height>
+          <Height>4.79475cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -480,7 +558,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>LISTADO DE VENTAS POR FECHAS</Value>
+                      <Value>PROYECTOS COMPRADOS POR</Value>
                       <Style>
                         <FontFamily>Eurostile ExtendedTwo</FontFamily>
                         <FontWeight>Bold</FontWeight>
@@ -492,11 +570,25 @@
                     <TextAlign>Center</TextAlign>
                   </Style>
                 </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!RazonSocial.Value</Value>
+                      <Style>
+                        <FontFamily>Eurostile ExtendedTwo</FontFamily>
+                        <TextDecoration>None</TextDecoration>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>3.30313cm</Top>
+              <Top>3.33841cm</Top>
               <Left>2.7649cm</Left>
-              <Height>0.6cm</Height>
+              <Height>1.12917cm</Height>
               <Width>15.42521cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
@@ -509,9 +601,9 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
-            <Line Name="Line1">
-              <Top>4.29119cm</Top>
-              <Left>1.15094cm</Left>
+            <Line Name="Line3">
+              <Top>4.63599cm</Top>
+              <Left>1.17724cm</Left>
               <Height>0cm</Height>
               <Width>18.65312cm</Width>
               <ZIndex>2</ZIndex>
@@ -530,12 +622,12 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>3.14854cm</Height>
+          <Height>3.07812cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
             <Line Name="Line2">
-              <Top>0.17639cm</Top>
+              <Top>0.11472cm</Top>
               <Left>1.15094cm</Left>
               <Height>0cm</Height>
               <Width>18.65312cm</Width>
@@ -545,7 +637,7 @@
                 </Border>
               </Style>
             </Line>
-            <Textbox Name="Textbox2">
+            <Textbox Name="Textbox4">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
@@ -608,14 +700,14 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Cantidad de Ventas: </Value>
+                      <Value>Cantidad de Proyectos: </Value>
                       <Style>
                         <FontFamily>Courier New</FontFamily>
                         <TextDecoration>None</TextDecoration>
                       </Style>
                     </TextRun>
                     <TextRun>
-                      <Value>=Parameters!CantidadVentasPorFecha.Value</Value>
+                      <Value>=Parameters!CantidadProyectos.Value</Value>
                       <Style>
                         <FontFamily>Courier New</FontFamily>
                         <TextDecoration>None</TextDecoration>
@@ -663,8 +755,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.41886cm</Top>
-              <Left>1.15079cm</Left>
+              <Top>0.3175cm</Top>
+              <Left>1.15071cm</Left>
               <Height>2.49604cm</Height>
               <Width>18.65312cm</Width>
               <ZIndex>1</ZIndex>
@@ -698,7 +790,15 @@
     </ReportSection>
   </ReportSections>
   <ReportParameters>
-    <ReportParameter Name="CantidadVentasPorFecha">
+    <ReportParameter Name="RazonSocial">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="FechaDesde">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="FechaHasta">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
@@ -706,15 +806,11 @@
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="CantidadProyectos">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
     <ReportParameter Name="UsuarioCreador">
-      <DataType>String</DataType>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="FechaInicial">
-      <DataType>String</DataType>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="FechaFinal">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
@@ -722,32 +818,37 @@
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
+      <NumberOfRows>3</NumberOfRows>
       <CellDefinitions>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>CantidadVentasPorFecha</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>FechaCreacion</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>2</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>UsuarioCreador</ParameterName>
-        </CellDefinition>
         <CellDefinition>
           <ColumnIndex>3</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>FechaInicial</ParameterName>
+          <ParameterName>RazonSocial</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>1</RowIndex>
-          <ParameterName>FechaFinal</ParameterName>
+          <ParameterName>FechaDesde</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>FechaHasta</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>FechaCreacion</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>CantidadProyectos</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>UsuarioCreador</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

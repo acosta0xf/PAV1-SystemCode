@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using SYSTEMCODE.Capa_de_Negocio;
+using SYSTEMCODE.Capa_de_Vista.Informes;
+using SYSTEMCODE.Capa_de_Vista.Informes.Listados;
+using SYSTEMCODE.Capa_de_Vista.Informes.Reportes;
 
 namespace SYSTEMCODE.Capa_de_Vista
 {
@@ -85,6 +88,7 @@ namespace SYSTEMCODE.Capa_de_Vista
             btnQuitarProyecto.Enabled = estado;
             btnGuardar.Enabled = estado;
             btnCancelar.Enabled = estado;
+            btnGenerarFactura.Enabled = estado;
 
             btnGenerarVenta.Enabled = !estado;
             btnAnularVenta.Enabled = estado;
@@ -176,6 +180,7 @@ namespace SYSTEMCODE.Capa_de_Vista
                 ControlCampos(false);
                 btnGenerarVenta.Enabled = false;
                 btnAnularVenta.Enabled = true;
+                btnGenerarFactura.Enabled = true;
                 btnGuardar.Enabled = true;
                 btnCancelar.Enabled = true;
             }
@@ -276,8 +281,10 @@ namespace SYSTEMCODE.Capa_de_Vista
 
         private void BtnGenerarVenta_Click(object sender, EventArgs e)
         {
+            LimpiarCampos();
             ControlCampos(true);
             btnAnularVenta.Enabled = false;
+            btnGenerarFactura.Enabled = false;
 
             CargarInforme("INFORME", false, true);
 
@@ -331,10 +338,13 @@ namespace SYSTEMCODE.Capa_de_Vista
                 string error = Factura.AgregarFactura(facturaNueva, listaFacturasDetalles);
                 if (error == "")
                 {
-                    LimpiarCampos();
-                    ControlCampos(false);
+                    string numeroVenta = Factura.ObtenerNumeroUltimaFactura();
 
-                    CargarInforme("VENTA NÚMERO " + Factura.ObtenerNumeroUltimaFactura() + " GENERADA CON ÉXITO", true, false);
+                    ControlCampos(false);
+                    btnGenerarFactura.Enabled = true;
+                    txtNumeroVenta.Text = numeroVenta;
+
+                    CargarInforme("VENTA NÚMERO " + numeroVenta + " GENERADA CON ÉXITO", true, false);
                 }
                 else
                 {
@@ -363,6 +373,7 @@ namespace SYSTEMCODE.Capa_de_Vista
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
+            txtNumeroVenta.Text = "";
             ControlCampos(false);
             CargarInforme("INFORME", false, true);
 
@@ -404,6 +415,26 @@ namespace SYSTEMCODE.Capa_de_Vista
         private void CboDescripcion_Click(object sender, EventArgs e)
         {
             cboDescripcionPresionado = true;
+        }
+
+        private void BtnGenerarFactura_Click(object sender, EventArgs e)
+        {
+            IList<string> parametros = new List<string>
+            {
+                txtFecha.Text,
+                txtCUIT.Text,
+                txtRazonSocial.Text,
+                txtCalle.Text,
+                txtNumero.Text,
+                cboBarrios.Text,
+                txtCostoTotal.Text.Substring(1)
+            };
+
+            FrmFacturaVenta facturaVenta = new FrmFacturaVenta(txtNumeroVenta.Text, parametros)
+            {
+                Text = "Visualización de Factura [Usuario logueado: " + nombreUsuario + "]"
+            };
+            facturaVenta.ShowDialog();
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
@@ -10,16 +9,15 @@ using SYSTEMCODE.Capa_de_Negocio;
 
 namespace SYSTEMCODE.Capa_de_Vista.Informes
 {
-    public partial class FrmListados : Form
+    public partial class FrmFacturaVenta : Form
     {
-        private readonly string usuarioGenerador;
-        private readonly string modoApertura;
+        public string idFactura;
+        public IList<string> parametrosRecibidos = new List<string>();
 
-        public FrmListados(string usuarioGenerador, string modoApertura)
+        public FrmFacturaVenta(string idFactura, IList<string> parametrosRecibidos)
         {
-            this.usuarioGenerador = usuarioGenerador;
-            this.modoApertura = modoApertura;
-
+            this.idFactura = idFactura;
+            this.parametrosRecibidos = parametrosRecibidos;
             InitializeComponent();
         }
 
@@ -59,69 +57,27 @@ namespace SYSTEMCODE.Capa_de_Vista.Informes
             return false;
         }
 
-        private void HabilitarControles(bool modo)
+        private void FrmFacturaVenta_Load(object sender, EventArgs e)
         {
-            txtEmail.Enabled = modo;
-            btnImprimir.Enabled = modo;
-            btnPDF.Enabled = modo;
-            btnEmail.Enabled = modo;
-        }
-
-        private void ModoListado(DataTable tablaDatos, string modoApertura, IList<ReportParameter> parametrosAdicionales = null) {
-            ReportDataSource reporte = new ReportDataSource(modoApertura, tablaDatos);
+            ReportDataSource reporte = new ReportDataSource("DetalleFactura", FacturaDetalle.ObtenerDetalleFactura(idFactura));
 
             IList<ReportParameter> parametros = new List<ReportParameter>
             {
-                new ReportParameter("FechaCreacion", DateTime.Now.ToString("dd/MM/yyyy - HH:mm:ss")),
-                new ReportParameter("Cantidad" + modoApertura, tablaDatos.Rows.Count.ToString()),
-                new ReportParameter("UsuarioCreador", usuarioGenerador.ToString())
+                new ReportParameter("NumeroFactura", idFactura.ToString()),
+                new ReportParameter("Fecha", parametrosRecibidos[0]),
+                new ReportParameter("Cuit", parametrosRecibidos[1]),
+                new ReportParameter("RazonSocial", parametrosRecibidos[2]),
+                new ReportParameter("Calle", parametrosRecibidos[3]),
+                new ReportParameter("NumeroCalle", parametrosRecibidos[4]),
+                new ReportParameter("Barrio", parametrosRecibidos[5]),
+                new ReportParameter("ImporteTotal", parametrosRecibidos[6])
             };
 
-            if (parametrosAdicionales != null)
-            {
-                for (int i = 0; i < parametrosAdicionales.Count; i++)
-                {
-                    parametros.Add(parametrosAdicionales[i]);
-                }
-            }
-
-            this.rvListado.LocalReport.ReportEmbeddedResource = "SYSTEMCODE.Capa_de_Vista.Informes.Listados." + modoApertura + ".rdlc";
+            this.rvListado.LocalReport.ReportEmbeddedResource = "SYSTEMCODE.Capa_de_Vista.Informes.Reportes.FacturaVenta.rdlc";
             this.rvListado.LocalReport.DataSources.Clear();
             this.rvListado.LocalReport.DataSources.Add(reporte);
             this.rvListado.LocalReport.SetParameters(parametros);
             this.rvListado.RefreshReport();
-        }
-
-        private void FrmListados_Load(object sender, EventArgs e)
-        {
-            HabilitarControles(false);
-            
-            dtpFechaDesde.Value = DateTime.Now;
-            dtpFechaHasta.Value = DateTime.Now;
-
-            switch (modoApertura)
-            {
-                case "Clientes Activos":
-                    ModoListado(Cliente.ObtenerListadoClientesActivos(), "ClientesActivos");
-                    break;
-
-                case "Usuarios Activos":
-                    ModoListado(Usuario.ObtenerListadoUsuariosActivos(), "UsuariosActivos");
-                    break;
-
-                case "Proyectos Activos":
-                    ModoListado(Proyecto.ObtenerListadoProyectosActivos(), "ProyectosActivos");
-                    break;
-
-                case "Ventas Por Fecha":
-                    dtpFechaDesde.Enabled = true;
-                    dtpFechaHasta.Enabled = true;
-                    btnGenerar.Enabled = true;
-                    break;
-
-                default:
-                    break;
-            }
         }
 
         private void BtnImprimir_Click(object sender, EventArgs e)
@@ -142,7 +98,7 @@ namespace SYSTEMCODE.Capa_de_Vista.Informes
 
             SaveFileDialog guardar = new SaveFileDialog
             {
-                FileName = "Listado",
+                FileName = "Factura [" + idFactura.ToString() + "]",
                 DefaultExt = ".pdf",
                 Filter = "PDF (*.pdf)|*.pdf"
             };
@@ -185,9 +141,9 @@ namespace SYSTEMCODE.Capa_de_Vista.Informes
 
                 MailMessage correo = new MailMessage { From = new MailAddress(emailRemitente, nombreRemitente) };
                 correo.To.Add(new MailAddress(emailDestinatario));
-                correo.Subject = "Listado de " + modoApertura.ToString();
-                correo.Attachments.Add(new Attachment(new MemoryStream(bytes), "Listado.pdf"));
-                correo.Body = "Estimado, se le adjunta el listado solicitado. Saludos!";
+                correo.Subject = "Factura Número " + idFactura.ToString();
+                correo.Attachments.Add(new Attachment(new MemoryStream(bytes), "Factura [" + idFactura.ToString() + "].pdf"));
+                correo.Body = "Estimado, se le adjunta la factura correspondiente a su compra. Saludos!";
 
                 try
                 {
@@ -230,51 +186,6 @@ namespace SYSTEMCODE.Capa_de_Vista.Informes
             if (txtEmail.Text == "Correo Electrónico")
             {
                 txtEmail.Text = "";
-            }
-        }
-
-        private void BtnGenerar_Click(object sender, EventArgs e)
-        {
-            if (dtpFechaDesde.Value > dtpFechaHasta.Value)
-            {
-                CargarInforme("FECHA INICIAL NO PUEDE SER SUPERIOR A\n" + dtpFechaHasta.Value.ToString("dd/MM/yyyy"), false, false);
-                return;
-            }
-
-            if (dtpFechaHasta.Value > DateTime.Now)
-            {
-                CargarInforme("FECHA FINAL NO PUEDE SER SUPERIOR A\n" + DateTime.Now.ToString("dd/MM/yyyy"), false, false);
-                return;
-            }
-
-            if (dtpFechaHasta.Value < dtpFechaDesde.Value)
-            {
-                CargarInforme("FECHA FINAL NO PUEDE SER INFERIOR A\n" + dtpFechaDesde.Value.ToString("dd/MM/yyyy"), false, false);
-                return;
-            }
-
-            string fechaDesde = dtpFechaDesde.Value.ToString("yyyy-MM-dd");
-            string fechaHasta = dtpFechaHasta.Value.ToString("yyyy-MM-dd");
-
-            IList<ReportParameter> parametros = new List<ReportParameter>
-            {
-                new ReportParameter("FechaInicial", dtpFechaDesde.Value.ToString("dd/MM/yyyy")),
-                new ReportParameter("FechaFinal", dtpFechaHasta.Value.ToString("dd/MM/yyyy"))
-            };
-
-            CargarInforme("INFORME", false, true);
-            
-            DataTable tablaResultado = Factura.ObtenerListadoFacturasPorFecha(fechaDesde, fechaHasta);
-            if (tablaResultado.Rows.Count > 0)
-            {
-                HabilitarControles(true);
-                ModoListado(Factura.ObtenerListadoFacturasPorFecha(fechaDesde, fechaHasta), "VentasPorFecha", parametros);
-            }
-            else
-            {
-                HabilitarControles(false);
-                rvListado.Clear();
-                CargarInforme("LA BÚSQUEDA NO ARROJÓ RESULTADOS", false, false);
             }
         }
     }

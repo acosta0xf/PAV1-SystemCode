@@ -56,13 +56,13 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>6.21771cm</Width>
+                  <Width>4.60375cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>6.21771cm</Width>
+                  <Width>9.94833cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>6.21771cm</Width>
+                  <Width>4.10104cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -309,7 +309,7 @@
             <Top>0.49389cm</Top>
             <Left>1.15094cm</Left>
             <Height>1.2cm</Height>
-            <Width>18.65313cm</Width>
+            <Width>18.65312cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>

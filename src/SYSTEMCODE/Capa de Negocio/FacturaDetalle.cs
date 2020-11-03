@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using SYSTEMCODE.Capa_de_Datos;
 
 namespace SYSTEMCODE.Capa_de_Negocio
@@ -34,6 +35,11 @@ namespace SYSTEMCODE.Capa_de_Negocio
         public static IList<FacturaDetalle> ObtenerListaFacturaDetalle(string numeroFactura)
         {
             return FacturaDetalleDatos.ConsultarListaFacturaDetalle(numeroFactura);
+        }
+
+        public static DataTable ObtenerDetalleFactura(string idFactura)
+        {
+            return FacturaDetalleDatos.ConsultarDetalleFactura(idFactura);
         }
     }
 }

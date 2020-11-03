@@ -76,6 +76,7 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.txtFecha = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnGenerarFactura = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -656,12 +657,33 @@
             this.label2.TabIndex = 23;
             this.label2.Text = "Fecha Actual";
             // 
+            // btnGenerarFactura
+            // 
+            this.btnGenerarFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(50)))), ((int)(((byte)(55)))));
+            this.btnGenerarFactura.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGenerarFactura.Enabled = false;
+            this.btnGenerarFactura.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(50)))), ((int)(((byte)(55)))));
+            this.btnGenerarFactura.FlatAppearance.BorderSize = 2;
+            this.btnGenerarFactura.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
+            this.btnGenerarFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenerarFactura.Font = new System.Drawing.Font("Eurostile", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarFactura.ForeColor = System.Drawing.Color.White;
+            this.btnGenerarFactura.Location = new System.Drawing.Point(502, 624);
+            this.btnGenerarFactura.Name = "btnGenerarFactura";
+            this.btnGenerarFactura.Size = new System.Drawing.Size(123, 29);
+            this.btnGenerarFactura.TabIndex = 24;
+            this.btnGenerarFactura.TabStop = false;
+            this.btnGenerarFactura.Text = "Generar Factura";
+            this.btnGenerarFactura.UseVisualStyleBackColor = false;
+            this.btnGenerarFactura.Click += new System.EventHandler(this.BtnGenerarFactura_Click);
+            // 
             // FrmGestionarVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(946, 662);
+            this.Controls.Add(this.btnGenerarFactura);
             this.Controls.Add(this.txtFecha);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnGuardar);
@@ -744,5 +766,6 @@
         private System.Windows.Forms.TextBox txtFechaRegistrada;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtCostoLicencia;
+        private System.Windows.Forms.Button btnGenerarFactura;
     }
 }

@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using SYSTEMCODE.Capa_de_Negocio;
 using SYSTEMCODE.Capa_de_Vista;
 using SYSTEMCODE.Capa_de_Vista.ABMC;
+using SYSTEMCODE.Capa_de_Vista.Informes;
 using SYSTEMCODE.Capa_de_Vista.Informes.Listados;
 
 namespace SYSTEMCODE
@@ -163,6 +164,17 @@ namespace SYSTEMCODE
                 Text = "Listado de Ventas por Fecha [Usuario logueado: " + usuarioLogueado + "]"
             };
             ventasPorFecha.ShowDialog();
+        }
+
+        private void ProyectosPorClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string usuarioLogueado = UsuarioActual.NombreUsuario;
+
+            FrmProyectosClientes proyectosClientes = new FrmProyectosClientes(usuarioLogueado)
+            {
+                Text = "Reporte de Proyectos por Cliente [Usuario logueado: " + usuarioLogueado + "]"
+            };
+            proyectosClientes.ShowDialog();
         }
     }
 }
