@@ -29,6 +29,11 @@ Repositorio para el Trabajo Práctico Integrador de la materia PAV1
 - Diseño de Listado: Usuarios Activos
 - Diseño de Listado: Proyectos Activos
 - Diseño de Listado: Ventas por Fechas
+- Conjunto de Datos para Facturas y Reportes
+- Ventana de Visualización de Facturas
+- Diseño de Facturas
+- Ventana de Reportes
+- Diseño de Reportes: Proyectos Comprados por un Cliente por Fecha Específica
 
 # BASE DE DATOS
 Se debe cargar la base de datos con el script almacenado en el repositorio, por los siguientes motivos:
