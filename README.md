@@ -31,7 +31,7 @@ Repositorio para el Trabajo Práctico Integrador de la materia PAV1
 - Diseño de Listado: Ventas por Fechas
 - Conjunto de Datos para Facturas y Reportes
 - Ventana de Visualización de Facturas
-- Diseño de Facturas
+- Diseño de Facturas: Venta Realizada
 - Ventana de Reportes
 - Diseño de Reportes: Proyectos Comprados por un Cliente por Fecha Específica
 
