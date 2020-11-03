@@ -94,8 +94,6 @@ namespace SYSTEMCODE.Capa_de_Vista.Informes
 
         private void FrmListados_Load(object sender, EventArgs e)
         {
-            HabilitarControles(false);
-            
             dtpFechaDesde.Value = DateTime.Now;
             dtpFechaHasta.Value = DateTime.Now;
 
@@ -114,6 +112,7 @@ namespace SYSTEMCODE.Capa_de_Vista.Informes
                     break;
 
                 case "Ventas Por Fecha":
+                    HabilitarControles(false);
                     dtpFechaDesde.Enabled = true;
                     dtpFechaHasta.Enabled = true;
                     btnGenerar.Enabled = true;
