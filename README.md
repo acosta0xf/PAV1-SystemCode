@@ -34,6 +34,10 @@ Repositorio para el Trabajo Práctico Integrador de la materia PAV1
 - Diseño de Facturas: Venta Realizada
 - Ventana de Reportes
 - Diseño de Reportes: Proyectos Comprados por un Cliente por Fecha Específica
+- Ventana de Estadísticas
+- Conjunto de Datos para Estadísticas
+- Diseño de Estadísticas: Barrios con más Ventas
+- Diseño de Estadísticas: Proyectos con más Ventas
 
 # BASE DE DATOS
 Se debe cargar la base de datos con el script almacenado en el repositorio, por los siguientes motivos:
