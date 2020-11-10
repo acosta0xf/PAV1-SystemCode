@@ -379,7 +379,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Cantidad de ventas registradas a clientes según barrio</Value>
+                    <Value>Cantidad de ventas registradas por barrio</Value>
                     <Style>
                       <FontFamily>Eurostile</FontFamily>
                       <FontSize>12pt</FontSize>
@@ -672,6 +672,14 @@
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="FechaInicial">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="FechaFinal">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -687,6 +695,16 @@
           <ColumnIndex>2</ColumnIndex>
           <RowIndex>0</RowIndex>
           <ParameterName>UsuarioCreador</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>FechaInicial</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>FechaFinal</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>
