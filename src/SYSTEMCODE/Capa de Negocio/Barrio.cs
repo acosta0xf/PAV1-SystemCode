@@ -65,9 +65,9 @@ namespace SYSTEMCODE.Capa_de_Negocio
             return BarrioDatos.EliminarBarrio(barrio);
         }
 
-        public static DataTable ObtenerBarriosConMasVentas()
+        public static DataTable ObtenerBarriosConMasVentas(string fechaDesde, string fechaHasta)
         {
-            return BarrioDatos.ConsultarBarriosConMasVentas();
+            return BarrioDatos.ConsultarBarriosConMasVentas(fechaDesde, fechaHasta);
         }
     }
 }

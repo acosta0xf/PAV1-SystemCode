@@ -59,7 +59,7 @@ namespace SYSTEMCODE.Capa_de_Vista.Informes
             return false;
         }
 
-        private void ModoListado(DataTable tablaDatos, string modoApertura) {
+        private void ModoListado(DataTable tablaDatos, string modoApertura, IList<ReportParameter> parametrosAdicionales = null) {
             ReportDataSource reporte = new ReportDataSource(modoApertura, tablaDatos);
 
             IList<ReportParameter> parametros = new List<ReportParameter>
@@ -80,16 +80,30 @@ namespace SYSTEMCODE.Capa_de_Vista.Informes
             switch (modoApertura)
             {
                 case "Barrios con más Ventas":
-                    ModoListado(Barrio.ObtenerBarriosConMasVentas(), "BarriosVentas");
+                    HabilitarControles(false);
+                    dtpFechaDesde.Enabled = true;
+                    dtpFechaHasta.Enabled = true;
+                    btnGenerar.Enabled = true;
                     break;
 
                 case "Proyectos con más Ventas":
-                    ModoListado(Proyecto.ObtenerProyectosConMasVentas(), "ProyectosVentas");
+                    HabilitarControles(false);
+                    dtpFechaDesde.Enabled = true;
+                    dtpFechaHasta.Enabled = true;
+                    btnGenerar.Enabled = true;
                     break;
 
                 default:
                     break;
             }
+        }
+
+        private void HabilitarControles(bool modo)
+        {
+            txtEmail.Enabled = modo;
+            btnImprimir.Enabled = modo;
+            btnPDF.Enabled = modo;
+            btnEmail.Enabled = modo;
         }
 
         private void BtnImprimir_Click(object sender, EventArgs e)
@@ -198,6 +212,61 @@ namespace SYSTEMCODE.Capa_de_Vista.Informes
             if (txtEmail.Text == "Correo Electrónico")
             {
                 txtEmail.Text = "";
+            }
+        }
+
+        private void BtnGenerar_Click(object sender, EventArgs e)
+        {
+            if (dtpFechaDesde.Value > dtpFechaHasta.Value)
+            {
+                CargarInforme("FECHA INICIAL NO PUEDE SER SUPERIOR A\n" + dtpFechaHasta.Value.ToString("dd/MM/yyyy"), false, false);
+                return;
+            }
+
+            if (dtpFechaHasta.Value > DateTime.Now)
+            {
+                CargarInforme("FECHA FINAL NO PUEDE SER SUPERIOR A\n" + DateTime.Now.ToString("dd/MM/yyyy"), false, false);
+                return;
+            }
+
+            if (dtpFechaHasta.Value < dtpFechaDesde.Value)
+            {
+                CargarInforme("FECHA FINAL NO PUEDE SER INFERIOR A\n" + dtpFechaDesde.Value.ToString("dd/MM/yyyy"), false, false);
+                return;
+            }
+
+            string fechaDesde = dtpFechaDesde.Value.ToString("yyyy-MM-dd");
+            string fechaHasta = dtpFechaHasta.Value.ToString("yyyy-MM-dd");
+
+            IList<ReportParameter> parametros = new List<ReportParameter>
+            {
+                new ReportParameter("FechaInicial", dtpFechaDesde.Value.ToString("dd/MM/yyyy")),
+                new ReportParameter("FechaFinal", dtpFechaHasta.Value.ToString("dd/MM/yyyy"))
+            };
+
+            CargarInforme("INFORME", false, true);
+
+            DataTable tablaResultado = Factura.ObtenerListadoFacturasPorFecha(fechaDesde, fechaHasta);
+            if (tablaResultado.Rows.Count > 0)
+            {
+                HabilitarControles(true);
+                switch (modoApertura)
+                {
+                    case "Barrios con más Ventas":
+                        ModoListado(Barrio.ObtenerBarriosConMasVentas(fechaDesde, fechaHasta), "BarriosVentas", parametros);
+                        break;
+                    case "Proyectos con más Ventas":
+                        ModoListado(Proyecto.ObtenerProyectosConMasVentas(fechaDesde, fechaHasta), "ProyectosVentas", parametros);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                HabilitarControles(false);
+                rvListado.Clear();
+                CargarInforme("LA BÚSQUEDA NO ARROJÓ RESULTADOS", false, false);
             }
         }
     }

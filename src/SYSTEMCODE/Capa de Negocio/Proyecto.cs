@@ -89,9 +89,9 @@ namespace SYSTEMCODE.Capa_de_Negocio
             return ProyectoDatos.ConsultarListadoProyectosActivos();
         }
 
-        public static DataTable ObtenerProyectosConMasVentas()
+        public static DataTable ObtenerProyectosConMasVentas(string fechaDesde, string fechaHasta)
         {
-            return ProyectoDatos.ConsultarProyectosConMasVentas();
+            return ProyectoDatos.ConsultarProyectosConMasVentas(fechaDesde, fechaHasta);
         }
     }
 }

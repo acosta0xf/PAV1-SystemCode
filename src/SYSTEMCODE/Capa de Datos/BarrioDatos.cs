@@ -103,13 +103,14 @@ namespace SYSTEMCODE.Capa_de_Datos
             return GestorBD.Ejecutar(SQL);
         }
 
-        public static DataTable ConsultarBarriosConMasVentas()
+        public static DataTable ConsultarBarriosConMasVentas(string fechaDesde, string fechaHasta)
         {
             string SQL = "SELECT TOP(15) b.nombre, COUNT(*) as cantidad_ventas " +
                          "FROM Barrios b, Facturas f, Clientes c " +
                          "WHERE " +
                             "f.id_cliente = c.id_cliente AND " +
-                            "c.id_barrio = b.id_barrio " +
+                            "c.id_barrio = b.id_barrio AND " +
+                            "f.fecha BETWEEN '" + fechaDesde + "' AND '" + fechaHasta + "'" +
                          "GROUP BY b.nombre";
 
             return GestorBD.Consultar(SQL);
