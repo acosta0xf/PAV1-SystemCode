@@ -68,6 +68,14 @@ namespace SYSTEMCODE.Capa_de_Vista.Informes
                 new ReportParameter("UsuarioCreador", usuarioGenerador.ToString())
             };
 
+            if (parametrosAdicionales != null)
+            {
+                for (int i = 0; i < parametrosAdicionales.Count; i++)
+                {
+                    parametros.Add(parametrosAdicionales[i]);
+                }
+            }
+
             this.rvListado.LocalReport.ReportEmbeddedResource = "SYSTEMCODE.Capa_de_Vista.Informes.Estadisticas." + modoApertura + ".rdlc";
             this.rvListado.LocalReport.DataSources.Clear();
             this.rvListado.LocalReport.DataSources.Add(reporte);
