@@ -375,7 +375,7 @@
               </Style>
             </ChartNoDataMessage>
             <DataSetName>ProyectosVentas</DataSetName>
-            <Top>1.21502cm</Top>
+            <Top>0.89752cm</Top>
             <Left>1.15094cm</Left>
             <Height>20.62463cm</Height>
             <Width>18.65312cm</Width>
@@ -433,7 +433,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.43863cm</Top>
+            <Top>0.17639cm</Top>
             <Left>2.7649cm</Left>
             <Height>0.6cm</Height>
             <Width>15.42521cm</Width>
@@ -449,7 +449,7 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>9.07664in</Height>
+        <Height>8.65997in</Height>
         <Style>
           <BackgroundColor>LightGrey</BackgroundColor>
         </Style>
@@ -543,7 +543,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox3</rd:DefaultName>
-              <Top>4.62343cm</Top>
+              <Top>4.46758cm</Top>
               <Left>1.15094cm</Left>
               <Height>0.6cm</Height>
               <Width>18.65312cm</Width>
