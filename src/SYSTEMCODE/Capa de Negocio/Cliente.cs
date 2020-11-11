@@ -62,6 +62,11 @@ namespace SYSTEMCODE.Capa_de_Negocio
             return ClienteDatos.ConsultarClientePorCUIT(numeroCUIT);
         }
 
+        public static Cliente ObtenerClienteNoBorrado(int idCliente)
+        {
+            return ClienteDatos.ConsultarClientePorIDNoBorrado(idCliente);
+        }
+
         public static Cliente ObtenerCliente(int idCliente)
         {
             return ClienteDatos.ConsultarClientePorID(idCliente);

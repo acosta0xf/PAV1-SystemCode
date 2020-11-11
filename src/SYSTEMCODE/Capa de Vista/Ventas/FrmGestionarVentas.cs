@@ -179,7 +179,7 @@ namespace SYSTEMCODE.Capa_de_Vista
                 btnGenerarVenta.Enabled = false;
                 btnAnularVenta.Enabled = true;
                 btnGenerarFactura.Enabled = true;
-                btnGuardar.Enabled = true;
+                btnGuardar.Enabled = false;
                 btnCancelar.Enabled = true;
             }
         }
@@ -194,18 +194,33 @@ namespace SYSTEMCODE.Capa_de_Vista
             }
 
             clienteNuevo = Cliente.ObtenerCliente(txtCUIT.Text);
-            if (clienteNuevo != null)
+            if (clienteNuevo != null && !clienteNuevo.Borrado)
             {
-                CargarInforme("INFORME", false, true);
+                CargarInforme("CLIENTE ENCONTRADO", true, false);
 
                 txtRazonSocial.Text = clienteNuevo.Razon_social;
                 txtCalle.Text = clienteNuevo.Calle;
                 txtNumero.Text = clienteNuevo.Numero.ToString();
                 cboBarrios.SelectedIndex = clienteNuevo.BarrioAsociado.Id_barrio - 1;
+                ControlCampos(true);
+                btnAnularVenta.Enabled = false;
+                btnGenerarFactura.Enabled = false;
             }
             else
             {
-                CargarInforme("CLIENTE NO REGISTRADO", false, false);
+                if (clienteNuevo == null)
+                {
+                    CargarInforme("CLIENTE NO REGISTRADO", false, false);
+                }
+                else if (clienteNuevo.Borrado)
+                {
+                    CargarInforme("CLIENTE DADO DE BAJA", false, false);
+                }
+                
+                ControlCampos(false);
+                txtCUIT.Enabled = true;
+                btnBuscarCliente.Enabled = true;
+                btnCancelar.Enabled = true;
             }
         }
 
@@ -280,9 +295,12 @@ namespace SYSTEMCODE.Capa_de_Vista
         private void BtnGenerarVenta_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
-            ControlCampos(true);
+            ControlCampos(false);
             btnAnularVenta.Enabled = false;
             btnGenerarFactura.Enabled = false;
+            txtCUIT.Enabled = true;
+            btnBuscarCliente.Enabled = true;
+            btnCancelar.Enabled = true;
 
             CargarInforme("INFORME", false, true);
 
@@ -308,7 +326,14 @@ namespace SYSTEMCODE.Capa_de_Vista
             {
                 if (clienteNuevo == null)
                 {
-                    CargarInforme("DEBE SELECCIONAR UN CLIENTE", false, false);
+                    CargarInforme("DEBE SELECCIONAR UN CLIENTE REGISTRADO", false, false);
+                    txtCUIT.Focus();
+                    return;
+                }
+
+                if (clienteNuevo.Borrado)
+                {
+                    CargarInforme("DEBE SELECCIONAR UN CLIENTE ACTIVO", false, false);
                     txtCUIT.Focus();
                     return;
                 }

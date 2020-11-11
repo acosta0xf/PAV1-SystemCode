@@ -20,16 +20,12 @@ namespace SYSTEMCODE.Capa_de_Datos
             bool borrado = Convert.ToBoolean(tabla.Rows[posicion]["borrado"]);
 
             Contacto contacto = null;
-            Barrio barrio = null;
+            
+            Barrio barrio = BarrioDatos.ConsultarBarrio(id_barrio)[0];
 
-            if (!borrado)
+            if (id_contacto != -1)
             {
-                barrio = BarrioDatos.ConsultarBarrio(id_barrio)[0];
-
-                if (id_contacto != -1)
-                {
-                    contacto = ContactoDatos.ConsultarContacto(cuit)[0];
-                }
+                contacto = ContactoDatos.ConsultarContacto(cuit)[0];
             }
             
             return new Cliente(id_cliente, cuit, razon_social, borrado, calle, numero, fecha_alta, barrio, contacto);
@@ -85,13 +81,25 @@ namespace SYSTEMCODE.Capa_de_Datos
             return (tabla.Rows.Count > 0) ? DiseniarCliente(0, tabla) : null;
         }
 
-        public static Cliente ConsultarClientePorID(int idCliente)
+        public static Cliente ConsultarClientePorIDNoBorrado(int idCliente)
         {
             string SQL = "SELECT clientes.* " +
                          "FROM Clientes clientes " +
                          "WHERE " +
                             "id_cliente = " + idCliente.ToString() + " AND " +
                             "borrado = 0";
+
+            DataTable tabla = GestorBD.Consultar(SQL);
+
+            return (tabla.Rows.Count > 0) ? DiseniarCliente(0, tabla) : null;
+        }
+
+        public static Cliente ConsultarClientePorID(int idCliente)
+        {
+            string SQL = "SELECT clientes.* " +
+                         "FROM Clientes clientes " +
+                         "WHERE " +
+                            "id_cliente = " + idCliente.ToString();
 
             DataTable tabla = GestorBD.Consultar(SQL);
 
