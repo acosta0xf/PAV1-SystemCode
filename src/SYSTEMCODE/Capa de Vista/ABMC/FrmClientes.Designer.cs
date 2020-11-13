@@ -112,7 +112,7 @@
             // txtBuscarCUIT
             // 
             this.txtBuscarCUIT.Location = new System.Drawing.Point(10, 48);
-            this.txtBuscarCUIT.MaxLength = 8;
+            this.txtBuscarCUIT.MaxLength = 11;
             this.txtBuscarCUIT.Name = "txtBuscarCUIT";
             this.txtBuscarCUIT.Size = new System.Drawing.Size(311, 22);
             this.txtBuscarCUIT.TabIndex = 0;

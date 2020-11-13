@@ -137,12 +137,13 @@ namespace SYSTEMCODE.Capa_de_Datos
 
         public static DataTable ConsultarProyectosConMasVentas(string fechaDesde, string fechaHasta)
         {
-            string SQL = "SELECT DISTINCT TOP(15) p.descripcion, SUM(fd.cantidad_licencias) as cantidad_licencias " +
+            string SQL = "SELECT TOP(15) p.descripcion, SUM(fd.cantidad_licencias) as cantidad_licencias " +
                          "FROM FacturasDetalle fd, Proyectos p, Facturas f " +
                          "WHERE " +
                             "fd.id_proyecto = p.id_proyecto AND " +
-                            "f.fecha BETWEEN '" + fechaDesde + "' AND '" + fechaHasta + "'" +
-                         "GROUP BY p.descripcion,  f.id_factura";
+                            "f.fecha BETWEEN '" + fechaDesde + "' AND '" + fechaHasta + "'" + " AND " +
+                            "f.numero_factura = fd.numero_factura " +
+                         "GROUP BY p.descripcion";
 
             return GestorBD.Consultar(SQL);
         }
