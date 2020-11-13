@@ -12,6 +12,7 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
         Usuario usuario;
 
         private string botonPresionado = "";
+        private bool btnMostrarBorradosPresionado = false;
 
         public FrmUsuarios()
         {
@@ -294,7 +295,8 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
         {
             if (dgvUsuarios.CurrentRow.DefaultCellStyle.BackColor == System.Drawing.Color.Red)
             {
-                dgvUsuarios.ClearSelection();
+                btnModificar.Enabled = false;
+                btnEliminar.Enabled = false;
                 LimpiarCampos();
             }
             else
@@ -443,17 +445,27 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
             if (btnMostrarBorrados.Text == "Mostrar Borrados")
             {
                 CargarTablaUsuariosBorrados(dgvUsuarios, Usuario.ObtenerTablaUsuarios());
+                btnMostrarBorradosPresionado = true;
             }
             else
             {
                 CargarTablaUsuariosNoBorrados(dgvUsuarios, Usuario.ObtenerTablaUsuarios());
+                btnMostrarBorradosPresionado = false;
             }
             lblCantidad.Text = "Total de registros: " + dgvUsuarios.Rows.Count;
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-            CargarTablaUsuariosNoBorrados(dgvUsuarios, Usuario.ObtenerTablaUsuariosFiltro(txtBuscarDNI.Text));
+            if (btnMostrarBorradosPresionado)
+            {
+                CargarTablaUsuariosBorrados(dgvUsuarios, Usuario.ObtenerTablaUsuariosFiltro(txtBuscarDNI.Text));
+            }
+            else
+            {
+                CargarTablaUsuariosNoBorrados(dgvUsuarios, Usuario.ObtenerTablaUsuariosFiltro(txtBuscarDNI.Text));
+            }
+            
             lblCantidad.Text = "Total de registros: " + dgvUsuarios.Rows.Count;
 
             if (dgvUsuarios.Rows.Count == 0)

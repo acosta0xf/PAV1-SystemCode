@@ -12,6 +12,7 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
         Cliente cliente;
 
         private string botonPresionado = "";
+        private bool btnMostrarBorradosPresionado = false;
 
         public FrmClientes()
         {
@@ -322,7 +323,8 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
         {
             if (dgvClientes.CurrentRow.DefaultCellStyle.BackColor == System.Drawing.Color.Red)
             {
-                dgvClientes.ClearSelection();
+                btnModificar.Enabled = false;
+                btnEliminar.Enabled = false;
                 LimpiarCampos();
             }
             else
@@ -477,10 +479,12 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
             if (btnMostrarBorrados.Text == "Mostrar Borrados")
             {
                 CargarTablaClientesBorrados(dgvClientes, Cliente.ObtenerTablaClientes());
+                btnMostrarBorradosPresionado = true;
             }
             else
             {
                 CargarTablaClientesNoBorrados(dgvClientes, Cliente.ObtenerTablaClientes());
+                btnMostrarBorradosPresionado = false;
             }
 
             lblCantidad.Text = "Total de registros: " + dgvClientes.Rows.Count;
@@ -488,7 +492,15 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-            CargarTablaClientesNoBorrados(dgvClientes, Cliente.ObtenerTablaClientesFiltro(txtBuscarCUIT.Text));
+            if (btnMostrarBorradosPresionado)
+            {
+                CargarTablaClientesBorrados(dgvClientes, Cliente.ObtenerTablaClientesFiltro(txtBuscarCUIT.Text));
+            }
+            else
+            {
+                CargarTablaClientesNoBorrados(dgvClientes, Cliente.ObtenerTablaClientesFiltro(txtBuscarCUIT.Text));
+            }
+            
             lblCantidad.Text = "Total de registros: " + dgvClientes.Rows.Count;
 
             if (dgvClientes.Rows.Count == 0)

@@ -11,6 +11,7 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
         Proyecto proyecto;
 
         private string botonPresionado = "";
+        private bool btnMostrarBorradosPresionado = false;
 
         public FrmProyectos()
         {
@@ -206,7 +207,8 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
         {
             if (dgvProyectos.CurrentRow.DefaultCellStyle.BackColor == System.Drawing.Color.Red)
             {
-                dgvProyectos.ClearSelection();
+                btnModificar.Enabled = false;
+                btnEliminar.Enabled = false;
                 LimpiarCampos();
             }
             else
@@ -355,17 +357,27 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
             if (btnMostrarBorrados.Text == "Mostrar Borrados")
             {
                 CargarTablaProyectosBorrados(dgvProyectos, Proyecto.ObtenerTablaProyectos());
+                btnMostrarBorradosPresionado = true;
             }
             else
             {
                 CargarTablaProyectosNoBorrados(dgvProyectos, Proyecto.ObtenerTablaProyectos());
+                btnMostrarBorradosPresionado = false;
             }
             lblCantidad.Text = "Total de registros: " + dgvProyectos.Rows.Count;
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-            CargarTablaProyectosNoBorrados(dgvProyectos, Proyecto.ObtenerTablaProyectosFiltro(txtBuscarDescripcion.Text));
+            if (btnMostrarBorradosPresionado)
+            {
+                CargarTablaProyectosBorrados(dgvProyectos, Proyecto.ObtenerTablaProyectosFiltro(txtBuscarDescripcion.Text));
+            }
+            else
+            {
+                CargarTablaProyectosNoBorrados(dgvProyectos, Proyecto.ObtenerTablaProyectosFiltro(txtBuscarDescripcion.Text));
+            }
+            
             lblCantidad.Text = "Total de registros: " + dgvProyectos.Rows.Count;
 
             if (dgvProyectos.Rows.Count == 0)

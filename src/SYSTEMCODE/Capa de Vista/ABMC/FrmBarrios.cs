@@ -11,6 +11,7 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
         Barrio barrio;
 
         private string botonPresionado = "";
+        private bool btnMostrarBorradosPresionado = false;
 
         public FrmBarrios()
         {
@@ -176,7 +177,8 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
         {
             if (dgvBarrios.CurrentRow.DefaultCellStyle.BackColor == System.Drawing.Color.Red)
             {
-                dgvBarrios.ClearSelection();
+                btnModificar.Enabled = false;
+                btnEliminar.Enabled = false;
                 LimpiarCampos();
             }
             else
@@ -333,18 +335,29 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
             if (btnMostrarBorrados.Text == "Mostrar Borrados")
             {
                 CargarTablaBarriosBorrados(dgvBarrios, Barrio.ObtenerBarrios());
-                lblCantidad.Text = "Total de registros: " + dgvBarrios.Rows.Count;
+                btnMostrarBorradosPresionado = true;
             }
             else
             {
                 CargarTablaBarriosNoBorrados(dgvBarrios, Barrio.ObtenerBarrios());
-                lblCantidad.Text = "Total de registros: " + dgvBarrios.Rows.Count;
+                btnMostrarBorradosPresionado = false;
             }
+
+            lblCantidad.Text = "Total de registros: " + dgvBarrios.Rows.Count;
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-            CargarTablaBarriosNoBorrados(dgvBarrios, Barrio.ObtenerTablaBarriosFiltro(txtBuscarBarrio.Text));
+            if (btnMostrarBorradosPresionado)
+            {
+                CargarTablaBarriosBorrados(dgvBarrios, Barrio.ObtenerTablaBarriosFiltro(txtBuscarBarrio.Text));
+            }
+            else
+            {
+                CargarTablaBarriosNoBorrados(dgvBarrios, Barrio.ObtenerTablaBarriosFiltro(txtBuscarBarrio.Text));
+            }
+
+            lblCantidad.Text = "Total de registros: " + dgvBarrios.Rows.Count;
 
             if (dgvBarrios.Rows.Count == 0)
             {
@@ -353,7 +366,6 @@ namespace SYSTEMCODE.Capa_de_Vista.ABMC
             else
             {
                 CargarInforme("SE ENCONTRARON USUARIOS\n DE ACUERDO AL FILTRO APLICADO", true, false);
-                lblCantidad.Text = "Total de registros: " + dgvBarrios.Rows.Count;
             }
         }
     }
